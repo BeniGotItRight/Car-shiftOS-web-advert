@@ -1,9 +1,23 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, MapPin, Phone, Send, Globe } from "lucide-react";
+import { Mail, Phone, Send, Globe } from "lucide-react";
 
 export default function ContactPage() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    subject: "Platform Deployment",
+    message: ""
+  });
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const mailtoLink = `mailto:carshiftos@gmail.com?subject=${encodeURIComponent(formData.subject)} - ${encodeURIComponent(formData.name)}&body=${encodeURIComponent(formData.message)}%0D%0A%0D%0AFrom: ${encodeURIComponent(formData.name)} (${encodeURIComponent(formData.email)})`;
+    window.location.href = mailtoLink;
+  };
+
   return (
     <div className="min-h-screen bg-slate-950 text-white pt-32 pb-16 px-6 relative overflow-hidden">
       {/* Background Glow */}
@@ -84,21 +98,27 @@ export default function ContactPage() {
           >
             <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 blur-3xl rounded-full" />
             
-            <form className="space-y-6 relative z-10" onSubmit={(e) => e.preventDefault()}>
+            <form className="space-y-6 relative z-10" onSubmit={handleSubmit}>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label className="text-xs font-bold uppercase tracking-widest text-slate-500 ml-1">Full Name</label>
                   <input 
+                    required
                     type="text" 
                     placeholder="John Doe"
+                    value={formData.name}
+                    onChange={(e) => setFormData({...formData, name: e.target.value})}
                     className="w-full bg-slate-950/50 border border-white/10 rounded-2xl px-6 py-4 outline-none focus:border-blue-500/50 transition-all text-white placeholder:text-slate-700 font-medium"
                   />
                 </div>
                 <div className="space-y-2">
                   <label className="text-xs font-bold uppercase tracking-widest text-slate-500 ml-1">Email Address</label>
                   <input 
+                    required
                     type="email" 
                     placeholder="john@example.com"
+                    value={formData.email}
+                    onChange={(e) => setFormData({...formData, email: e.target.value})}
                     className="w-full bg-slate-950/50 border border-white/10 rounded-2xl px-6 py-4 outline-none focus:border-blue-500/50 transition-all text-white placeholder:text-slate-700 font-medium"
                   />
                 </div>
@@ -106,7 +126,11 @@ export default function ContactPage() {
               
               <div className="space-y-2">
                 <label className="text-xs font-bold uppercase tracking-widest text-slate-500 ml-1">Subject</label>
-                <select className="w-full bg-slate-950/50 border border-white/10 rounded-2xl px-6 py-4 outline-none focus:border-blue-500/50 transition-all text-white font-medium appearance-none">
+                <select 
+                  value={formData.subject}
+                  onChange={(e) => setFormData({...formData, subject: e.target.value})}
+                  className="w-full bg-slate-950/50 border border-white/10 rounded-2xl px-6 py-4 outline-none focus:border-blue-500/50 transition-all text-white font-medium appearance-none"
+                >
                   <option>Platform Deployment</option>
                   <option>Custom Feature Request</option>
                   <option>Partnership Inquiry</option>
@@ -117,13 +141,19 @@ export default function ContactPage() {
               <div className="space-y-2">
                 <label className="text-xs font-bold uppercase tracking-widest text-slate-500 ml-1">Message</label>
                 <textarea 
+                  required
                   rows={4}
                   placeholder="Tell us about your dealership..."
+                  value={formData.message}
+                  onChange={(e) => setFormData({...formData, message: e.target.value})}
                   className="w-full bg-slate-950/50 border border-white/10 rounded-2xl px-6 py-4 outline-none focus:border-blue-500/50 transition-all text-white placeholder:text-slate-700 font-medium resize-none"
                 />
               </div>
 
-              <button className="w-full group relative flex items-center justify-center gap-2 px-10 py-5 bg-white text-slate-950 rounded-2xl font-black text-lg hover:bg-slate-200 transition-all overflow-hidden active:scale-[0.98]">
+              <button 
+                type="submit"
+                className="w-full group relative flex items-center justify-center gap-2 px-10 py-5 bg-white text-slate-950 rounded-2xl font-black text-lg hover:bg-slate-200 transition-all overflow-hidden active:scale-[0.98]"
+              >
                 <span className="relative z-10 flex items-center gap-2 uppercase tracking-tight">
                   Send Message <Send className="size-5" />
                 </span>
