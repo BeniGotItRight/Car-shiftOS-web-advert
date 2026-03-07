@@ -535,22 +535,22 @@ export default function CentralLanding() {
           </div>
           <div className="flex flex-col sm:flex-row gap-8 items-center">
             <a 
-              href="mailto:hello@shiftos.ai" 
+              href="mailto:carshiftos@gmail.com" 
               className="group flex items-center gap-3 text-slate-400 hover:text-white transition-colors"
             >
               <div className="size-10 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-blue-600 transition-colors">
                 <Globe className="size-5" />
               </div>
-              <span className="font-bold tracking-tight text-lg">hello@shiftos.ai</span>
+              <span className="font-bold tracking-tight text-lg">carshiftos@gmail.com</span>
             </a>
             <a 
-              href="tel:+254700000000" 
+              href="tel:0732009268" 
               className="group flex items-center gap-3 text-slate-400 hover:text-white transition-colors"
             >
               <div className="size-10 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-blue-600 transition-colors">
                 <Monitor className="size-5" />
               </div>
-              <span className="font-bold tracking-tight text-lg">+254 700 000 000</span>
+              <span className="font-bold tracking-tight text-lg">0732009268</span>
             </a>
           </div>
           <p className="text-slate-600 text-[10px] uppercase tracking-[0.2em] font-black">
