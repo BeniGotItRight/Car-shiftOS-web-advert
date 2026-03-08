@@ -36,25 +36,25 @@ export function WebFooter() {
           </div>
           
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-8 md:gap-12">
-            <div className="flex flex-col gap-4">
-              <h3 className="text-white font-medium uppercase tracking-wider text-sm mb-2">
+            <div className="flex flex-col gap-3 sm:gap-4">
+              <h3 className="text-white font-medium uppercase tracking-wider text-xs sm:text-sm mb-1 sm:mb-2">
                 Platform
               </h3>
-              <Link href="/services" className="text-slate-400 hover:text-white transition-colors">Our Services</Link>
-              <Link href="/about" className="text-slate-400 hover:text-white transition-colors">About Us</Link>
+              <Link href="/services" className="text-slate-400 hover:text-white transition-colors text-sm sm:text-base">Our Services</Link>
+              <Link href="/about" className="text-slate-400 hover:text-white transition-colors text-sm sm:text-base">About Us</Link>
             </div>
             
-            <div className="flex flex-col gap-4">
-              <h3 className="text-white font-medium uppercase tracking-wider text-sm mb-2">Company</h3>
-              <Link href="/about" className="text-slate-400 hover:text-white transition-colors">About Us</Link>
-              <Link href="/services" className="text-slate-400 hover:text-white transition-colors">Our Services</Link>
-              <Link href="/contact" className="text-slate-400 hover:text-white transition-colors">Contact</Link>
+            <div className="flex flex-col gap-3 sm:gap-4">
+              <h3 className="text-white font-medium uppercase tracking-wider text-xs sm:text-sm mb-1 sm:mb-2">Company</h3>
+              <Link href="/about" className="text-slate-400 hover:text-white transition-colors text-sm sm:text-base">About Us</Link>
+              <Link href="/services" className="text-slate-400 hover:text-white transition-colors text-sm sm:text-base">Our Services</Link>
+              <Link href="/contact" className="text-slate-400 hover:text-white transition-colors text-sm sm:text-base">Contact</Link>
             </div>
             
-            <div className="flex flex-col gap-4">
-              <h3 className="text-white font-medium uppercase tracking-wider text-sm mb-2">Legal</h3>
-              <Link href="/privacy" className="text-slate-400 hover:text-white transition-colors">Privacy</Link>
-              <Link href="/terms" className="text-slate-400 hover:text-white transition-colors">Terms</Link>
+            <div className="flex flex-col gap-3 sm:gap-4">
+              <h3 className="text-white font-medium uppercase tracking-wider text-xs sm:text-sm mb-1 sm:mb-2">Legal</h3>
+              <Link href="/privacy" className="text-slate-400 hover:text-white transition-colors text-sm sm:text-base">Privacy</Link>
+              <Link href="/terms" className="text-slate-400 hover:text-white transition-colors text-sm sm:text-base">Terms</Link>
             </div>
           </div>
         </div>

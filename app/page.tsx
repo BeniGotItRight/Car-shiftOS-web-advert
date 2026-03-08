@@ -58,10 +58,10 @@ export default function CentralLanding() {
             </span>
           </div>
 
-          <h1 className="text-5xl md:text-7xl lg:text-9xl font-black tracking-tighter mb-8 bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white/40 leading-[0.9]">
+          <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-9xl font-black tracking-tighter mb-8 bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white/40 leading-[0.9]">
             SHIFT<span className="text-blue-500 italic">OS</span>
           </h1>
-          <p className="max-w-2xl mx-auto text-xl md:text-3xl text-slate-400 font-light mb-12 tracking-tight leading-relaxed">
+          <p className="max-w-2xl mx-auto text-lg sm:text-xl md:text-3xl text-slate-400 font-light mb-12 tracking-tight leading-relaxed px-4">
             The premier <span className="text-white font-medium">Software as a Service</span> ecosystem for luxury vehicle dealerships.
           </p>
 
@@ -84,16 +84,16 @@ export default function CentralLanding() {
         </motion.div>
 
         {/* Ambient Graphics & Hero Image */}
-        <div className="absolute inset-0 z-[-1] opacity-30">
+        <div className="absolute inset-0 z-[-1] opacity-60">
           <motion.img
             initial={{ scale: 1.1, opacity: 0 }}
-            animate={{ scale: 1, opacity: 0.3 }}
+            animate={{ scale: 1, opacity: 0.6 }}
             transition={{ duration: 2, ease: "easeOut" }}
             src="/assets/shiftos-hero.png"
             alt="ShiftOS Core Architecture"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-slate-950/80 via-transparent to-slate-950" />
+          <div className="absolute inset-0 bg-gradient-to-b from-slate-950/40 via-transparent to-slate-950/80" />
         </div>
         <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 opacity-40">
           <motion.div 

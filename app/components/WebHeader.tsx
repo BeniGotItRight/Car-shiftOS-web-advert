@@ -70,11 +70,11 @@ export function WebHeader() {
   return (
     <header className={headerClass}>
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 sm:px-8">
-        <Link href="/" className="inline-flex items-center mb-6 transition-transform active:scale-95">
+        <Link href="/" className="inline-flex items-center transition-transform active:scale-95">
           <img 
             src="/assets/carshiftos-logo.png" 
             alt="Car ShiftOS" 
-            className="h-10 w-auto object-contain"
+            className="h-8 md:h-10 w-auto object-contain"
           />
         </Link>
         
