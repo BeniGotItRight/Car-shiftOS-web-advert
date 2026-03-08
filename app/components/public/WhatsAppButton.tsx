@@ -31,25 +31,25 @@ export function WhatsAppButton() {
   };
 
   return (
-    <div className="fixed bottom-6 right-6 z-[70] flex flex-col items-end gap-3">
+    <div className="fixed bottom-8 right-8 z-[70] flex flex-col items-end gap-4">
       <AnimatePresence>
-        {showTooltip && !isOpen && (
+        {showTooltip && (
           <motion.div
-            initial={{ opacity: 0, x: 20, scale: 0.8 }}
-            animate={{ opacity: 1, x: 0, scale: 1 }}
-            exit={{ opacity: 0, x: 20, scale: 0.8 }}
-            className="relative bg-white rounded-2xl shadow-2xl p-4 border border-emerald-100 max-w-[200px]"
+            initial={{ opacity: 0, y: 10, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 10, scale: 0.95 }}
+            className="relative bg-slate-900/90 backdrop-blur-xl rounded-2xl shadow-[0_0_50px_rgba(16,185,129,0.2)] p-4 border border-emerald-500/20 max-w-[220px]"
           >
             <button 
               onClick={() => setShowTooltip(false)}
-              className="absolute -top-2 -right-2 size-5 rounded-full bg-slate-100 text-slate-500 flex items-center justify-center hover:bg-slate-200"
+              className="absolute -top-2 -right-2 size-6 rounded-full bg-slate-800 text-slate-400 flex items-center justify-center hover:bg-slate-700 transition-colors"
             >
               <X className="size-3" />
             </button>
-            <p className="text-xs font-bold text-slate-800 leading-relaxed">
-              Need help? Chat with our <span className="text-emerald-600">Concierge</span> on WhatsApp!
+            <p className="text-sm font-bold text-white leading-relaxed">
+              Ready to <span className="text-emerald-400 italic">shift</span> your business? Chat with our Concierge.
             </p>
-            <div className="absolute right-4 -bottom-2 w-4 h-4 bg-white border-r border-b border-emerald-100 rotate-45" />
+            <div className="absolute right-6 -bottom-2 w-4 h-4 bg-slate-900 rotate-45 border-r border-b border-emerald-500/20" />
           </motion.div>
         )}
       </AnimatePresence>
@@ -58,20 +58,25 @@ export function WhatsAppButton() {
         href={getWhatsAppUrl()}
         target="_blank"
         rel="noopener noreferrer"
-        whileHover={{ scale: 1.1 }}
+        whileHover={{ scale: 1.1, y: -5 }}
         whileTap={{ scale: 0.9 }}
-        className="relative group flex items-center justify-center size-14 rounded-full bg-emerald-500 text-white shadow-2xl shadow-emerald-500/40 hover:bg-emerald-600 transition-colors"
-        onMouseEnter={() => setShowTooltip(false)}
+        className="relative group flex items-center gap-3"
       >
-        <MessageCircle className="size-7 fill-white/20" />
+        <div className="absolute inset-0 bg-emerald-500 blur-[20px] opacity-40 group-hover:opacity-60 transition-opacity rounded-full" />
         
-        {/* Pulsing notification ring */}
-        <div className="absolute inset-0 rounded-full border-4 border-emerald-500 animate-ping opacity-20 pointer-events-none" />
-        
-        {/* Label on hover */}
-        <span className="absolute right-full mr-4 bg-slate-900 text-white px-3 py-1.5 rounded-lg text-[10px] font-black uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap hidden md:block">
-          Chat With Us
-        </span>
+        <div className="relative flex items-center justify-center size-16 rounded-full bg-emerald-500 text-white shadow-[0_0_30px_rgba(16,185,129,0.4)] transition-all duration-500">
+          <MessageCircle className="size-8 fill-white/10" />
+          
+          {/* Pulsing notification ring */}
+          <div className="absolute inset-0 rounded-full border-4 border-emerald-400 animate-ping opacity-30 pointer-events-none" />
+        </div>
+
+        {/* Premium Label - always visible on desktop, stylish */}
+        <div className="hidden md:flex flex-col items-end">
+          <span className="bg-slate-950/80 backdrop-blur-md text-white px-4 py-2 rounded-xl text-[10px] font-black uppercase tracking-[0.3em] border border-white/5 shadow-2xl group-hover:border-emerald-500/50 transition-all">
+            Let's <span className="text-emerald-500">Chat</span>
+          </span>
+        </div>
       </motion.a>
     </div>
   );

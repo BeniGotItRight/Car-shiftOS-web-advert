@@ -24,14 +24,33 @@ export async function generateMetadata(): Promise<Metadata> {
   // But we can detect from headers in a real production env, or keep it generic
   return {
     title: {
-      default: "Car ShiftOS | Industrial Automotive Ecosystem",
-      template: "%s | Car ShiftOS"
+      default: "ShiftOS | The #1 Car Yard Management System & Dealer SaaS",
+      template: "%s | ShiftOS Automotive Platform"
     },
-    description: "The next-generation automotive SaaS for luxury vehicle dealerships. Automate pipelines, manage inventory with military precision, and deploy branded showrooms instantly.",
-    keywords: ["Automotive SaaS", "Dealership Management System", "Car Yard Software", "Luxury Vehicle Inventory", "ShiftOS", "Automotive CRM", "Kenya Auto Tech"],
+    description: "Maximize your dealership's potential with ShiftOS. The world's most advanced automotive SaaS for car yards. Inventory management, automated sales pipelines, and high-performance dealer websites in one industrial-grade ecosystem.",
+    keywords: [
+      "Automotive SaaS", 
+      "Car Yard Management System", 
+      "Dealership Marketing Software", 
+      "Inventory Management for Car Yards", 
+      "Kenya Automotive Software", 
+      "Digital Showroom for Dealers", 
+      "Automotive Sales Automation", 
+      "Car Dealer CRM", 
+      "Automotive ERP Kenya", 
+      "Dealer Website Builder", 
+      "ShiftOS Car Management",
+      "Used Car Yard Software",
+      "Japanese Import Management System",
+      "Automotive Asset Tracking"
+    ],
     authors: [{ name: "ShiftOS Architecture Team" }],
     creator: "ShiftOS",
     publisher: "ShiftOS",
+    metadataBase: new URL("https://carshiftos.com"),
+    alternates: {
+      canonical: "/",
+    },
     robots: {
       index: true,
       follow: true,
@@ -111,6 +130,7 @@ export default function RootLayout({
                 </main>
                 <WebFooter />
               </div>
+              <WhatsAppButton />
               <Toaster position="top-right" richColors />
             </SmoothScrollProvider>
           </Providers>
