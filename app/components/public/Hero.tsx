@@ -4,9 +4,8 @@ import { useRouter } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
-import { Search } from "lucide-react";
+import Link from "next/link";
 import { variants } from "@/lib/animations";
-import { useTenant } from "@/contexts/TenantContext";
 
 const HERO_IMAGES = [
   "https://images.unsplash.com/photo-1760413453636-94dbb6128e89?ixid=M3wxMjA3fDB8MXxzZWFyY2h8MXx8bWVyY2VkZXMlMjBnbGUlMjBzaWRlJTIwcHJvZmlsZXxlbnwwfHx8fDE3NzIyNzk3ODd8MA&ixlib=rb-4.1.0&w=2400&q=80&fit=crop", // mercedes gle
@@ -25,10 +24,8 @@ const HERO_VIDEO: string | null = null; // Use images to show off transition
 
 export function Hero() {
   const router = useRouter();
-  const [searchQuery, setSearchQuery] = useState("");
   const [heroIndex, setHeroIndex] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
-  const { tenant } = useTenant();
 
   // Parallax calculations
   const { scrollYProgress } = useScroll({
@@ -48,14 +45,8 @@ export function Hero() {
     return () => clearInterval(t);
   }, []);
 
-  const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault();
-    const q = searchQuery.trim();
-    router.push(q ? `/vehicles?search=${encodeURIComponent(q)}` : "/vehicles");
-  };
-
-  const title = tenant?.name ? `Find your ${tenant.name}` : "Find your next move";
-  const subtitle = tenant?.settings?.tagline || "Premium vehicles. Transparent pricing. Zero hassle.";
+  const title = "Find your next move";
+  const subtitle = "Industrial-grade ecosystem for vehicle dealerships.";
 
   return (
     <section 
@@ -144,31 +135,26 @@ export function Hero() {
           ))}
         </motion.div>
 
-        {/* Search Console - Professional & Authoritative */}
-        <motion.form
-          onSubmit={handleSearch}
-          className="mx-auto flex max-w-3xl items-center gap-2 rounded-2xl border border-slate-800 bg-slate-900/90 p-2 backdrop-blur-md shadow-2xl"
+        {/* CTA Buttons */}
+        <motion.div
+          className="flex flex-col sm:flex-row gap-4 justify-center items-center"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1, ease: "easeOut" }}
+          transition={{ duration: 0.8, delay: 1 }}
         >
-          <div className="flex flex-1 items-center">
-            <Search className="ml-5 h-5 w-5 text-slate-500" />
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search make, model, or category..."
-              className="flex-1 bg-transparent px-4 py-5 text-white placeholder-slate-500 outline-none text-lg tracking-tight font-medium"
-            />
-          </div>
-          <button
-            type="submit"
-            className="rounded-xl bg-blue-600 px-12 py-5 font-bold text-white transition-all hover:bg-blue-500 active:scale-95 shadow-lg shadow-blue-500/10"
+          <Link
+            href="/services"
+            className="px-10 py-5 bg-blue-600 rounded-2xl font-bold text-lg hover:bg-blue-500 transition-all active:scale-95 text-white shadow-2xl shadow-blue-600/20"
           >
-            Explore Stock
-          </button>
-        </motion.form>
+            Explore Services
+          </Link>
+          <Link
+            href="/contact"
+            className="px-10 py-5 border border-white/20 bg-white/5 backdrop-blur-md rounded-2xl font-bold text-lg hover:bg-white/10 transition-all active:scale-95 text-white"
+          >
+            Request Demo
+          </Link>
+        </motion.div>
       </motion.div>
 
       {/* Scroll indicator */}

@@ -78,30 +78,30 @@ export default function ServicesPage() {
           ))}
         </div>
 
-        {/* Technical Capabilities */}
+        {/* Platform Performance */}
         <div className="relative rounded-[3rem] border border-white/5 bg-slate-900/20 p-12 overflow-hidden">
           <div className="absolute top-0 right-0 size-[400px] bg-blue-600/10 blur-[100px] rounded-full" />
-          <h2 className="text-3xl font-black mb-8 relative z-10">Technical Capabilities</h2>
+          <h2 className="text-3xl font-black mb-8 relative z-10">Platform Performance</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 relative z-10">
             <div className="space-y-2">
               <span className="text-blue-500 font-bold block">01</span>
-              <h3 className="font-bold text-lg">Next.js Turbine</h3>
-              <p className="text-sm text-slate-500 font-light">Ultra-fast page loads and SEO mastery.</p>
+              <h3 className="font-bold text-lg">High-Speed Delivery</h3>
+              <p className="text-sm text-slate-500 font-light">Ultra-fast page loads and maximum search visibility.</p>
             </div>
             <div className="space-y-2">
               <span className="text-blue-500 font-bold block">02</span>
-              <h3 className="font-bold text-lg">Laravel Core</h3>
-              <p className="text-sm text-slate-500 font-light">Rock-solid PHP backend with multi-tenant architecture.</p>
+              <h3 className="font-bold text-lg">Enterprise Operations</h3>
+              <p className="text-sm text-slate-500 font-light">Bank-grade infrastructure for secure, multi-tenant yard management.</p>
             </div>
             <div className="space-y-2">
               <span className="text-blue-500 font-bold block">03</span>
-              <h3 className="font-bold text-lg">Sanctum Auth</h3>
-              <p className="text-sm text-slate-500 font-light">State-of-the-art tokenized security for dealer portals.</p>
+              <h3 className="font-bold text-lg">Elite Access Control</h3>
+              <p className="text-sm text-slate-500 font-light">Advanced, multi-layered security for private dealer portals.</p>
             </div>
             <div className="space-y-2">
               <span className="text-blue-500 font-bold block">04</span>
-              <h3 className="font-bold text-lg">Framer Motion</h3>
-              <p className="text-sm text-slate-500 font-light">Cinematic animations for a strictly premium experience.</p>
+              <h3 className="font-bold text-lg">Premium User Interface</h3>
+              <p className="text-sm text-slate-500 font-light">Fluid, cinematic interactions for a strictly high-end digital experience.</p>
             </div>
           </div>
         </div>

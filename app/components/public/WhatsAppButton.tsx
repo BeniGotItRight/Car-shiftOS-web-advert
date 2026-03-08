@@ -4,7 +4,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { MessageCircle, X } from "lucide-react";
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
-import { useTenant } from "@/contexts/TenantContext";
 
 /**
  * WhatsAppButton
@@ -15,11 +14,10 @@ export function WhatsAppButton() {
   const [isOpen, setIsOpen] = useState(false);
   const [showTooltip, setShowTooltip] = useState(false);
   const pathname = usePathname();
-  const { tenant } = useTenant();
   
   // Configuration
-  const WHATSAPP_NUMBER = tenant?.settings?.whatsapp || "254700000000"; 
-  const COMPANY_NAME = tenant?.name || "Car ShiftOS";
+  const WHATSAPP_NUMBER = "0732009268"; 
+  const COMPANY_NAME = "Car ShiftOS";
 
   useEffect(() => {
     // Show tooltip after a short delay to grab attention
@@ -28,16 +26,7 @@ export function WhatsAppButton() {
   }, []);
 
   const getWhatsAppUrl = () => {
-    let message = `Hi ${COMPANY_NAME}! I'm interested in finding my next move.`;
-    
-    // If on a vehicle detail page, make the message specific
-    if (pathname.startsWith("/vehicles/")) {
-      const vehicleUrl = `${window.location.origin}${pathname}`;
-      message = `Hi ${COMPANY_NAME}! I'm interested in this vehicle: ${vehicleUrl}`;
-    } else if (pathname === "/sell") {
-      message = `Hi ${COMPANY_NAME}! I'd like to get an appraisal for my car.`;
-    }
-
+    const message = `Hi ${COMPANY_NAME}! I'm interested in the ShiftOS system.`;
     return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
   };
 

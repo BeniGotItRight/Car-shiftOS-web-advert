@@ -7,7 +7,6 @@ import { WebFooter } from "./components/WebFooter";
 import { Toaster } from "sonner";
 import { SmoothScrollProvider } from "@/components/shared/SmoothScrollProvider";
 import { WhatsAppButton } from "./components/public/WhatsAppButton";
-import { TenantProvider } from "@/contexts/TenantContext";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -103,7 +102,6 @@ export default function RootLayout({
             })
           }}
         />
-        <TenantProvider>
           <Providers>
             <SmoothScrollProvider>
               <div className="min-h-screen flex flex-col">
@@ -116,7 +114,6 @@ export default function RootLayout({
               <Toaster position="top-right" richColors />
             </SmoothScrollProvider>
           </Providers>
-        </TenantProvider>
       </body>
     </html>
   );

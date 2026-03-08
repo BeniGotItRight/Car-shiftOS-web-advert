@@ -5,7 +5,6 @@ import { usePathname } from "next/navigation";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import { useState, useEffect } from "react";
 import { twMerge } from "tailwind-merge";
-import { useTenant } from "@/contexts/TenantContext";
 import { Menu, X } from "lucide-react";
 import { AnimatePresence } from "framer-motion";
 
@@ -21,7 +20,6 @@ export function WebHeader() {
   const { scrollY } = useScroll();
   const [isScrolled, setIsScrolled] = useState(false);
   const [hoveredLink, setHoveredLink] = useState<string | null>(null);
-  const { tenant } = useTenant();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   // Close mobile menu on route change
@@ -78,15 +76,7 @@ export function WebHeader() {
             initial={false}
           >
             <span className={twMerge("font-bold tracking-tighter text-2xl uppercase", textClass)}>
-              {tenant?.id !== 0 ? (
-                <>
-                  {tenant?.name || "Car Shift"}<span className={twMerge(isTransparent ? "text-blue-400 opacity-90" : "text-blue-500 font-bold")}>OS</span>
-                </>
-              ) : (
-                <>
-                  Car Shift<span className={twMerge(isTransparent ? "text-blue-400" : "text-blue-500 font-black")}>OS</span>
-                </>
-              )}
+              Car Shift<span className={twMerge(isTransparent ? "text-blue-400" : "text-blue-500 font-black")}>OS</span>
             </span>
           </motion.div>
         </Link>

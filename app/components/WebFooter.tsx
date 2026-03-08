@@ -4,7 +4,6 @@ import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { variants } from "@/lib/animations";
-import { useTenant } from "@/contexts/TenantContext";
 
 export function WebFooter() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -12,8 +11,6 @@ export function WebFooter() {
     target: containerRef,
     offset: ["start end", "end end"]
   });
-  const { tenant } = useTenant();
-  const isPlatform = tenant?.id === 0 || !tenant;
 
   const y = useTransform(scrollYProgress, [0, 1], ["50%", "0%"]);
   const opacity = useTransform(scrollYProgress, [0, 1], [0, 1]);
@@ -32,28 +29,17 @@ export function WebFooter() {
               </span>
             </Link>
             <p className="text-slate-400 text-lg leading-relaxed">
-              {isPlatform 
-                ? "The industrial-grade ecosystem for modern vehicle dealerships. Scale your brand with military-precision technology."
-                : `Welcome to ${tenant?.name || "our showroom"}. Premium vehicles, transparent pricing, and unparalleled service.`}
+              The industrial-grade ecosystem for modern vehicle dealerships. Scale your brand with military-precision technology.
             </p>
           </div>
           
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-8 md:gap-12">
             <div className="flex flex-col gap-4">
               <h3 className="text-white font-medium uppercase tracking-wider text-sm mb-2">
-                {isPlatform ? "Platform" : "Inventory"}
+                Platform
               </h3>
-              {isPlatform ? (
-                <>
-                  <Link href="/services" className="text-slate-400 hover:text-white transition-colors">Our Services</Link>
-                  <Link href="/about" className="text-slate-400 hover:text-white transition-colors">About Us</Link>
-                </>
-              ) : (
-                <>
-                  <Link href="/services" className="text-slate-400 hover:text-white transition-colors">Our Services</Link>
-                  <Link href="/about" className="text-slate-400 hover:text-white transition-colors">About Us</Link>
-                </>
-              )}
+              <Link href="/services" className="text-slate-400 hover:text-white transition-colors">Our Services</Link>
+              <Link href="/about" className="text-slate-400 hover:text-white transition-colors">About Us</Link>
             </div>
             
             <div className="flex flex-col gap-4">
@@ -96,7 +82,7 @@ export function WebFooter() {
           
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-white/10 pt-8 mt-8">
             <span className="text-sm text-slate-500 max-w-sm text-center sm:text-left">
-              &copy; {new Date().getFullYear()} {isPlatform ? "Car ShiftOS Platform" : (tenant?.name || "Car ShiftOS")}. All rights reserved.
+              &copy; {new Date().getFullYear()} Car ShiftOS Platform. All rights reserved.
             </span>
             <div className="flex gap-4">
               {/* Social placeholders */}
