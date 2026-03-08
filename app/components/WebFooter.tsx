@@ -4,7 +4,6 @@ import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { variants } from "@/lib/animations";
-import { Zap } from "lucide-react";
 
 export function WebFooter() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -24,13 +23,12 @@ export function WebFooter() {
       >
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
           <div className="max-w-md">
-            <Link href="/" className="inline-flex items-center gap-3 mb-6 group">
-              <div className="flex items-center justify-center size-8 rounded-lg bg-blue-600 shadow-lg shadow-blue-500/20 group-hover:scale-110 transition-transform">
-                <Zap className="size-5 text-white fill-white/10" />
-              </div>
-              <span className="font-black tracking-tighter text-3xl uppercase italic">
-                Shift<span className="text-blue-500">OS</span>
-              </span>
+            <Link href="/" className="inline-flex items-center mb-6 group transition-transform active:scale-95">
+              <img 
+                src="/assets/carshiftos-logo.png" 
+                alt="Car ShiftOS" 
+                className="h-10 w-auto object-contain brightness-0 invert group-hover:filter-none transition-all duration-500"
+              />
             </Link>
             <p className="text-slate-400 text-lg leading-relaxed">
               The industrial-grade ecosystem for modern vehicle dealerships. Scale your brand with military-precision technology.

@@ -83,10 +83,10 @@ export async function generateMetadata(): Promise<Metadata> {
       siteName: "Car ShiftOS",
       images: [
         {
-          url: "/assets/shiftos-hero.png",
-          width: 1200,
-          height: 630,
-          alt: "ShiftOS Core Architecture Preview",
+          url: "/assets/carshiftos-logo.png",
+          width: 800,
+          height: 400,
+          alt: "Car ShiftOS Logo",
         },
       ],
       locale: "en_US",

@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import { useState, useEffect } from "react";
 import { twMerge } from "tailwind-merge";
-import { Menu, X, Zap } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { AnimatePresence } from "framer-motion";
 
 const navLinks = [
@@ -70,22 +70,14 @@ export function WebHeader() {
   return (
     <header className={headerClass}>
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 sm:px-8">
-        <Link href="/" className="group relative flex items-center gap-3 z-10">
-          <div className="relative flex items-center justify-center size-10 rounded-xl bg-blue-600 shadow-[0_0_20px_rgba(37,99,235,0.3)] group-hover:shadow-[0_0_30px_rgba(37,99,235,0.5)] transition-all duration-500">
-            <Zap className="size-6 text-white fill-white/20" />
-            <div className="absolute inset-0 rounded-xl border border-white/20 group-hover:border-white/40 transition-colors" />
+        <Link href="/" className="group relative flex items-center gap-3 z-10 transition-transform active:scale-95">
+          <div className="relative h-12 w-auto">
+            <img 
+              src="/assets/carshiftos-logo.png" 
+              alt="Car ShiftOS Logo" 
+              className="h-full w-auto object-contain brightness-0 invert group-hover:filter-none transition-all duration-500"
+            />
           </div>
-          <motion.div 
-            className="flex flex-col overflow-hidden"
-            initial={false}
-          >
-            <span className={twMerge("font-black tracking-tighter text-2xl uppercase italic", textClass)}>
-              Shift<span className={twMerge(isTransparent ? "text-blue-400" : "text-blue-500")}>OS</span>
-            </span>
-            <span className="text-[8px] font-black uppercase tracking-[0.4em] text-blue-500/80 -mt-1 ml-0.5">
-              Industrial SaaS
-            </span>
-          </motion.div>
         </Link>
         
         <div 
