@@ -19,16 +19,16 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 text-white pt-32 pb-16 px-6 relative overflow-hidden">
+    <div className="min-h-screen bg-slate-950 text-white pt-24 md:pt-32 pb-16 px-6 relative overflow-hidden">
       {/* Background Glow */}
       <div className="absolute top-0 right-0 w-[60vw] h-[60vw] bg-blue-600/5 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
       
       <div className="max-w-7xl mx-auto relative z-10">
-        <div className="max-w-3xl mb-16">
-          <h1 className="text-5xl md:text-7xl font-black mb-8 tracking-tighter">
+        <div className="max-w-3xl mb-12 md:mb-16">
+          <h1 className="text-4xl sm:text-5xl md:text-7xl font-black mb-6 md:mb-8 tracking-tighter">
             Get in <span className="text-blue-500">Touch.</span>
           </h1>
-          <p className="text-xl text-slate-400 font-light leading-relaxed">
+          <p className="text-lg sm:text-xl text-slate-400 font-light leading-relaxed">
             Whether you're looking to scale your dealership or have questions about our architecture, our team is ready to assist.
           </p>
         </div>
@@ -39,9 +39,9 @@ export default function ContactPage() {
             <motion.div 
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
-              className="p-8 rounded-3xl bg-slate-900/40 border border-white/5 backdrop-blur-xl flex items-start gap-6 group hover:border-blue-500/20 transition-all"
+              className="p-6 sm:p-8 rounded-3xl bg-slate-900/40 border border-white/5 backdrop-blur-xl flex flex-col sm:flex-row items-start gap-6 group hover:border-blue-500/20 transition-all"
             >
-              <div className="size-14 rounded-2xl bg-blue-600/10 border border-blue-500/20 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+              <div className="size-12 sm:size-14 rounded-2xl bg-blue-600/10 border border-blue-500/20 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
                 <Mail className="size-6 text-blue-500" />
               </div>
               <div>
@@ -57,9 +57,9 @@ export default function ContactPage() {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.1 }}
-              className="p-8 rounded-3xl bg-slate-900/40 border border-white/5 backdrop-blur-xl flex items-start gap-6 group hover:border-blue-500/20 transition-all"
+              className="p-6 sm:p-8 rounded-3xl bg-slate-900/40 border border-white/5 backdrop-blur-xl flex flex-col sm:flex-row items-start gap-6 group hover:border-blue-500/20 transition-all"
             >
-              <div className="size-14 rounded-2xl bg-emerald-600/10 border border-emerald-500/20 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+              <div className="size-12 sm:size-14 rounded-2xl bg-emerald-600/10 border border-emerald-500/20 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
                 <Globe className="size-6 text-emerald-500" />
               </div>
               <div>
@@ -75,9 +75,9 @@ export default function ContactPage() {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.2 }}
-              className="p-8 rounded-3xl bg-slate-900/40 border border-white/5 backdrop-blur-xl flex items-start gap-6 group hover:border-blue-500/20 transition-all"
+              className="p-6 sm:p-8 rounded-3xl bg-slate-900/40 border border-white/5 backdrop-blur-xl flex flex-col sm:flex-row items-start gap-6 group hover:border-blue-500/20 transition-all"
             >
-              <div className="size-14 rounded-2xl bg-purple-600/10 border border-purple-500/20 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+              <div className="size-12 sm:size-14 rounded-2xl bg-purple-600/10 border border-purple-500/20 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
                 <Phone className="size-6 text-purple-500" />
               </div>
               <div>
@@ -94,7 +94,7 @@ export default function ContactPage() {
           <motion.div 
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="p-10 rounded-[3rem] bg-slate-900/20 border border-white/5 backdrop-blur-3xl relative overflow-hidden"
+            className="p-6 sm:p-10 rounded-[2rem] sm:rounded-[3rem] bg-slate-900/20 border border-white/5 backdrop-blur-3xl relative overflow-hidden"
           >
             <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 blur-3xl rounded-full" />
             

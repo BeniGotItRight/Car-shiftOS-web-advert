@@ -23,7 +23,7 @@ export default function TermsPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-slate-950 text-white pt-32 pb-16 px-6 relative overflow-hidden">
+    <div className="min-h-screen bg-slate-950 text-white pt-24 md:pt-32 pb-16 px-6 relative overflow-hidden">
       {/* Background Glow */}
       <div className="absolute top-0 right-0 w-[50vw] h-[50vw] bg-purple-600/5 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
       
@@ -31,12 +31,12 @@ export default function TermsPage() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="mb-16"
+          className="mb-12 md:mb-16"
         >
-          <h1 className="text-5xl md:text-7xl font-black mb-8 tracking-tighter">
+          <h1 className="text-4xl sm:text-5xl md:text-7xl font-black mb-6 md:mb-8 tracking-tighter">
             Terms of <span className="text-blue-500">Service.</span>
           </h1>
-          <p className="text-xl text-slate-400 font-light leading-relaxed">
+          <p className="text-lg sm:text-xl text-slate-400 font-light leading-relaxed">
             Understand the operational protocols and architectural sovereignty of the ShiftOS ecosystem.
           </p>
         </motion.div>

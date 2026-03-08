@@ -4,17 +4,17 @@ import { motion } from "framer-motion";
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen bg-slate-950 text-white pt-32 pb-16 px-6">
+    <div className="min-h-screen bg-slate-950 text-white pt-24 md:pt-32 pb-16 px-6">
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <div>
-            <h1 className="text-6xl md:text-8xl font-black mb-8 tracking-tighter leading-[0.9]">
+            <h1 className="text-5xl sm:text-6xl md:text-8xl font-black mb-6 md:mb-8 tracking-tighter leading-[0.9]">
               Built for <br/><span className="text-blue-500">Sovereignty.</span>
             </h1>
-            <p className="text-2xl text-slate-400 font-light leading-relaxed mb-8">
+            <p className="text-xl sm:text-2xl text-slate-400 font-light leading-relaxed mb-6 md:mb-8">
               ShiftOS was born from a simple observation: high-end vehicle dealerships were being underserved by generic CRM tools.
             </p>
-            <div className="space-y-6 text-lg text-slate-500 font-light leading-relaxed">
+            <div className="space-y-4 md:space-y-6 text-base sm:text-lg text-slate-500 font-light leading-relaxed">
               <p>
                 We built a platform that doesn't just manage data—it commands it. By combining industrial-grade security with a strictly premium user interface, we've created a digital ecosystem that speaks the language of luxury.
               </p>

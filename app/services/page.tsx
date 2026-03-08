@@ -47,13 +47,13 @@ export default function ServicesPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-slate-950 text-white pt-32 pb-16 px-6">
+    <div className="min-h-screen bg-slate-950 text-white pt-24 md:pt-32 pb-16 px-6">
       <div className="max-w-7xl mx-auto">
-        <div className="max-w-3xl mb-24">
-          <h1 className="text-5xl md:text-7xl font-black mb-8 tracking-tighter">
+        <div className="max-w-3xl mb-16 md:mb-24 px-2 sm:px-0">
+          <h1 className="text-4xl sm:text-5xl md:text-7xl font-black mb-6 md:mb-8 tracking-tighter">
             Platform <span className="text-blue-500">Solutions.</span>
           </h1>
-          <p className="text-xl text-slate-400 font-light leading-relaxed">
+          <p className="text-lg sm:text-xl text-slate-400 font-light leading-relaxed">
             ShiftOS provides a comprehensive suite of tools designed to handle the complexity of modern automotive commerce at scale.
           </p>
         </div>
@@ -65,7 +65,7 @@ export default function ServicesPage() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.1 }}
-              className="p-8 md:p-10 rounded-[2rem] md:rounded-[2.5rem] bg-slate-900/40 border border-white/5 backdrop-blur-xl group hover:border-blue-500/20 transition-all"
+              className="p-6 sm:p-8 md:p-10 rounded-3xl md:rounded-[2.5rem] bg-slate-900/40 border border-white/5 backdrop-blur-xl group hover:border-blue-500/20 transition-all"
             >
               <div className={`size-16 rounded-2xl bg-${s.color}-600/10 border border-${s.color}-500/20 flex items-center justify-center mb-6`}>
                 <s.icon className={`size-8 text-${s.color}-500`} />
@@ -79,7 +79,7 @@ export default function ServicesPage() {
         </div>
 
         {/* Platform Performance */}
-        <div className="relative rounded-[3rem] border border-white/5 bg-slate-900/20 p-12 overflow-hidden">
+        <div className="relative rounded-[2rem] md:rounded-[3rem] border border-white/5 bg-slate-900/20 p-8 sm:p-12 overflow-hidden">
           <div className="absolute top-0 right-0 size-[400px] bg-blue-600/10 blur-[100px] rounded-full" />
           <h2 className="text-3xl font-black mb-8 relative z-10">Platform Performance</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 relative z-10">
