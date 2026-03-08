@@ -51,6 +51,20 @@ export async function generateMetadata(): Promise<Metadata> {
     alternates: {
       canonical: "/",
     },
+    applicationName: "ShiftOS",
+    appleWebApp: {
+      capable: true,
+      title: "ShiftOS",
+      statusBarStyle: "black-translucent",
+    },
+    formatDetection: {
+      telephone: true,
+      address: true,
+      email: true,
+    },
+    category: "technology",
+    viewport: "width=device-width, initial-scale=1",
+    themeColor: "#000000",
     robots: {
       index: true,
       follow: true,
