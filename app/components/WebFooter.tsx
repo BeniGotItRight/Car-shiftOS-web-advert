@@ -23,11 +23,11 @@ export function WebFooter() {
       >
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
           <div className="max-w-md">
-            <Link href="/" className="inline-flex items-center mb-6 group transition-transform active:scale-95">
+            <Link href="/" className="inline-flex items-center mb-6 transition-transform active:scale-95">
               <img 
                 src="/assets/carshiftos-logo.png" 
                 alt="Car ShiftOS" 
-                className="h-10 w-auto object-contain brightness-0 invert group-hover:filter-none transition-all duration-500"
+                className="h-10 w-auto object-contain"
               />
             </Link>
             <p className="text-slate-400 text-lg leading-relaxed">

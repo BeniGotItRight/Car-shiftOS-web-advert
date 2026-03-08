@@ -70,14 +70,12 @@ export function WebHeader() {
   return (
     <header className={headerClass}>
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 sm:px-8">
-        <Link href="/" className="group relative flex items-center gap-3 z-10 transition-transform active:scale-95">
-          <div className="relative h-12 w-auto">
-            <img 
-              src="/assets/carshiftos-logo.png" 
-              alt="Car ShiftOS Logo" 
-              className="h-full w-auto object-contain brightness-0 invert group-hover:filter-none transition-all duration-500"
-            />
-          </div>
+        <Link href="/" className="inline-flex items-center mb-6 transition-transform active:scale-95">
+          <img 
+            src="/assets/carshiftos-logo.png" 
+            alt="Car ShiftOS" 
+            className="h-10 w-auto object-contain"
+          />
         </Link>
         
         <div 
