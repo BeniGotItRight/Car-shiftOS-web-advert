@@ -24,8 +24,8 @@ export async function generateMetadata(): Promise<Metadata> {
   // But we can detect from headers in a real production env, or keep it generic
   return {
     title: {
-      default: "ShiftOS | The #1 Car Yard Management System & Dealer SaaS",
-      template: "%s | ShiftOS Automotive Platform"
+      default: "Car ShiftOS | Industrial Automotive Ecosystem",
+      template: "%s | Car ShiftOS"
     },
     description: "Maximize your dealership's potential with ShiftOS. The world's most advanced automotive SaaS for car yards. Inventory management, automated sales pipelines, and high-performance dealer websites in one industrial-grade ecosystem.",
     keywords: [
@@ -45,16 +45,20 @@ export async function generateMetadata(): Promise<Metadata> {
       "Automotive Asset Tracking"
     ],
     authors: [{ name: "ShiftOS Architecture Team" }],
-    creator: "ShiftOS",
-    publisher: "ShiftOS",
+    creator: "Car ShiftOS",
+    publisher: "Car ShiftOS",
     metadataBase: new URL("https://carshiftos.com"),
     alternates: {
       canonical: "/",
     },
-    applicationName: "ShiftOS",
+    icons: {
+      icon: "/assets/carshiftos-logo.png",
+      apple: "/assets/carshiftos-logo.png",
+    },
+    applicationName: "Car ShiftOS",
     appleWebApp: {
       capable: true,
-      title: "ShiftOS",
+      title: "Car ShiftOS",
       statusBarStyle: "black-translucent",
     },
     formatDetection: {
@@ -96,7 +100,7 @@ export async function generateMetadata(): Promise<Metadata> {
       card: "summary_large_image",
       title: "Car ShiftOS | Industrial Automotive Ecosystem",
       description: "Next-gen automotive SaaS for luxury dealerships.",
-      images: ["/assets/shiftos-hero.png"],
+      images: ["/assets/carshiftos-logo.png"],
     },
   };
 }
