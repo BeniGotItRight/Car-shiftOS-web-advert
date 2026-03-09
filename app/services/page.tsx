@@ -9,9 +9,7 @@ import {
   CloudLightning, 
   Lock,
   Smartphone,
-  BarChart4,
-  Droplets,
-  Wrench
+  BarChart4
 } from "lucide-react";
 
 export default function ServicesPage() {
@@ -45,20 +43,6 @@ export default function ServicesPage() {
       description: "Super admin data isolation ensures your company secrets stay yours. 256-bit encryption standard.",
       icon: Lock,
       color: "rose"
-    },
-    {
-      title: "Smart Car Wash Operations",
-      description: "State-of-the-art management software for premium car washes. Track water flow, manage soap and chemical formulas, and optimize throughput with our high-tech operational dashboard.",
-      icon: Droplets,
-      color: "cyan",
-      image: "/images/car-wash-system.png"
-    },
-    {
-      title: "Advanced Garage Management",
-      description: "Complete repair tracking and diagnostics for modern workshops. Visualize 3D car models, mechanics workload, and part inventory in real-time.",
-      icon: Wrench,
-      color: "orange",
-      image: "/images/car-garage-system.png"
     }
   ];
 
@@ -81,23 +65,15 @@ export default function ServicesPage() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.1 }}
-              className="p-6 sm:p-8 md:p-10 rounded-3xl md:rounded-[2.5rem] bg-slate-900/40 border border-white/5 backdrop-blur-xl group hover:border-blue-500/20 transition-all overflow-hidden relative flex flex-col"
+              className="p-6 sm:p-8 md:p-10 rounded-3xl md:rounded-[2.5rem] bg-slate-900/40 border border-white/5 backdrop-blur-xl group hover:border-blue-500/20 transition-all"
             >
-              <div className="relative z-10 flex-1">
-                <div className={`size-16 rounded-2xl bg-${s.color}-600/10 border border-${s.color}-500/20 flex items-center justify-center mb-6`}>
-                  <s.icon className={`size-8 text-${s.color}-500`} />
-                </div>
-                <h2 className="text-2xl font-black mb-4">{s.title}</h2>
-                <p className="text-slate-400 font-light text-lg mb-6">
-                  {s.description}
-                </p>
+              <div className={`size-16 rounded-2xl bg-${s.color}-600/10 border border-${s.color}-500/20 flex items-center justify-center mb-6`}>
+                <s.icon className={`size-8 text-${s.color}-500`} />
               </div>
-              {s.image && (
-                <div className="mt-auto relative rounded-2xl overflow-hidden aspect-video border border-white/10 group-hover:border-blue-500/30 transition-all">
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 to-transparent z-10 mix-blend-multiply" />
-                  <img src={s.image} alt={s.title} className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-700" />
-                </div>
-              )}
+              <h2 className="text-2xl font-black mb-4">{s.title}</h2>
+              <p className="text-slate-400 font-light text-lg">
+                {s.description}
+              </p>
             </motion.div>
           ))}
         </div>
