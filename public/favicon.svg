@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <defs>
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1d4ed8;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <!-- Background for contrast -->
+  <rect width="32" height="32" rx="8" fill="#020617"/>
+  
+  <!-- Stylized Circular Sweep from ShiftOS logo -->
+  <path d="M26 12C26 7.58 22.42 4 18 4C13.58 4 10 7.58 10 12M6 20C6 24.42 9.58 28 14 28C18.42 28 22 24.42 22 20" fill="none" stroke="url(#blueGrad)" stroke-width="2" stroke-linecap="round"/>
+  
+  <!-- Car Outline / 'S' silhouette -->
+  <path d="M8 20L10 16C10 16 12 12 18 12C24 12 26 16 26 16L28 20" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"/>
+  
+  <!-- The Signature Checkmark/V -->
+  <path d="M11 19L14 22L21 15" fill="none" stroke="#60a5fa" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

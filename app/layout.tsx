@@ -27,32 +27,37 @@ export async function generateMetadata(): Promise<Metadata> {
       default: "Car ShiftOS | Industrial Automotive Ecosystem",
       template: "%s | Car ShiftOS"
     },
-    description: "Maximize your dealership's potential with ShiftOS. The world's most advanced automotive SaaS for car yards. Inventory management, automated sales pipelines, and high-performance dealer websites in one industrial-grade ecosystem.",
+    description: "Scale your dealership with ShiftOS. The world's most advanced automotive SaaS for car yards. Experience high-performance inventory management and instant digital showrooms.",
     keywords: [
-      "Automotive SaaS", 
-      "Car Yard Management System", 
+      "Automotive SaaS Kenya", 
+      "Car Yard Management System East Africa", 
       "Dealership Marketing Software", 
       "Inventory Management for Car Yards", 
       "Kenya Automotive Software", 
       "Digital Showroom for Dealers", 
       "Automotive Sales Automation", 
-      "Car Dealer CRM", 
+      "Car Dealer CRM Kenya", 
       "Automotive ERP Kenya", 
       "Dealer Website Builder", 
       "ShiftOS Car Management",
       "Used Car Yard Software",
       "Japanese Import Management System",
-      "Automotive Asset Tracking"
+      "Automotive Asset Tracking",
+      "Car ShiftOS logo",
+      "Vehicle Management Software Kenya"
     ],
     authors: [{ name: "ShiftOS Architecture Team" }],
     creator: "Car ShiftOS",
     publisher: "Car ShiftOS",
-    metadataBase: new URL("https://carshiftos.com"),
+    metadataBase: new URL("https://carshiftos.co.ke"),
     alternates: {
       canonical: "/",
     },
     icons: {
-      icon: "/assets/carshiftos-logo.png",
+      icon: [
+        { url: "/favicon.svg", type: "image/svg+xml" },
+        { url: "/favicon.ico", sizes: "any" },
+      ],
       apple: "/assets/carshiftos-logo.png",
     },
     applicationName: "Car ShiftOS",
@@ -83,14 +88,14 @@ export async function generateMetadata(): Promise<Metadata> {
     openGraph: {
       title: "Car ShiftOS | Industrial Automotive Ecosystem",
       description: "Scale your dealership with military-precision technology. Premium inventory management and instant digital showrooms.",
-      url: "https://carshiftos.com",
+      url: "https://carshiftos.co.ke",
       siteName: "Car ShiftOS",
       images: [
         {
-          url: "/assets/carshiftos-logo.png",
-          width: 800,
-          height: 400,
-          alt: "Car ShiftOS Logo",
+          url: "/assets/social-preview.png",
+          width: 1200,
+          height: 630,
+          alt: "Car ShiftOS - Industrial Automotive Ecosystem",
         },
       ],
       locale: "en_US",
@@ -100,7 +105,7 @@ export async function generateMetadata(): Promise<Metadata> {
       card: "summary_large_image",
       title: "Car ShiftOS | Industrial Automotive Ecosystem",
       description: "Next-gen automotive SaaS for luxury dealerships.",
-      images: ["/assets/carshiftos-logo.png"],
+      images: ["/assets/social-preview.png"],
     },
   };
 }
@@ -133,7 +138,7 @@ export default function RootLayout({
                 "name": "ShiftOS",
                 "logo": {
                   "@type": "ImageObject",
-                  "url": "https://carshiftos.com/assets/shiftos-hero.png"
+                  "url": "https://carshiftos.co.ke/assets/carshiftos-logo.png"
                 }
               }
             })

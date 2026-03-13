@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: '*',
       allow: '/',
     },
-    sitemap: 'https://carshiftos.com/sitemap.xml',
+    sitemap: 'https://carshiftos.co.ke/sitemap.xml',
   }
 }
