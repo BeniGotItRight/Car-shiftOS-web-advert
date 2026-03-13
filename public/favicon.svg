@@ -1,19 +1,26 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
   <defs>
-    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:1" />
+    <linearGradient id="logoBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#60a5fa;stop-opacity:1" />
       <stop offset="100%" style="stop-color:#1d4ed8;stop-opacity:1" />
     </linearGradient>
   </defs>
-  <!-- Background for contrast -->
-  <rect width="32" height="32" rx="8" fill="#020617"/>
   
-  <!-- Stylized Circular Sweep from ShiftOS logo -->
-  <path d="M26 12C26 7.58 22.42 4 18 4C13.58 4 10 7.58 10 12M6 20C6 24.42 9.58 28 14 28C18.42 28 22 24.42 22 20" fill="none" stroke="url(#blueGrad)" stroke-width="2" stroke-linecap="round"/>
+  <!-- Background Shield -->
+  <rect width="40" height="40" rx="10" fill="#020617"/>
   
-  <!-- Car Outline / 'S' silhouette -->
-  <path d="M8 20L10 16C10 16 12 12 18 12C24 12 26 16 26 16L28 20" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"/>
+  <!-- The Circular Swoosh / Arrow tail -->
+  <path d="M30 18C30 11.37 24.63 6 18 6C11.37 6 6 11.37 6 18C6 24.63 11.37 30 18 30C23 30 27.5 26.5 29 22" fill="none" stroke="url(#logoBlue)" stroke-width="2.5" stroke-linecap="round"/>
   
-  <!-- The Signature Checkmark/V -->
-  <path d="M11 19L14 22L21 15" fill="none" stroke="#60a5fa" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Car Silhouette (Upper) -->
+  <path d="M8 22C8 22 10 14 18 14C26 14 32 20 32 20C32 20 34 22 34 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+  
+  <!-- Bottom White Curve -->
+  <path d="M12 28C14 32 18 34 22 34C28 34 32 30 32 26" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- The Integrated Checkmark -->
+  <path d="M14 20L18 24L28 14" fill="none" stroke="#60a5fa" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Inner Arrow Head / Sharp Tip -->
+  <path d="M30 18L34 20L31 22" fill="#60a5fa" />
 </svg>
