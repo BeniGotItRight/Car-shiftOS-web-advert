@@ -54,11 +54,8 @@ export async function generateMetadata(): Promise<Metadata> {
       canonical: "/",
     },
     icons: {
-      icon: [
-        { url: "/favicon.svg", type: "image/svg+xml" },
-        { url: "/favicon.png", type: "image/png" },
-      ],
-      apple: "/assets/carshiftos-logo.png",
+      icon: "/favicon.png",
+      apple: "/apple-icon.png",
     },
     applicationName: "Car ShiftOS",
     appleWebApp: {
