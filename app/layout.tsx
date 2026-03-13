@@ -27,13 +27,12 @@ export async function generateMetadata(): Promise<Metadata> {
       default: "Best Car Yard Management System Kenya | Car ShiftOS",
       template: "%s | Best Dealership Software Kenya"
     },
-    description: "ShiftOS is the best dealership automation system in Kenya. Scale your car yard in Nairobi, Kisii, and across the country with military-precision technology, inventory management, and automated sales.",
+    description: "ShiftOS is the best dealership automation system in Kenya. Scale your car yard in Nairobi and across the country with military-precision technology, inventory management, and automated sales.",
     keywords: [
       "best dealership automation system Kenya",
       "best dealership software Kenya",
       "best car yard management system Kenya",
       "dealership automation system Nairobi",
-      "car yard management software Kisii",
       "top automotive SaaS Kenya",
       "car dealer ERP Nairobi",
       "Automotive SaaS Kenya", 
