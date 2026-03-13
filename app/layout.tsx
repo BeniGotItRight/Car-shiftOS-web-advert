@@ -24,11 +24,18 @@ export async function generateMetadata(): Promise<Metadata> {
   // But we can detect from headers in a real production env, or keep it generic
   return {
     title: {
-      default: "Car ShiftOS | Industrial Automotive Ecosystem",
-      template: "%s | Car ShiftOS"
+      default: "Best Car Yard Management System Kenya | Car ShiftOS",
+      template: "%s | Best Dealership Software Kenya"
     },
-    description: "Scale your dealership with ShiftOS. The world's most advanced automotive SaaS for car yards. Experience high-performance inventory management and instant digital showrooms.",
+    description: "ShiftOS is the best dealership automation system in Kenya. Scale your car yard in Nairobi, Kisii, and across the country with military-precision technology, inventory management, and automated sales.",
     keywords: [
+      "best dealership automation system Kenya",
+      "best dealership software Kenya",
+      "best car yard management system Kenya",
+      "dealership automation system Nairobi",
+      "car yard management software Kisii",
+      "top automotive SaaS Kenya",
+      "car dealer ERP Nairobi",
       "Automotive SaaS Kenya", 
       "Car Yard Management System East Africa", 
       "Dealership Marketing Software", 
@@ -40,8 +47,8 @@ export async function generateMetadata(): Promise<Metadata> {
       "Automotive ERP Kenya", 
       "Dealer Website Builder", 
       "ShiftOS Car Management",
-      "Used Car Yard Software",
-      "Japanese Import Management System",
+      "Used Car Yard Software Kenya",
+      "Japanese Import Management System Kenya",
       "Automotive Asset Tracking",
       "Car ShiftOS logo",
       "Vehicle Management Software Kenya"
@@ -129,13 +136,18 @@ export default function RootLayout({
                 "price": "0",
                 "priceCurrency": "USD"
               },
-              "description": "Next-gen automotive SaaS for luxury vehicle dealerships.",
+              "description": "ShiftOS is the premier automotive SaaS for luxury vehicle dealerships in Kenya, providing the best car yard management system and dealership automation.",
               "publisher": {
                 "@type": "Organization",
-                "name": "ShiftOS",
+                "name": "ShiftOS Kenya",
                 "logo": {
                   "@type": "ImageObject",
                   "url": "https://carshiftos.co.ke/assets/carshiftos-logo.png"
+                },
+                "address": {
+                  "@type": "PostalAddress",
+                  "addressLocality": "Nairobi",
+                  "addressCountry": "KE"
                 }
               }
             })

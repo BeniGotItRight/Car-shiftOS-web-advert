@@ -62,7 +62,7 @@ export default function CentralLanding() {
             SHIFT<span className="text-blue-500 italic">OS</span>
           </h1>
           <p className="max-w-2xl mx-auto text-lg sm:text-xl md:text-3xl text-slate-400 font-light mb-12 tracking-tight leading-relaxed px-4">
-            The premier <span className="text-white font-medium">Software as a Service</span> ecosystem for luxury vehicle dealerships.
+            The <span className="text-white font-medium">best car yard management system in Kenya</span>. An elite ecosystem for luxury vehicle dealerships in Nairobi, Kisii, and across the country.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -165,8 +165,7 @@ export default function CentralLanding() {
               Our <span className="text-blue-500">Service Spectrum</span>
             </h2>
             <p className="max-w-3xl mx-auto text-slate-400 font-light text-lg">
-              We provide more than just software. We provide the digital
-              infrastructure for the next generation of automotive commerce.
+              We provide the best dealership software in Kenya. Our digital infrastructure is the state-of-the-art across Nairobi, Kisii, and major automotive hubs.
             </p>
           </div>
 
