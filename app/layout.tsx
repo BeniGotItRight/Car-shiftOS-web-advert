@@ -92,7 +92,7 @@ export async function generateMetadata(): Promise<Metadata> {
       siteName: "Car ShiftOS",
       images: [
         {
-          url: "/assets/social-preview.png",
+          url: "/assets/shiftos-hero.png",
           width: 1200,
           height: 630,
           alt: "Car ShiftOS - Industrial Automotive Ecosystem",
@@ -105,7 +105,7 @@ export async function generateMetadata(): Promise<Metadata> {
       card: "summary_large_image",
       title: "Car ShiftOS | Industrial Automotive Ecosystem",
       description: "Next-gen automotive SaaS for luxury dealerships.",
-      images: ["/assets/social-preview.png"],
+      images: ["/assets/shiftos-hero.png"],
     },
   };
 }
