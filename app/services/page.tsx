@@ -51,10 +51,10 @@ export default function ServicesPage() {
       <div className="max-w-7xl mx-auto">
         <div className="max-w-3xl mb-16 md:mb-24 px-2 sm:px-0">
           <h1 className="text-4xl sm:text-5xl md:text-7xl font-black mb-6 md:mb-8 tracking-tighter">
-            Platform <span className="text-blue-500">Solutions.</span>
+            Elite <span className="text-blue-500">Car Yard Management</span> Solutions.
           </h1>
           <p className="text-lg sm:text-xl text-slate-400 font-light leading-relaxed">
-            ShiftOS provides a comprehensive suite of tools designed to handle the complexity of modern automotive commerce at scale.
+            ShiftOS provides the best car yard management system in Kenya, engineered to handle the complexity of luxury automotive commerce at scale.
           </p>
         </div>
 
@@ -65,7 +65,7 @@ export default function ServicesPage() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.1 }}
-              className="p-6 sm:p-8 md:p-10 rounded-3xl md:rounded-[2.5rem] bg-slate-900/40 border border-white/5 backdrop-blur-xl group hover:border-blue-500/20 transition-all"
+              className="p-6 rounded-[2rem] md:rounded-[2.5rem] bg-slate-900/40 border border-white/5 backdrop-blur-xl group hover:border-blue-500/20 transition-all"
             >
               <div className={`size-16 rounded-2xl bg-${s.color}-600/10 border border-${s.color}-500/20 flex items-center justify-center mb-6`}>
                 <s.icon className={`size-8 text-${s.color}-500`} />

@@ -2,6 +2,9 @@
 
 import { motion } from "framer-motion";
 
+import Link from "next/link";
+import { Cpu, ChevronRight } from "lucide-react";
+
 export default function AboutPage() {
   return (
     <div className="min-h-screen bg-slate-950 text-white pt-24 md:pt-32 pb-16 px-6">
@@ -14,13 +17,37 @@ export default function AboutPage() {
             <p className="text-xl sm:text-2xl text-slate-400 font-light leading-relaxed mb-6 md:mb-8">
               ShiftOS was born from a simple observation: high-end vehicle dealerships were being underserved by generic CRM tools.
             </p>
-            <div className="space-y-4 md:space-y-6 text-base sm:text-lg text-slate-500 font-light leading-relaxed">
+            <div className="space-y-4 md:space-y-6 text-base sm:text-lg text-slate-500 font-light leading-relaxed mb-12">
               <p>
                 We built a platform that doesn't just manage data—it commands it. By combining industrial-grade security with a strictly premium user interface, we've created a digital ecosystem that speaks the language of luxury.
               </p>
               <p>
                 Our mission is to empower every dealership with the same technical prowess as the world's largest automotive groups, providing complete data sovereignty and a world-class customer experience.
               </p>
+            </div>
+
+            {/* Lead Dev Profile Link */}
+            <div className="space-y-4">
+              <Link
+                href="/about/benson"
+                className="group relative inline-flex items-center gap-4 px-8 py-4 bg-white/5 border border-white/10 rounded-2xl font-bold hover:bg-white/10 transition-all active:scale-95"
+              >
+                <div className="size-12 rounded-xl bg-blue-600 flex items-center justify-center text-white">
+                  <Cpu className="size-6" />
+                </div>
+                <div className="flex flex-col items-start text-left">
+                  <span className="text-xs uppercase tracking-widest text-slate-500 font-black">Lead Developer</span>
+                  <span className="text-lg text-white">Benson Motari</span>
+                </div>
+                <ChevronRight className="size-5 text-slate-500 group-hover:translate-x-1 transition-transform" />
+              </Link>
+              <motion.p 
+                animate={{ opacity: [0.4, 1, 0.4] }}
+                transition={{ duration: 2, repeat: Infinity }}
+                className="text-sm font-medium text-blue-400/80 px-2"
+              >
+                ⚡ Press the button above to view my profile and contact me.
+              </motion.p>
             </div>
           </div>
           

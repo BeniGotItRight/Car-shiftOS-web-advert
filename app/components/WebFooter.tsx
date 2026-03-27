@@ -4,6 +4,7 @@ import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { variants } from "@/lib/animations";
+import { Facebook, X, Linkedin, Instagram } from "lucide-react";
 
 export function WebFooter() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -31,7 +32,7 @@ export function WebFooter() {
               />
             </Link>
             <p className="text-slate-400 text-lg leading-relaxed">
-              The industrial-grade ecosystem for modern vehicle dealerships. Scale your brand with military-precision technology.
+              The industrial-grade ecosystem for modern vehicle dealerships. Scale your brand with high-fidelity security assurance.
             </p>
           </div>
           
@@ -87,15 +88,17 @@ export function WebFooter() {
               &copy; {new Date().getFullYear()} Car ShiftOS Platform. All rights reserved.
             </span>
             <div className="flex gap-4">
-              {/* Social placeholders */}
-              <div className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-slate-400 hover:bg-white/10 hover:text-white transition-colors cursor-pointer">
-                In
+              <div className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-slate-400 hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-all cursor-pointer">
+                <Linkedin className="size-5" />
               </div>
-              <div className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-slate-400 hover:bg-white/10 hover:text-white transition-colors cursor-pointer">
-                Fb
+              <div className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-slate-400 hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-all cursor-pointer">
+                <Facebook className="size-5" />
               </div>
-              <div className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-slate-400 hover:bg-white/10 hover:text-white transition-colors cursor-pointer">
-                X
+              <div className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-slate-400 hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-all cursor-pointer">
+                <X className="size-5" />
+              </div>
+              <div className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-slate-400 hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-all cursor-pointer">
+                <Instagram className="size-5" />
               </div>
             </div>
           </div>

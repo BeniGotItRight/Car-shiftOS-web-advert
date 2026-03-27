@@ -58,11 +58,11 @@ export default function CentralLanding() {
             </span>
           </div>
 
-          <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-9xl font-black tracking-tighter mb-8 bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white/40 leading-[0.9]">
-            SHIFT<span className="text-blue-500 italic">OS</span>
+          <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-9xl font-black tracking-tighter mb-8 bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white/40 leading-[0.9] px-2 sm:px-0">
+            THE BEST CAR YARD <span className="text-blue-500 italic">SYSTEM</span> IN KENYA
           </h1>
           <p className="max-w-2xl mx-auto text-lg sm:text-xl md:text-3xl text-slate-400 font-light mb-12 tracking-tight leading-relaxed px-4">
-            The <span className="text-white font-medium">best car yard management system in Kenya</span>. An elite ecosystem for luxury vehicle dealerships in Nairobi and across the country.
+            ShiftOS is the <span className="text-white font-medium">elite dealership automation platform</span> for luxury vehicle yards in Nairobi and across East Africa.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -90,7 +90,7 @@ export default function CentralLanding() {
             animate={{ scale: 1, opacity: 0.6 }}
             transition={{ duration: 2, ease: "easeOut" }}
             src="/assets/shiftos-hero.png"
-            alt="ShiftOS Core Architecture"
+            alt="ShiftOS - The Best Car Yard Management System in Kenya Hero Image"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-slate-950/40 via-transparent to-slate-950/80" />
@@ -110,9 +110,9 @@ export default function CentralLanding() {
       {/* Product Showcase - Dashboard Preview */}
       <section className="relative py-32 px-6 z-10 bg-slate-950 overflow-hidden">
         <div className="max-w-7xl mx-auto">
-          <div className="relative rounded-[4rem] border border-white/10 bg-slate-900/40 backdrop-blur-3xl overflow-hidden shadow-[0_0_100px_rgba(59,130,246,0.1)]">
+          <div className="relative rounded-[2.5rem] md:rounded-[4rem] border border-white/10 bg-slate-900/40 backdrop-blur-3xl overflow-hidden shadow-[0_0_100px_rgba(59,130,246,0.1)]">
             <div className="grid grid-cols-1 lg:grid-cols-2 items-center">
-              <div className="p-16 space-y-8">
+              <div className="p-8 sm:p-12 lg:p-16 space-y-8">
                 <h2 className="text-4xl md:text-6xl font-black tracking-tight leading-none">
                   Total Control, <br />
                   <span className="text-blue-500">Zero Friction.</span>
@@ -157,72 +157,120 @@ export default function CentralLanding() {
         </div>
       </section>
 
+      {/* About Us Section - The Vision */}
+      <section className="relative py-32 px-6 z-10 bg-slate-950/50 border-t border-white/5">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div className="space-y-8">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                viewport={{ once: true }}
+              >
+                <span className="text-blue-500 font-bold uppercase tracking-widest text-sm mb-4 block">Our Origin & Vision</span>
+                <h2 className="text-5xl md:text-7xl font-black tracking-tighter leading-[0.9] mb-8">
+                  Engineering <br/><span className="text-blue-500">Trust</span>.
+                </h2>
+                <p className="text-xl text-slate-400 font-light leading-relaxed mb-6">
+                  ShiftOS isn't just software; it's the digital backbone of Kenya's premier automotive dealerships. Born from the need for absolute data sovereignty and operational excellence, we've built an ecosystem that empowers car yards to scale with high-fidelity security architecture.
+                </p>
+                <p className="text-lg text-slate-500 font-light leading-relaxed mb-12">
+                  We believe that every dealership deserves the same technical power as global automotive giants. Our mission is to bridge the gap between traditional car yard operations and the future of digital commerce in Nairobi and across East Africa.
+                </p>
+              </motion.div>
+            </div>
+            
+            <div className="relative">
+              <div className="aspect-video lg:aspect-square rounded-[2.5rem] md:rounded-[4rem] border border-white/10 bg-slate-900/40 relative overflow-hidden group">
+                 <img 
+                   src="/assets/shiftos-hero.png" 
+                   alt="ShiftOS Architecture" 
+                   className="w-full h-full object-cover grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-1000"
+                 />
+                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent" />
+                 <div className="absolute bottom-12 left-12 right-12">
+                    <div className="flex justify-between items-end">
+                      <div>
+                        <span className="text-4xl font-black italic text-blue-500">2026</span>
+                        <p className="text-sm font-bold uppercase tracking-widest text-white/60">Operational Sovereignty</p>
+                      </div>
+                      <div className="size-16 rounded-3xl bg-blue-500/10 border border-blue-500/20 backdrop-blur-xl flex items-center justify-center">
+                        <Shield className="size-8 text-blue-500" />
+                      </div>
+                    </div>
+                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Service Spectrum - Deep Dive into "What we do" */}
       <section className="relative py-32 px-6 z-10 border-t border-white/5 bg-slate-950">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-24">
-            <h2 className="text-4xl md:text-6xl font-black mb-6 tracking-tight">
-              Our <span className="text-blue-500">Service Spectrum</span>
+            <h2 className="text-4xl md:text-6xl font-black mb-6 tracking-tight leading-none">
+              Elite <span className="text-blue-500">Operational Power</span>
             </h2>
-            <p className="max-w-3xl mx-auto text-slate-400 font-light text-lg">
-              We provide the best dealership software in Kenya. Our digital infrastructure is the state-of-the-art across Nairobi and major automotive hubs.
+            <p className="max-w-3xl mx-auto text-slate-400 font-light text-xl">
+              Engineered specifically for the Kenyan luxury car market. We turn manual car yards into high-performance digital nodes.
             </p>
           </div>
 
-          <div className="space-y-48">
+          <div className="space-y-40">
             {[
               {
-                title: "Provisioned Dealer Websites",
+                title: "Live Digital Showroom",
                 services: [
-                  "Instant Showroom Deployment",
-                  "Automated SEO Optimization",
-                  "Real-Time Inventory Sync",
+                  "Instant Inventory Sync",
+                  "Automated Marketing SEO",
+                  "Real-Time 'Sold' Status",
                   "Mobile-First Luxury UI",
                 ],
                 description:
-                  "Every dealership on ShiftOS gets a linked, high-performance public website. These aren't just templates; they are powerful marketing machines bi-directionally linked to your core inventory system.",
+                  "Your showroom, online 24/7. When a car is sold at your yard, your website updates instantly. No more manual uploads or outdated listings—just a seamless reflection of your actual inventory.",
                 icon: Globe,
                 color: "blue",
                 image: "/assets/website-mockup.png"
               },
               {
-                title: "Deep Accountability Network",
+                title: "Smart Comparison Engine",
                 services: [
-                  "Audit-Proof Action Logs",
-                  "Lead-to-Sale Transparency",
-                  "User Permission Hardening",
-                  "Global System Visibility",
+                  "3-Car Side-by-Side View",
+                  "Technical Spec Auditing",
+                  "High-Fidelity Galleries",
+                  "Buyer Confidence Tools",
                 ],
                 description:
-                  "Our linked ecosystem ensures absolute accountability. Every staff interaction, inventory change, and customer lead is tracked across both the internal portal and the public showroom.",
-                icon: Shield,
-                color: "emerald",
-                image: "/assets/network-concept.png"
-              },
-              {
-                title: "Accelerated Comparison Engine",
-                services: [
-                  "3-Car Side-by-Side Analysis",
-                  "Distinct Decision Hub",
-                  "Speed-to-Decision Workflows",
-                  "Visual Specification Auditing",
-                ],
-                description:
-                  "ShiftOS empowers your customers with better and faster decision-making. Our distinct component allows for comparison of up to 3 cars, encouraging immediate buyer confidence and conversion.",
+                  "Help your clients decide faster. Let them compare up to 3 cars side-by-side with full technical specs and high-resolution galleries, making the buying decision easier and more professional than ever.",
                 icon: Layout,
                 color: "purple",
               },
               {
-                title: "Asset Lifecycle Management",
+                title: "Industrial Command Portal",
                 services: [
-                  "VIN-Level Tracking",
-                  "KRA Duty Calculation",
-                  "Automated Cost Ledgers",
-                  "Maintenance History Audits",
+                  "Lead Tracking & Scoring",
+                  "Deal Management Suite",
+                  "User Activity Auditing",
+                  "Global Yard Visibility",
                 ],
                 description:
-                  "From bond to keys-in-hand. Our platform tracks every cent spent on a vehicle. Auto-calculate taxes, track repair costs, and maintain a bulletproof audit trail for every asset in your yard.",
-                icon: Database,
+                  "Total control at your fingertips. Manage your entire inventory, track every lead from query to keys, and handle every deal from one central, industrial-grade dashboard built for speed.",
+                icon: Monitor,
+                color: "emerald",
+              },
+              {
+                title: "Financial Pulse & Legal",
+                services: [
+                  "M-Pesa STK Push Sync",
+                  "Automated Sale Contracts",
+                  "Commission Ledger Tracking",
+                  "Digital Invoice Vault",
+                ],
+                description:
+                  "Track every shilling. From instant M-Pesa payments to automated legal agreements and sales commissions, keep your finger on the pulse of your dealership's finances with zero manual paperwork.",
+                icon: BarChart3,
                 color: "blue",
               },
             ].map((service, i) => (
@@ -286,11 +334,11 @@ export default function CentralLanding() {
                     ))}
                   </motion.ul>
                 </div>
-                <div className="flex-1 relative aspect-[4/5] w-full max-w-lg group">
+                <div className="flex-1 relative aspect-video md:aspect-[4/5] w-full max-w-lg group">
                   <div
                     className={`absolute inset-0 bg-${service.color}-500/10 blur-[120px] rounded-full animate-pulse group-hover:bg-${service.color}-500/20 transition-colors`}
                   />
-                  <div className="relative h-full w-full rounded-[4rem] border border-white/10 bg-slate-900/40 backdrop-blur-xl flex items-center justify-center overflow-hidden">
+                  <div className="relative h-full w-full rounded-[2.5rem] md:rounded-[4rem] border border-white/10 bg-slate-900/40 backdrop-blur-xl flex items-center justify-center overflow-hidden">
                     {service.image ? (
                       <motion.img 
                         whileHover={{ scale: 1.1 }}
@@ -350,43 +398,43 @@ export default function CentralLanding() {
             {[
               {
                 icon: Zap,
-                title: "Pulse Analytics",
-                desc: "Real-time yard performance metrics.",
+                title: "Showroom Sync",
+                desc: "Live reflection of your actual yard inventory.",
+              },
+              {
+                icon: Layout,
+                title: "High-Fidelity UI",
+                desc: "Premium side-by-side vehicle comparison engine.",
               },
               {
                 icon: Shield,
-                title: "Hardened Security",
-                desc: "Enterprise data isolation protocols.",
+                title: "Data Sovereignty",
+                desc: "Industrial-grade architecture for total privacy.",
               },
               {
                 icon: BarChart3,
-                title: "Financial Hub",
-                desc: "Deals, payments, and commission ledgers.",
-              },
-              {
-                icon: Globe,
-                title: "Global Showroom",
-                desc: "Instantly deploy branded public websites.",
+                title: "Financial Pulse",
+                desc: "M-Pesa integration and real-time ledgers.",
               },
               {
                 icon: Monitor,
                 title: "Command Portal",
-                desc: "Central control for your entire ecosystem.",
+                desc: "Mission control for your entire operation.",
               },
               {
-                icon: Cpu,
-                title: "API-First",
-                desc: "Seamless integration with external systems.",
+                icon: Globe,
+                title: "SEO Mastery",
+                desc: "Engineered for search engine dominance.",
               },
               {
                 icon: Layers,
-                title: "Custom Workflow",
-                desc: "Stage management for leads and deals.",
+                title: "Legal Automation",
+                desc: "Instant generation of professional documents.",
               },
               {
                 icon: Database,
-                title: "Asset Audit",
-                desc: "Full history tracking for every vehicle.",
+                title: "Lifecycle Tracking",
+                desc: "End-to-end tracking from import to sale.",
               },
             ].map((f, i) => (
               <div

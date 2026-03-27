@@ -143,50 +143,62 @@ export function WebHeader() {
         {/* Mobile Menu Overlay */}
         <AnimatePresence>
           {isMobileMenuOpen && (
-            <motion.div
-              initial={{ opacity: 0, x: "100%" }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: "100%" }}
-              transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="fixed inset-0 z-50 bg-slate-950/95 backdrop-blur-2xl flex flex-col p-8 pt-32"
-            >
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,_rgba(59,130,246,0.1)_0%,_transparent_50%)]" />
+            <>
+              {/* Backdrop Overlay */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="fixed inset-0 z-[49] bg-slate-950/40 backdrop-blur-sm"
+              />
               
-              <div className="flex flex-col gap-6 relative z-10">
-                {navLinks.map((link, i) => {
-                  const isActive = pathname === link.href;
-                  return (
-                    <motion.div
-                      key={link.name}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: i * 0.1 }}
-                    >
-                      <Link
-                        href={link.href}
-                        className={twMerge(
-                          "text-3xl font-black tracking-tighter transition-all",
-                          isActive ? "text-blue-500" : "text-white/80 hover:text-white"
-                        )}
+              {/* Sidebar Tray */}
+              <motion.div
+                initial={{ x: "100%" }}
+                animate={{ x: 0 }}
+                exit={{ x: "100%" }}
+                transition={{ type: "spring", damping: 28, stiffness: 200 }}
+                className="fixed top-0 right-0 z-50 w-[85%] max-w-sm h-full bg-slate-900/90 backdrop-blur-2xl flex flex-col p-8 pt-32 shadow-[-20px_0_50px_rgba(0,0,0,0.5)] border-l border-white/10"
+              >
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_100%_0%,_rgba(59,130,246,0.1)_0%,_transparent_50%)]" />
+                
+                <div className="flex flex-col gap-6 relative z-10">
+                  {navLinks.map((link, i) => {
+                    const isActive = pathname === link.href;
+                    return (
+                      <motion.div
+                        key={link.name}
+                        initial={{ opacity: 0, x: 20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: i * 0.1 }}
                       >
-                        {link.name}
-                      </Link>
-                    </motion.div>
-                  );
-                })}
-              </div>
-
-              <div className="mt-auto relative z-10 pb-12 border-t border-white/10 pt-12">
-                <p className="text-sm font-bold uppercase tracking-[0.3em] text-slate-500 mb-4">
-                  ShiftOS Platform
-                </p>
-                <div className="flex flex-col gap-4">
-                   <Link href="mailto:carshiftos@gmail.com" className="text-xl font-medium text-white decoration-blue-500/30 underline underline-offset-8">
-                     carshiftos@gmail.com
-                   </Link>
+                        <Link
+                          href={link.href}
+                          className={twMerge(
+                            "text-3xl sm:text-4xl font-black tracking-tighter transition-all py-2 block",
+                            isActive ? "text-blue-500" : "text-white/80 hover:text-white"
+                          )}
+                        >
+                          {link.name}
+                        </Link>
+                      </motion.div>
+                    );
+                  })}
                 </div>
-              </div>
-            </motion.div>
+
+                <div className="mt-auto relative z-10 pb-12 border-t border-white/10 pt-12">
+                  <p className="text-sm font-bold uppercase tracking-[0.3em] text-slate-500 mb-4">
+                    ShiftOS Platform
+                  </p>
+                  <div className="flex flex-col gap-4">
+                     <Link href="mailto:carshiftos@gmail.com" className="text-xl font-medium text-white decoration-blue-500/30 underline underline-offset-8">
+                       carshiftos@gmail.com
+                     </Link>
+                  </div>
+                </div>
+              </motion.div>
+            </>
           )}
         </AnimatePresence>
       </nav>

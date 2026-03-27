@@ -14,7 +14,7 @@ export default function PrivacyPage() {
     },
     {
       title: "Data Protection",
-      content: "Our infrastructure is hardened against unauthorized access. We employ military-grade security protocols and regular audits to protect the integrity of the ShiftOS platform."
+      content: "Our infrastructure is hardened against unauthorized access. We employ high-fidelity security assurance protocols and regular audits to protect the integrity of the ShiftOS platform."
     },
     {
       title: "Third-Party Disclosure",

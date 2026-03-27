@@ -26,10 +26,10 @@ export default function ContactPage() {
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="max-w-3xl mb-12 md:mb-16">
           <h1 className="text-4xl sm:text-5xl md:text-7xl font-black mb-6 md:mb-8 tracking-tighter">
-            Get in <span className="text-blue-500">Touch.</span>
+            Deploy the <span className="text-blue-500">Best Car Yard System</span> in Kenya.
           </h1>
           <p className="text-lg sm:text-xl text-slate-400 font-light leading-relaxed">
-            Whether you're looking to scale your dealership or have questions about our architecture, our team is ready to assist.
+            Ready to dominate the Kenyan automotive market? Contact the ShiftOS team today to scale your dealership with high-fidelity security assurance.
           </p>
         </div>
 
