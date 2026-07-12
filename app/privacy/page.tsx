@@ -62,7 +62,7 @@ export default function PrivacyPage() {
         <motion.div 
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          className="mt-16 pt-8 border-t border-white/10 text-slate-500 text-sm"
+          className="mt-16 pt-8 border-t border-white/10 text-slate-400 text-sm"
         >
           Last Updated: {new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
         </motion.div>

@@ -1,20 +1,24 @@
 "use client";
 
 import Link from "next/link";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
 import { useRef } from "react";
+import { AnimatedNumber } from "./components/public/AnimatedNumber";
+import { CTA } from "@/lib/cta";
+import { TiltCard } from "./components/shared/TiltCard";
 import {
   Shield,
   Zap,
-  BarChart3,
   Globe,
   Monitor,
   ChevronRight,
   ArrowRight,
-  Layers,
   Database,
   Cpu,
   Layout,
+  Car,
+  Banknote,
+  FileCheck2,
 } from "lucide-react";
 
 export default function CentralLanding() {
@@ -26,6 +30,19 @@ export default function CentralLanding() {
 
   const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
   const scale = useTransform(scrollYProgress, [0, 0.2], [1, 0.95]);
+
+  const prefersReducedMotion = useReducedMotion();
+  const cockpitRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress: cockpitProgress } = useScroll({
+    target: cockpitRef,
+    offset: ["start end", "end start"],
+  });
+
+  const cockpitImageScale = useTransform(cockpitProgress, [0, 0.5, 1], [1.15, 1, 1.05]);
+  const cockpitImageOpacity = useTransform(cockpitProgress, [0, 0.3], [0.3, 1]);
+  const cockpitLabelY = useTransform(cockpitProgress, [0, 0.5], [40, 0]);
+  const cockpitBadgeOpacity = useTransform(cockpitProgress, [0.15, 0.4], [0, 1]);
+  const cockpitSecondCardX = useTransform(cockpitProgress, [0.3, 0.7], [80, 0]);
 
   return (
     <div
@@ -67,18 +84,18 @@ export default function CentralLanding() {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Link
-              href="/contact"
+              href={CTA.primary.href}
               className="group relative flex items-center gap-2 px-10 py-5 bg-blue-600 rounded-2xl font-bold text-lg hover:bg-blue-500 transition-all overflow-hidden shadow-2xl shadow-blue-600/20 active:scale-95"
             >
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
-              Get Started{" "}
+              {CTA.primary.label}{" "}
               <ArrowRight className="size-5 group-hover:translate-x-1 transition-transform" />
             </Link>
-            <Link 
-              href="/contact"
+            <Link
+              href={CTA.secondary.href}
               className="px-10 py-5 border border-white/10 bg-white/5 backdrop-blur-md rounded-2xl font-bold text-lg hover:bg-white/10 transition-all active:scale-95 flex items-center justify-center"
             >
-              Request Demo
+              {CTA.secondary.label}
             </Link>
           </div>
         </motion.div>
@@ -101,7 +118,7 @@ export default function CentralLanding() {
             transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
             className="h-12 w-px bg-gradient-to-b from-blue-500 to-transparent" 
           />
-          <span className="text-[10px] font-black uppercase tracking-[0.5em] text-slate-500">
+          <span className="text-[10px] font-black uppercase tracking-[0.5em] text-slate-400">
             Explore Architecture
           </span>
         </div>
@@ -125,18 +142,18 @@ export default function CentralLanding() {
                 <div className="flex flex-wrap gap-6">
                   <div className="flex flex-col">
                     <span className="text-2xl md:text-3xl font-black text-white">
-                      100ms
+                      <AnimatedNumber value={100} suffix="ms" />
                     </span>
-                    <span className="text-[10px] uppercase tracking-widest text-slate-500 font-bold">
+                    <span className="text-[10px] uppercase tracking-widest text-slate-400 font-bold">
                       Data Latency
                     </span>
                   </div>
                   <div className="w-px h-12 bg-white/10 hidden sm:block" />
                   <div className="flex flex-col">
                     <span className="text-2xl md:text-3xl font-black text-white">
-                      256-bit
+                      <AnimatedNumber value={256} suffix="-bit" />
                     </span>
-                    <span className="text-[10px] uppercase tracking-widest text-slate-500 font-bold">
+                    <span className="text-[10px] uppercase tracking-widest text-slate-400 font-bold">
                       AES Isolation
                     </span>
                   </div>
@@ -175,7 +192,7 @@ export default function CentralLanding() {
                 <p className="text-xl text-slate-400 font-light leading-relaxed mb-6">
                   ShiftOS isn't just software; it's the digital backbone of Kenya's premier automotive dealerships. Born from the need for absolute data sovereignty and operational excellence, we've built an ecosystem that empowers car yards to scale with high-fidelity security architecture.
                 </p>
-                <p className="text-lg text-slate-500 font-light leading-relaxed mb-12">
+                <p className="text-lg text-slate-400 font-light leading-relaxed mb-12">
                   We believe that every dealership deserves the same technical power as global automotive giants. Our mission is to bridge the gap between traditional car yard operations and the future of digital commerce in Nairobi and across East Africa.
                 </p>
               </motion.div>
@@ -230,7 +247,7 @@ export default function CentralLanding() {
                 ],
                 description:
                   "Your showroom, online 24/7. When a car is sold at your yard, your website updates instantly. No more manual uploads or outdated listings—just a seamless reflection of your actual inventory.",
-                icon: Globe,
+                icon: Car,
                 color: "blue",
                 image: "/assets/website-mockup.png"
               },
@@ -270,7 +287,7 @@ export default function CentralLanding() {
                 ],
                 description:
                   "Track every shilling. From instant M-Pesa payments to automated legal agreements and sales commissions, keep your finger on the pulse of your dealership's finances with zero manual paperwork.",
-                icon: BarChart3,
+                icon: Banknote,
                 color: "blue",
               },
             ].map((service, i) => (
@@ -394,7 +411,16 @@ export default function CentralLanding() {
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <motion.div
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: "-80px" }}
+            variants={{
+              hidden: {},
+              show: { transition: { staggerChildren: 0.08 } },
+            }}
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+          >
             {[
               {
                 icon: Zap,
@@ -412,7 +438,7 @@ export default function CentralLanding() {
                 desc: "Industrial-grade architecture for total privacy.",
               },
               {
-                icon: BarChart3,
+                icon: Banknote,
                 title: "Financial Pulse",
                 desc: "M-Pesa integration and real-time ledgers.",
               },
@@ -427,7 +453,7 @@ export default function CentralLanding() {
                 desc: "Engineered for search engine dominance.",
               },
               {
-                icon: Layers,
+                icon: FileCheck2,
                 title: "Legal Automation",
                 desc: "Instant generation of professional documents.",
               },
@@ -437,16 +463,15 @@ export default function CentralLanding() {
                 desc: "End-to-end tracking from import to sale.",
               },
             ].map((f, i) => (
-              <div
-                key={i}
-                className="p-8 rounded-3xl bg-slate-900/30 border border-white/5 hover:bg-slate-900/50 transition-all"
-              >
-                <f.icon className="size-10 text-slate-500 mb-6" />
-                <h3 className="text-lg font-bold mb-2">{f.title}</h3>
-                <p className="text-sm text-slate-500 font-light">{f.desc}</p>
-              </div>
+              <TiltCard key={i}>
+                <div className="group relative p-8 rounded-3xl bg-slate-900/30 border border-white/5 transition-all duration-200 ease-out hover:-translate-y-1.5 hover:border-blue-500/30 hover:shadow-[0_20px_50px_-15px_rgba(59,130,246,0.25)] hover:bg-slate-900/50">
+                  <f.icon className="size-10 text-slate-500 mb-6 transition-colors duration-200 group-hover:text-blue-400" />
+                  <h3 className="text-lg font-bold mb-2">{f.title}</h3>
+                  <p className="text-sm text-slate-400 font-light">{f.desc}</p>
+                </div>
+              </TiltCard>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -494,32 +519,36 @@ export default function CentralLanding() {
             </div>
 
             <div className="lg:col-span-7">
-              <div className="relative space-y-12">
+              <div ref={cockpitRef} className="relative space-y-12">
                 <motion.div
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 1 }}
-                  viewport={{ once: true }}
+                  style={
+                    prefersReducedMotion
+                      ? undefined
+                      : { scale: cockpitImageScale, opacity: cockpitImageOpacity }
+                  }
                   className="relative rounded-[4rem] border border-white/10 bg-slate-900/40 backdrop-blur-3xl overflow-hidden aspect-[16/10] shadow-[0_0_100px_rgba(59,130,246,0.1)] group"
                 >
                   <img src="/assets/interior-digital.png" alt="Full System View" className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-1000" />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent" />
-                  <div className="absolute bottom-12 left-12 right-12 flex justify-between items-end">
+                  <motion.div
+                    style={prefersReducedMotion ? undefined : { y: cockpitLabelY }}
+                    className="absolute bottom-12 left-12 right-12 flex justify-between items-end"
+                  >
                     <div className="space-y-2">
                       <span className="text-blue-500 font-black tracking-tighter text-2xl">CORE</span>
                       <h3 className="text-3xl font-bold">Unified Command</h3>
                     </div>
-                    <div className="px-6 py-2 bg-blue-500/10 border border-blue-500/20 backdrop-blur-md rounded-full text-xs font-bold uppercase tracking-widest text-blue-400">
+                    <motion.div
+                      style={prefersReducedMotion ? undefined : { opacity: cockpitBadgeOpacity }}
+                      className="px-6 py-2 bg-blue-500/10 border border-blue-500/20 backdrop-blur-md rounded-full text-xs font-bold uppercase tracking-widest text-blue-400"
+                    >
                       System + Website
-                    </div>
-                  </div>
+                    </motion.div>
+                  </motion.div>
                 </motion.div>
 
                 <motion.div
-                  initial={{ opacity: 0, x: 40 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.8, delay: 0.4 }}
-                  viewport={{ once: true }}
+                  style={prefersReducedMotion ? undefined : { x: cockpitSecondCardX, opacity: cockpitImageOpacity }}
                   className="relative ml-12 lg:-ml-24 rounded-[3rem] border border-white/10 bg-slate-900/50 backdrop-blur-3xl overflow-hidden aspect-[16/9] shadow-2xl group"
                 >
                   <img src="/assets/steering-detail.png" alt="Operational Detail" className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-100 transition-all duration-1000 group-hover:scale-105" />
@@ -556,16 +585,16 @@ export default function CentralLanding() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="/contact"
-              className="px-12 py-5 bg-white text-slate-950 rounded-2xl font-black tracking-tight hover:bg-slate-200 transition-all active:scale-95"
+              href={CTA.primary.href}
+              className="px-12 py-5 bg-white text-slate-950 rounded-2xl font-black tracking-tight hover:bg-slate-200 transition-all active:scale-95 uppercase"
             >
-              DEPLOY PLATFORM
+              {CTA.primary.label}
             </Link>
-            <Link 
-              href="/contact"
+            <Link
+              href={CTA.secondary.href}
               className="px-12 py-5 border border-white/10 rounded-2xl font-black tracking-tight hover:bg-white/5 transition-all active:scale-95 uppercase flex items-center justify-center"
             >
-              Speak with Architecture
+              {CTA.secondary.label}
             </Link>
           </div>
         </motion.div>
@@ -578,7 +607,7 @@ export default function CentralLanding() {
             <span className="text-2xl font-black tracking-tighter">
               SHIFT<span className="text-blue-500 italic">OS</span>
             </span>
-            <p className="text-slate-500 text-sm font-light">The Industrial Automotive Ecosystem</p>
+            <p className="text-slate-400 text-sm font-light">The Industrial Automotive Ecosystem</p>
           </div>
           <div className="flex flex-col sm:flex-row gap-8 items-center">
             <a 
@@ -600,7 +629,7 @@ export default function CentralLanding() {
               <span className="font-bold tracking-tight text-lg">0732009268</span>
             </a>
           </div>
-          <p className="text-slate-600 text-[10px] uppercase tracking-[0.2em] font-black">
+          <p className="text-slate-400 text-[10px] uppercase tracking-[0.2em] font-black">
             © {new Date().getFullYear()} ShiftOS Technology
           </p>
         </div>

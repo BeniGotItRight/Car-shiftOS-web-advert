@@ -17,7 +17,7 @@ export default function AboutPage() {
             <p className="text-xl sm:text-2xl text-slate-400 font-light leading-relaxed mb-6 md:mb-8">
               ShiftOS was born from a simple observation: high-end vehicle dealerships were being underserved by generic CRM tools.
             </p>
-            <div className="space-y-4 md:space-y-6 text-base sm:text-lg text-slate-500 font-light leading-relaxed mb-12">
+            <div className="space-y-4 md:space-y-6 text-base sm:text-lg text-slate-400 font-light leading-relaxed mb-12">
               <p>
                 We built a platform that doesn't just manage data—it commands it. By combining industrial-grade security with a strictly premium user interface, we've created a digital ecosystem that speaks the language of luxury.
               </p>
@@ -36,7 +36,7 @@ export default function AboutPage() {
                   <Cpu className="size-6" />
                 </div>
                 <div className="flex flex-col items-start text-left">
-                  <span className="text-xs uppercase tracking-widest text-slate-500 font-black">Lead Developer</span>
+                  <span className="text-xs uppercase tracking-widest text-slate-400 font-black">Lead Developer</span>
                   <span className="text-lg text-white">Benson Motari</span>
                 </div>
                 <ChevronRight className="size-5 text-slate-500 group-hover:translate-x-1 transition-transform" />

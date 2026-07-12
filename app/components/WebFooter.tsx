@@ -17,7 +17,7 @@ export function WebFooter() {
   const opacity = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
   return (
-    <footer ref={containerRef} className="bg-black text-white overflow-hidden relative pt-16 pb-8 sm:pt-24 sm:pb-12 flex flex-col justify-end min-h-[50vh]">
+    <footer ref={containerRef} className="bg-black text-white overflow-hidden relative pt-16 pb-28 sm:pt-24 sm:pb-12 flex flex-col justify-end min-h-[50vh]">
       <motion.div 
         style={{ y, opacity }}
         className="mx-auto w-full max-w-7xl px-6 sm:px-8 relative z-10 flex-1 flex flex-col justify-between"
@@ -84,7 +84,7 @@ export function WebFooter() {
           </div>
           
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-white/10 pt-8 mt-8">
-            <span className="text-sm text-slate-500 max-w-sm text-center sm:text-left">
+            <span className="text-sm text-slate-400 max-w-sm text-center sm:text-left">
               &copy; {new Date().getFullYear()} Car ShiftOS Platform. All rights reserved.
             </span>
             <div className="flex gap-4">

@@ -188,7 +188,7 @@ export function WebHeader() {
                 </div>
 
                 <div className="mt-auto relative z-10 pb-12 border-t border-white/10 pt-12">
-                  <p className="text-sm font-bold uppercase tracking-[0.3em] text-slate-500 mb-4">
+                  <p className="text-sm font-bold uppercase tracking-[0.3em] text-slate-400 mb-4">
                     ShiftOS Platform
                   </p>
                   <div className="flex flex-col gap-4">

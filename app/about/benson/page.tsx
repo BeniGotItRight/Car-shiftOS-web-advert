@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Mail, Github, Linkedin, Cpu, Code2, Rocket, Globe, ArrowLeft, X } from "lucide-react";
+import { Mail, Github, Linkedin, Cpu, Code2, Rocket, ArrowLeft, X } from "lucide-react";
 import Link from "next/link";
 
 export default function BensonProfile() {
@@ -10,7 +10,7 @@ export default function BensonProfile() {
       <div className="max-w-4xl mx-auto">
         <Link 
           href="/" 
-          className="inline-flex items-center gap-2 text-slate-500 hover:text-white transition-colors mb-12 group"
+          className="inline-flex items-center gap-2 text-slate-400 hover:text-white transition-colors mb-12 group"
         >
           <ArrowLeft className="size-4 group-hover:-translate-x-1 transition-transform" />
           Back to ShiftOS
@@ -85,49 +85,27 @@ export default function BensonProfile() {
         </div>
 
         {/* Content Modules */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <motion.div 
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.4 }}
-            className="p-8 rounded-[2.5rem] bg-slate-900/30 border border-white/5 space-y-6"
-          >
-            <div className="flex items-center gap-4">
-              <div className="size-10 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-500">
-                <Rocket className="size-5" />
-              </div>
-              <h2 className="text-2xl font-bold">The Mission</h2>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4 }}
+          className="group relative p-10 md:p-14 rounded-[2.5rem] bg-slate-900/30 border border-white/5 overflow-hidden transition-all duration-200 ease-out hover:-translate-y-1.5 hover:border-blue-500/30 hover:shadow-[0_20px_50px_-15px_rgba(59,130,246,0.25)]"
+        >
+          <div className="absolute -top-16 -right-16 size-64 bg-blue-500/10 blur-[100px] rounded-full pointer-events-none" />
+          <div className="relative flex items-center gap-4 mb-6">
+            <div className="size-10 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-500">
+              <Rocket className="size-5" />
             </div>
-            <p className="text-slate-400 font-light leading-relaxed">
-              As the Lead Developer at ShiftOS, I focus on building high-performance, multi-tenant architectures that solve real-world problems for Kenyan dealerships. My goal is to combine world-class user experience with high-fidelity security assurance backend stability.
-            </p>
-          </motion.div>
-
-          <motion.div 
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.5 }}
-            className="p-8 rounded-[2.5rem] bg-slate-900/30 border border-white/5 space-y-6"
-          >
-            <div className="flex items-center gap-4">
-              <div className="size-10 rounded-xl bg-purple-500/10 flex items-center justify-center text-purple-500">
-                <Globe className="size-5" />
-              </div>
-              <h2 className="text-2xl font-bold">Technical Stack</h2>
-            </div>
-            <div className="flex flex-wrap gap-2">
-              {["Next.js", "TypeScript", "TailwindCSS", "Node.js", "PostgreSQL", "Framer Motion"].map((tech, i) => (
-                <span key={i} className="px-3 py-1 bg-white/5 rounded-lg border border-white/10 text-xs text-slate-300 font-medium">
-                  {tech}
-                </span>
-              ))}
-            </div>
-          </motion.div>
-        </div>
+            <h2 className="text-2xl font-bold">The Mission</h2>
+          </div>
+          <p className="relative text-xl md:text-2xl text-slate-300 font-light leading-relaxed max-w-2xl">
+            As the Lead Developer at ShiftOS, I focus on building high-performance, multi-tenant architectures that solve real-world problems for Kenyan dealerships. My goal is to combine world-class user experience with high-fidelity security assurance backend stability.
+          </p>
+        </motion.div>
 
         {/* Footer Credit */}
         <div className="mt-24 text-center">
-          <p className="text-slate-600 text-xs uppercase tracking-[0.3em] font-black italic">
+          <p className="text-slate-400 text-xs uppercase tracking-[0.3em] font-black italic">
             ShiftOS Architecture & Design — EST 2026
           </p>
         </div>

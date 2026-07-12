@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, Phone, Send, Globe } from "lucide-react";
+import { Mail, Phone, Send } from "lucide-react";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -19,7 +19,7 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 text-white pt-24 md:pt-32 pb-16 px-6 relative overflow-hidden">
+    <div className="min-h-screen bg-slate-950 text-white pt-24 md:pt-32 pb-32 sm:pb-16 px-6 relative overflow-hidden">
       {/* Background Glow */}
       <div className="absolute top-0 right-0 w-[60vw] h-[60vw] bg-blue-600/5 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
       
@@ -46,35 +46,17 @@ export default function ContactPage() {
               </div>
               <div>
                 <h2 className="text-xl font-bold mb-1">Direct Communication</h2>
-                <p className="text-slate-500 font-light mb-4 text-sm uppercase tracking-widest">Email Enquiries</p>
+                <p className="text-slate-400 font-light mb-4 text-sm uppercase tracking-widest">Email Enquiries</p>
                 <a href="mailto:carshiftos@gmail.com" className="text-xl font-medium text-white hover:text-blue-400 transition-colors">
                   carshiftos@gmail.com
                 </a>
               </div>
             </motion.div>
 
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.1 }}
-              className="p-6 sm:p-8 rounded-3xl bg-slate-900/40 border border-white/5 backdrop-blur-xl flex flex-col sm:flex-row items-start gap-6 group hover:border-blue-500/20 transition-all"
-            >
-              <div className="size-12 sm:size-14 rounded-2xl bg-emerald-600/10 border border-emerald-500/20 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
-                <Globe className="size-6 text-emerald-500" />
-              </div>
-              <div>
-                <h2 className="text-xl font-bold mb-1">Global Presence</h2>
-                <p className="text-slate-500 font-light mb-4 text-sm uppercase tracking-widest">Based in Nairobi</p>
-                <p className="text-xl font-medium text-white">
-                  Industrial Area, Enterprise Road
-                </p>
-              </div>
-            </motion.div>
-
-            <motion.div 
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.2 }}
               className="p-6 sm:p-8 rounded-3xl bg-slate-900/40 border border-white/5 backdrop-blur-xl flex flex-col sm:flex-row items-start gap-6 group hover:border-blue-500/20 transition-all"
             >
               <div className="size-12 sm:size-14 rounded-2xl bg-purple-600/10 border border-purple-500/20 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
@@ -82,7 +64,7 @@ export default function ContactPage() {
               </div>
               <div>
                 <h2 className="text-xl font-bold mb-1">Phone Line</h2>
-                <p className="text-slate-500 font-light mb-4 text-sm uppercase tracking-widest">Support Hours: 24/7</p>
+                <p className="text-slate-400 font-light mb-4 text-sm uppercase tracking-widest">Support Hours: 24/7</p>
                 <p className="text-xl font-medium text-white">
                   0732009268
                 </p>
@@ -101,7 +83,7 @@ export default function ContactPage() {
             <form className="space-y-6 relative z-10" onSubmit={handleSubmit}>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <label className="text-xs font-bold uppercase tracking-widest text-slate-500 ml-1">Full Name</label>
+                  <label className="text-xs font-bold uppercase tracking-widest text-slate-400 ml-1">Full Name</label>
                   <input 
                     required
                     type="text" 
@@ -112,7 +94,7 @@ export default function ContactPage() {
                   />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-xs font-bold uppercase tracking-widest text-slate-500 ml-1">Email Address</label>
+                  <label className="text-xs font-bold uppercase tracking-widest text-slate-400 ml-1">Email Address</label>
                   <input 
                     required
                     type="email" 
@@ -125,7 +107,7 @@ export default function ContactPage() {
               </div>
               
               <div className="space-y-2">
-                <label className="text-xs font-bold uppercase tracking-widest text-slate-500 ml-1">Subject</label>
+                <label className="text-xs font-bold uppercase tracking-widest text-slate-400 ml-1">Subject</label>
                 <select 
                   value={formData.subject}
                   onChange={(e) => setFormData({...formData, subject: e.target.value})}
@@ -139,7 +121,7 @@ export default function ContactPage() {
               </div>
 
               <div className="space-y-2">
-                <label className="text-xs font-bold uppercase tracking-widest text-slate-500 ml-1">Message</label>
+                <label className="text-xs font-bold uppercase tracking-widest text-slate-400 ml-1">Message</label>
                 <textarea 
                   required
                   rows={4}
@@ -160,7 +142,7 @@ export default function ContactPage() {
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-black/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
               </button>
               
-              <p className="text-[10px] text-center text-slate-600 uppercase tracking-[0.2em] font-bold mt-4">
+              <p className="text-[10px] text-center text-slate-400 uppercase tracking-[0.2em] font-bold mt-4">
                 Note: All platform deployments require signed legal agreements and physical documentation for compliance.
               </p>
             </form>

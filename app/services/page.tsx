@@ -64,8 +64,9 @@ export default function ServicesPage() {
               key={i}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.1 }}
-              className="p-6 rounded-[2rem] md:rounded-[2.5rem] bg-slate-900/40 border border-white/5 backdrop-blur-xl group hover:border-blue-500/20 transition-all"
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.08, duration: 0.5, ease: "easeOut" }}
+              className="p-6 rounded-[2rem] md:rounded-[2.5rem] bg-slate-900/40 border border-white/5 backdrop-blur-xl group transition-all duration-200 ease-out hover:-translate-y-1.5 hover:border-blue-500/30 hover:shadow-[0_20px_50px_-15px_rgba(59,130,246,0.25)]"
             >
               <div className={`size-16 rounded-2xl bg-${s.color}-600/10 border border-${s.color}-500/20 flex items-center justify-center mb-6`}>
                 <s.icon className={`size-8 text-${s.color}-500`} />
@@ -86,22 +87,22 @@ export default function ServicesPage() {
             <div className="space-y-2">
               <span className="text-blue-500 font-bold block">01</span>
               <h3 className="font-bold text-lg">High-Speed Delivery</h3>
-              <p className="text-sm text-slate-500 font-light">Ultra-fast page loads and maximum search visibility.</p>
+              <p className="text-sm text-slate-400 font-light">Ultra-fast page loads and maximum search visibility.</p>
             </div>
             <div className="space-y-2">
               <span className="text-blue-500 font-bold block">02</span>
               <h3 className="font-bold text-lg">Enterprise Operations</h3>
-              <p className="text-sm text-slate-500 font-light">Bank-grade infrastructure for secure, multi-tenant yard management.</p>
+              <p className="text-sm text-slate-400 font-light">Bank-grade infrastructure for secure, multi-tenant yard management.</p>
             </div>
             <div className="space-y-2">
               <span className="text-blue-500 font-bold block">03</span>
               <h3 className="font-bold text-lg">Elite Access Control</h3>
-              <p className="text-sm text-slate-500 font-light">Advanced, multi-layered security for private dealer portals.</p>
+              <p className="text-sm text-slate-400 font-light">Advanced, multi-layered security for private dealer portals.</p>
             </div>
             <div className="space-y-2">
               <span className="text-blue-500 font-bold block">04</span>
               <h3 className="font-bold text-lg">Premium User Interface</h3>
-              <p className="text-sm text-slate-500 font-light">Fluid, cinematic interactions for a strictly high-end digital experience.</p>
+              <p className="text-sm text-slate-400 font-light">Fluid, cinematic interactions for a strictly high-end digital experience.</p>
             </div>
           </div>
         </div>
