@@ -31,14 +31,14 @@ export function WhatsAppButton() {
   };
 
   return (
-    <div className="fixed bottom-8 right-8 z-[70] flex flex-col items-end gap-4">
+    <div className="fixed bottom-4 right-4 sm:bottom-8 sm:right-8 z-[70] flex flex-col items-end gap-4">
       <AnimatePresence>
         {showTooltip && (
           <motion.div
             initial={{ opacity: 0, y: 10, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 10, scale: 0.95 }}
-            className="relative bg-slate-900/90 backdrop-blur-xl rounded-2xl shadow-[0_0_50px_rgba(16,185,129,0.2)] p-4 border border-emerald-500/20 max-w-[220px]"
+            className="relative bg-slate-900/90 backdrop-blur-xl rounded-2xl shadow-[0_0_50px_rgba(16,185,129,0.2)] p-4 border border-emerald-500/20 max-w-[180px] sm:max-w-[220px]"
           >
             <button 
               onClick={() => setShowTooltip(false)}
@@ -64,8 +64,8 @@ export function WhatsAppButton() {
       >
         <div className="absolute inset-0 bg-emerald-500 blur-[20px] opacity-40 group-hover:opacity-60 transition-opacity rounded-full" />
         
-        <div className="relative flex items-center justify-center size-16 rounded-full bg-emerald-500 text-white shadow-[0_0_30px_rgba(16,185,129,0.4)] transition-all duration-500">
-          <MessageCircle className="size-8 fill-white/10" />
+        <div className="relative flex items-center justify-center size-14 sm:size-16 rounded-full bg-emerald-500 text-white shadow-[0_0_30px_rgba(16,185,129,0.4)] transition-all duration-500">
+          <MessageCircle className="size-7 sm:size-8 fill-white/10" />
           
           {/* Pulsing notification ring */}
           <div className="absolute inset-0 rounded-full border-4 border-emerald-400 animate-ping opacity-30 pointer-events-none" />

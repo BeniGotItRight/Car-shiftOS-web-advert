@@ -26,6 +26,7 @@ import {
 import { TypewriterRotator } from "@/components/TypewriterRotator";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { TypewriterHeading } from "@/components/TypewriterHeading";
+import { TiltCard } from "@/components/TiltCard";
 import { ActivityFeed } from "@/components/ActivityFeed";
 
 const CONTROL_FEED_ROWS = [
@@ -562,14 +563,14 @@ export default function CentralLanding() {
         >
           {FEATURE_TILES.map((f, i) => (
             <ScrollReveal key={i} direction="up" delay={(i % 4) * 100} className="shrink-0">
-              <div className="group w-[280px] sm:w-[300px] p-8 rounded-3xl bg-slate-900/30 border border-white/5 hover:bg-slate-900/50 hover:border-blue-500/20 transition-all">
+              <TiltCard className="group w-[280px] sm:w-[300px] p-8 rounded-3xl bg-slate-900/30 border border-white/5 hover:bg-slate-900/50 hover:border-blue-500/20 transition-colors">
                 <f.icon className="size-10 text-slate-500 mb-6 group-hover:text-blue-500 transition-colors" />
                 <h3 className="text-lg font-bold mb-2">{f.title}</h3>
                 <p className="text-sm text-slate-500 font-light mb-4">{f.desc}</p>
                 <span className="text-blue-500 opacity-0 group-hover:opacity-100 transition-opacity">
                   →
                 </span>
-              </div>
+              </TiltCard>
             </ScrollReveal>
           ))}
         </div>

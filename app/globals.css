@@ -80,12 +80,22 @@
 }
 .animate-blink-caret { animation: blink-caret 1s step-end infinite; }
 
+/* Cap the heaviest glass-blur tiers on mobile GPUs; keep the moderate/light tiers as-is. */
+@media (max-width: 640px) {
+  .backdrop-blur-3xl,
+  .backdrop-blur-2xl {
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .animate-kenburns-1,
-  .animate-kenburns-2,
-  .animate-kenburns-3,
-  .animate-kenburns-4,
-  .animate-blink-caret {
-    animation: none !important;
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
