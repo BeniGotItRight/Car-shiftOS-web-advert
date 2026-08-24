@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { variants } from "@/lib/animations";
@@ -25,9 +26,11 @@ export function WebFooter() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
           <div className="max-w-md">
             <Link href="/" className="inline-flex items-center mb-6 transition-transform active:scale-95">
-              <img 
-                src="/assets/carshiftos-logo.png" 
-                alt="Car ShiftOS" 
+              <Image
+                src="/assets/carshiftos-logo.png"
+                alt="Car ShiftOS"
+                width={200}
+                height={109}
                 className="h-10 w-auto object-contain"
               />
             </Link>
@@ -84,7 +87,7 @@ export function WebFooter() {
           </div>
           
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-white/10 pt-8 mt-8">
-            <span className="text-sm text-slate-500 max-w-sm text-center sm:text-left">
+            <span className="text-sm text-slate-400 max-w-sm text-center sm:text-left">
               &copy; {new Date().getFullYear()} Car ShiftOS Platform. All rights reserved.
             </span>
             <div className="flex gap-4">

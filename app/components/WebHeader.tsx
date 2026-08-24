@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import { useState, useEffect } from "react";
@@ -71,9 +72,12 @@ export function WebHeader() {
     <header className={headerClass}>
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 sm:px-8">
         <Link href="/" className="inline-flex items-center transition-transform active:scale-95">
-          <img 
-            src="/assets/carshiftos-logo.png" 
-            alt="Car ShiftOS" 
+          <Image
+            src="/assets/carshiftos-logo.png"
+            alt="Car ShiftOS"
+            width={200}
+            height={109}
+            priority
             className="h-8 md:h-10 w-auto object-contain"
           />
         </Link>

@@ -192,16 +192,20 @@ export default function CentralLanding() {
         </div>
 
         {/* Slide dot indicators */}
-        <div className="absolute bottom-28 left-1/2 -translate-x-1/2 flex items-center gap-2 z-10">
+        <div className="absolute bottom-28 left-1/2 -translate-x-1/2 flex items-center z-10">
           {HERO_SLIDES.map((s, i) => (
             <button
               key={s.src}
               onClick={() => setSlide(i)}
               aria-label={`Show ${s.caption} slide`}
-              className={`h-2 rounded-full transition-all duration-300 ${
-                i === slide ? "w-6 bg-blue-500" : "w-2 bg-white/30 hover:bg-white/50"
-              }`}
-            />
+              className="p-2.5 flex items-center justify-center"
+            >
+              <span
+                className={`block h-2 rounded-full transition-all duration-300 ${
+                  i === slide ? "w-6 bg-blue-500" : "w-2 bg-white/30 hover:bg-white/50"
+                }`}
+              />
+            </button>
           ))}
         </div>
 
@@ -331,10 +335,12 @@ export default function CentralLanding() {
             
             <div className="relative">
               <div className="aspect-video lg:aspect-square rounded-[2.5rem] md:rounded-[4rem] border border-white/10 bg-slate-900/40 relative overflow-hidden group">
-                 <img
+                 <Image
                    src="/assets/trust-photo.jpg"
                    alt="A Kenyan car yard packed with stock"
-                   className="w-full h-full object-cover grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-1000"
+                   fill
+                   sizes="(max-width: 1024px) 100vw, 50vw"
+                   className="object-cover grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-1000"
                  />
                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent" />
                  <div className="absolute bottom-12 left-12 right-12">
@@ -493,12 +499,12 @@ export default function CentralLanding() {
                 <div className="flex-1 relative aspect-video md:aspect-[4/5] w-full max-w-lg">
                   <div className="group relative h-full w-full rounded-[2.5rem] md:rounded-[4rem] border border-white/10 bg-slate-900/40 backdrop-blur-xl flex items-center justify-center overflow-hidden">
                     {service.image ? (
-                      <motion.img
-                        whileHover={{ scale: 1.05 }}
-                        transition={{ duration: 0.6 }}
+                      <Image
                         src={service.image}
                         alt={service.title}
-                        className="absolute inset-0 w-full h-full object-cover p-4 rounded-[4.5rem]"
+                        fill
+                        sizes="(max-width: 768px) 100vw, 512px"
+                        className="object-cover p-4 rounded-[4.5rem] transition-transform duration-600 group-hover:scale-105"
                       />
                     ) : (
                       <service.icon
@@ -616,7 +622,13 @@ export default function CentralLanding() {
                     viewport={{ once: true }}
                     className="group relative aspect-[4/5] rounded-3xl overflow-hidden border border-white/10"
                   >
-                    <img src={item.img} alt={item.label} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110" />
+                    <Image
+                      src={item.img}
+                      alt={item.label}
+                      fill
+                      sizes="(max-width: 1024px) 50vw, 25vw"
+                      className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110"
+                    />
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
                       <span className="text-sm font-bold tracking-widest uppercase text-blue-400">{item.label}</span>
                     </div>
@@ -634,7 +646,13 @@ export default function CentralLanding() {
                   viewport={{ once: true }}
                   className="relative rounded-[4rem] border border-white/10 bg-slate-900/40 backdrop-blur-3xl overflow-hidden aspect-[16/10] shadow-[0_0_100px_rgba(59,130,246,0.1)] group"
                 >
-                  <img src="/assets/unified-command.png" alt="Full System View" className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-1000" />
+                  <Image
+                    src="/assets/unified-command.png"
+                    alt="Full System View"
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 60vw"
+                    className="object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-1000"
+                  />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent" />
                   <div className="absolute bottom-12 left-12 right-12 flex justify-between items-end">
                     <div className="space-y-2">
@@ -654,7 +672,13 @@ export default function CentralLanding() {
                   viewport={{ once: true }}
                   className="relative ml-12 lg:-ml-24 rounded-[3rem] border border-white/10 bg-slate-900/50 backdrop-blur-3xl overflow-hidden aspect-[16/9] shadow-2xl group"
                 >
-                  <img src="/assets/elite-yard.png" alt="Elite Yard Management" className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-100 transition-all duration-1000 group-hover:scale-105" />
+                  <Image
+                    src="/assets/elite-yard.png"
+                    alt="Elite Yard Management"
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 55vw"
+                    className="object-cover opacity-50 group-hover:opacity-100 transition-all duration-1000 group-hover:scale-105"
+                  />
                   <div className="absolute inset-0 bg-gradient-to-r from-slate-950 to-transparent" />
                   <div className="absolute inset-y-0 left-12 flex flex-col justify-center max-w-xs space-y-4">
                     <div className="size-12 rounded-2xl bg-blue-600 flex items-center justify-center">
@@ -715,7 +739,7 @@ export default function CentralLanding() {
             <span className="text-2xl font-black tracking-tighter">
               SHIFT<span className="text-blue-500 italic">OS</span>
             </span>
-            <p className="text-slate-500 text-sm font-light">The Industrial Automotive Ecosystem</p>
+            <p className="text-slate-400 text-sm font-light">The Industrial Automotive Ecosystem</p>
           </div>
           <div className="flex flex-col sm:flex-row gap-8 items-center">
             <a 

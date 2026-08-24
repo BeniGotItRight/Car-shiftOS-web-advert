@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { Cpu, ChevronRight } from "lucide-react";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { TypewriterHeading } from "@/components/TypewriterHeading";
@@ -11,10 +12,12 @@ export default function AboutPage() {
       <div className="max-w-5xl mx-auto">
         <ScrollReveal direction="fade">
           <div className="relative aspect-[21/9] rounded-[2.5rem] md:rounded-[3rem] border border-white/10 bg-slate-900/40 overflow-hidden group mb-12 md:mb-16">
-            <img
+            <Image
               src="/assets/about-team.webp"
               alt="Meet our team"
-              className="w-full h-full object-cover grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-1000"
+              fill
+              sizes="(max-width: 1024px) 100vw, 80vw"
+              className="object-cover grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-1000"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent" />
             <div className="absolute bottom-8 left-8 md:bottom-12 md:left-12">
