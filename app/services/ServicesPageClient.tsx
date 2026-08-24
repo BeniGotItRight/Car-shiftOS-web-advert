@@ -60,10 +60,10 @@ const MODULES = [
   {
     num: "06",
     icon: CreditCard,
-    title: "Secure Payment Integration",
-    tagline: "Get paid — however your customer prefers.",
+    title: "Payment Records & Receipts",
+    tagline: "Every deal closes with a paper trail.",
     description:
-      "ShiftOS handles payments securely so you don't have to chase them. Receipts are sent automatically, records are kept clean, and every transaction is accounted for without the paperwork.",
+      "Every buyer leaves with a receipt. Every shilling your yard receives is logged against the right vehicle, the right sale, the right date — without your finance officer touching a spreadsheet. When money moves, the system knows.",
   },
   {
     num: "07",
