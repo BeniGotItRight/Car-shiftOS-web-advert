@@ -26,10 +26,10 @@ export async function generateMetadata(): Promise<Metadata> {
   // But we can detect from headers in a real production env, or keep it generic
   return {
     title: {
-      default: "Car ShiftOS | Best Car Yard Management System Kenya",
+      default: "Car ShiftOS | Best Car Yard & Dealer Management System Kenya",
       template: "Car ShiftOS | %s"
     },
-    description: "ShiftOS is Kenya's leading dealership automation platform. Inventory, CRM, import tracking, workshop management, and payments — all in one place for car yards in Nairobi and across Kenya.",
+    description: "ShiftOS is Kenya's leading dealer management system. Inventory, CRM, import tracking, workshop management, and payments — all in one place for car yards and dealerships in Nairobi and across Kenya.",
     authors: [{ name: "ShiftOS Architecture Team" }],
     creator: "Car ShiftOS",
     publisher: "Car ShiftOS",
@@ -62,8 +62,8 @@ export async function generateMetadata(): Promise<Metadata> {
       },
     },
     openGraph: {
-      title: "Car ShiftOS | Best Car Yard Management System in Kenya",
-      description: "Inventory, CRM, import tracking, workshop management, and payments — the operating system for Kenyan car yards.",
+      title: "Car ShiftOS | Best Car Yard & Dealer Management System in Kenya",
+      description: "Inventory, CRM, import tracking, workshop management, and payments — the dealer management system for Kenyan car yards.",
       url: "https://carshiftos.co.ke",
       siteName: "Car ShiftOS Kenya",
       images: [
@@ -79,8 +79,8 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     twitter: {
       card: "summary_large_image",
-      title: "Car ShiftOS | Best Car Yard Management System in Kenya",
-      description: "The leading dealership automation platform for car yards in Kenya.",
+      title: "Car ShiftOS | Best Car Yard & Dealer Management System in Kenya",
+      description: "The leading dealer management system for car yards in Kenya.",
       images: ["/assets/shiftos-hero.png"],
     },
     alternates: {
@@ -112,7 +112,7 @@ export default function RootLayout({
                 "@context": "https://schema.org",
                 "@type": "SoftwareApplication",
                 "name": "ShiftOS",
-                "alternateName": "Car ShiftOS",
+                "alternateName": ["Car ShiftOS", "ShiftOS Dealer Management System"],
                 "operatingSystem": "Web-based",
                 "applicationCategory": "BusinessApplication",
                 "offers": {
@@ -121,7 +121,7 @@ export default function RootLayout({
                   "priceCurrency": "KES",
                   "availability": "https://schema.org/InStock"
                 },
-                "description": "ShiftOS is the best car yard management system in Kenya, providing elite automation for luxury vehicle dealerships. Features include real-time showroom sync, inventory lifecycle tracking, and trusted payment integration.",
+                "description": "ShiftOS is the best car yard and dealer management system in Kenya, built for independent vehicle dealerships. Features include real-time showroom sync, inventory lifecycle tracking, and trusted payment integration.",
                 "publisher": {
                   "@type": "Organization",
                   "name": "ShiftOS Technology Kenya",
@@ -136,6 +136,7 @@ export default function RootLayout({
                 "@context": "https://schema.org",
                 "@type": "Service",
                 "serviceType": "Car Yard Management System",
+                "description": "A dealer management system (DMS) built for Kenyan car yards — inventory, CRM, workshop, and payment tracking in one platform.",
                 "provider": {
                   "@type": "LocalBusiness",
                   "name": "ShiftOS Kenya",
