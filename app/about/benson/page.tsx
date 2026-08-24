@@ -3,6 +3,8 @@
 import { motion } from "framer-motion";
 import { Mail, Github, Linkedin, Cpu, Code2, Rocket, Globe, ArrowLeft, X } from "lucide-react";
 import Link from "next/link";
+import { TypewriterHeading } from "@/components/TypewriterHeading";
+import { ScrollReveal } from "@/components/ScrollReveal";
 
 export default function BensonProfile() {
   return (
@@ -24,11 +26,12 @@ export default function BensonProfile() {
             className="relative"
           >
             <div className="size-48 md:size-64 rounded-[3rem] border border-blue-500/20 bg-slate-900/50 backdrop-blur-xl overflow-hidden relative group">
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(59,130,246,0.18)_0%,transparent_60%)]" />
               <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
               <div className="absolute inset-0 flex items-center justify-center">
-                <Cpu className="size-24 text-blue-500/20 group-hover:text-blue-500/40 transition-colors duration-700" />
+                <Cpu className="size-24 text-blue-500/30 group-hover:text-blue-500/50 group-hover:scale-105 transition-all duration-700" />
               </div>
-              {/* Note: In a real scenario, Benson would place his photo here */}
+              {/* Placeholder mark until a real photo is provided */}
             </div>
             <div className="absolute -bottom-4 -right-4 size-12 rounded-2xl bg-blue-600 flex items-center justify-center border-4 border-slate-950 shadow-xl">
               <Code2 className="size-6 text-white" />
@@ -45,7 +48,13 @@ export default function BensonProfile() {
                 Architecture Lead
               </span>
               <h1 className="text-5xl md:text-7xl font-black tracking-tighter mb-2">
-                Benson <span className="text-blue-500">Motari</span>
+                <TypewriterHeading
+                  duration={2000}
+                  segments={[
+                    { text: "Benson " },
+                    { text: "Motari", accent: true },
+                  ]}
+                />
               </h1>
               <p className="text-xl text-slate-400 font-light max-w-lg italic">
                 "Building the industrial-grade future of automotive commerce in Kenya."
@@ -86,43 +95,37 @@ export default function BensonProfile() {
 
         {/* Content Modules */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <motion.div 
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.4 }}
-            className="p-8 rounded-[2.5rem] bg-slate-900/30 border border-white/5 space-y-6"
-          >
-            <div className="flex items-center gap-4">
-              <div className="size-10 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-500">
-                <Rocket className="size-5" />
+          <ScrollReveal direction="left">
+            <div className="h-full p-8 rounded-[2.5rem] bg-slate-900/30 border border-white/5 space-y-6">
+              <div className="flex items-center gap-4">
+                <div className="size-10 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-500">
+                  <Rocket className="size-5" />
+                </div>
+                <h2 className="text-2xl font-bold">The Mission</h2>
               </div>
-              <h2 className="text-2xl font-bold">The Mission</h2>
+              <p className="text-slate-400 font-light leading-relaxed">
+                As the Lead Developer at ShiftOS, I focus on building high-performance, multi-tenant architectures that solve real-world problems for Kenyan dealerships. My goal is to combine world-class user experience with high-fidelity security assurance backend stability.
+              </p>
             </div>
-            <p className="text-slate-400 font-light leading-relaxed">
-              As the Lead Developer at ShiftOS, I focus on building high-performance, multi-tenant architectures that solve real-world problems for Kenyan dealerships. My goal is to combine world-class user experience with high-fidelity security assurance backend stability.
-            </p>
-          </motion.div>
+          </ScrollReveal>
 
-          <motion.div 
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.5 }}
-            className="p-8 rounded-[2.5rem] bg-slate-900/30 border border-white/5 space-y-6"
-          >
-            <div className="flex items-center gap-4">
-              <div className="size-10 rounded-xl bg-purple-500/10 flex items-center justify-center text-purple-500">
-                <Globe className="size-5" />
+          <ScrollReveal direction="right">
+            <div className="h-full p-8 rounded-[2.5rem] bg-slate-900/30 border border-white/5 space-y-6">
+              <div className="flex items-center gap-4">
+                <div className="size-10 rounded-xl bg-purple-500/10 flex items-center justify-center text-purple-500">
+                  <Globe className="size-5" />
+                </div>
+                <h2 className="text-2xl font-bold">Core Focus</h2>
               </div>
-              <h2 className="text-2xl font-bold">Technical Stack</h2>
+              <div className="flex flex-wrap gap-2">
+                {["Multi-Tenant Architecture", "Data Security & Isolation", "Real-Time Systems", "Kenyan Market Localization", "Performance Engineering"].map((focus, i) => (
+                  <span key={i} className="px-3 py-1 bg-white/5 rounded-lg border border-white/10 text-xs text-slate-300 font-medium">
+                    {focus}
+                  </span>
+                ))}
+              </div>
             </div>
-            <div className="flex flex-wrap gap-2">
-              {["Next.js", "TypeScript", "TailwindCSS", "Node.js", "PostgreSQL", "Framer Motion"].map((tech, i) => (
-                <span key={i} className="px-3 py-1 bg-white/5 rounded-lg border border-white/10 text-xs text-slate-300 font-medium">
-                  {tech}
-                </span>
-              ))}
-            </div>
-          </motion.div>
+          </ScrollReveal>
         </div>
 
         {/* Footer Credit */}

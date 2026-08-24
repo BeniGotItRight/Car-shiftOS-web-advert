@@ -1,8 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
 import { Mail, Phone, Send, Globe } from "lucide-react";
+import { ScrollReveal } from "@/components/ScrollReveal";
+import { TypewriterHeading } from "@/components/TypewriterHeading";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -26,76 +27,71 @@ export default function ContactPage() {
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="max-w-3xl mb-12 md:mb-16">
           <h1 className="text-4xl sm:text-5xl md:text-7xl font-black mb-6 md:mb-8 tracking-tighter">
-            Deploy the <span className="text-blue-500">Best Car Yard System</span> in Kenya.
+            <TypewriterHeading
+              segments={[
+                { text: "Deploy the " },
+                { text: "Best Car Yard System", accent: true },
+                { text: " in Kenya." },
+              ]}
+            />
           </h1>
           <p className="text-lg sm:text-xl text-slate-400 font-light leading-relaxed">
-            Ready to dominate the Kenyan automotive market? Contact the ShiftOS team today to scale your dealership with high-fidelity security assurance.
+            Talk to the ShiftOS team — book a demo, ask a question, or see what it looks like on your own inventory.
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           {/* Contact Info Cards */}
           <div className="space-y-6">
-            <motion.div 
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              className="p-6 sm:p-8 rounded-3xl bg-slate-900/40 border border-white/5 backdrop-blur-xl flex flex-col sm:flex-row items-start gap-6 group hover:border-blue-500/20 transition-all"
-            >
-              <div className="size-12 sm:size-14 rounded-2xl bg-blue-600/10 border border-blue-500/20 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
-                <Mail className="size-6 text-blue-500" />
+            <ScrollReveal direction="left">
+              <div className="p-6 sm:p-8 rounded-3xl bg-slate-900/40 border border-white/5 backdrop-blur-xl flex flex-col sm:flex-row items-start gap-6 group hover:border-blue-500/20 transition-all">
+                <div className="size-12 sm:size-14 rounded-2xl bg-blue-600/10 border border-blue-500/20 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                  <Mail className="size-6 text-blue-500" />
+                </div>
+                <div>
+                  <h2 className="text-xl font-bold mb-1">Direct Communication</h2>
+                  <p className="text-slate-500 font-light mb-4 text-sm uppercase tracking-widest">Email Enquiries</p>
+                  <a href="mailto:carshiftos@gmail.com" className="text-xl font-medium text-white hover:text-blue-400 transition-colors">
+                    carshiftos@gmail.com
+                  </a>
+                </div>
               </div>
-              <div>
-                <h2 className="text-xl font-bold mb-1">Direct Communication</h2>
-                <p className="text-slate-500 font-light mb-4 text-sm uppercase tracking-widest">Email Enquiries</p>
-                <a href="mailto:carshiftos@gmail.com" className="text-xl font-medium text-white hover:text-blue-400 transition-colors">
-                  carshiftos@gmail.com
-                </a>
-              </div>
-            </motion.div>
+            </ScrollReveal>
 
-            <motion.div 
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.1 }}
-              className="p-6 sm:p-8 rounded-3xl bg-slate-900/40 border border-white/5 backdrop-blur-xl flex flex-col sm:flex-row items-start gap-6 group hover:border-blue-500/20 transition-all"
-            >
-              <div className="size-12 sm:size-14 rounded-2xl bg-emerald-600/10 border border-emerald-500/20 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
-                <Globe className="size-6 text-emerald-500" />
+            <ScrollReveal direction="left" delay={100}>
+              <div className="p-6 sm:p-8 rounded-3xl bg-slate-900/40 border border-white/5 backdrop-blur-xl flex flex-col sm:flex-row items-start gap-6 group hover:border-blue-500/20 transition-all">
+                <div className="size-12 sm:size-14 rounded-2xl bg-emerald-600/10 border border-emerald-500/20 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                  <Globe className="size-6 text-emerald-500" />
+                </div>
+                <div>
+                  <h2 className="text-xl font-bold mb-1">Our Location</h2>
+                  <p className="text-slate-500 font-light mb-4 text-sm uppercase tracking-widest">Headquarters</p>
+                  <p className="text-xl font-medium text-white">
+                    Based in Nairobi
+                  </p>
+                </div>
               </div>
-              <div>
-                <h2 className="text-xl font-bold mb-1">Global Presence</h2>
-                <p className="text-slate-500 font-light mb-4 text-sm uppercase tracking-widest">Based in Nairobi</p>
-                <p className="text-xl font-medium text-white">
-                  Industrial Area, Enterprise Road
-                </p>
-              </div>
-            </motion.div>
+            </ScrollReveal>
 
-            <motion.div 
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.2 }}
-              className="p-6 sm:p-8 rounded-3xl bg-slate-900/40 border border-white/5 backdrop-blur-xl flex flex-col sm:flex-row items-start gap-6 group hover:border-blue-500/20 transition-all"
-            >
-              <div className="size-12 sm:size-14 rounded-2xl bg-purple-600/10 border border-purple-500/20 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
-                <Phone className="size-6 text-purple-500" />
+            <ScrollReveal direction="left" delay={200}>
+              <div className="p-6 sm:p-8 rounded-3xl bg-slate-900/40 border border-white/5 backdrop-blur-xl flex flex-col sm:flex-row items-start gap-6 group hover:border-blue-500/20 transition-all">
+                <div className="size-12 sm:size-14 rounded-2xl bg-purple-600/10 border border-purple-500/20 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                  <Phone className="size-6 text-purple-500" />
+                </div>
+                <div>
+                  <h2 className="text-xl font-bold mb-1">Phone Line</h2>
+                  <p className="text-slate-500 font-light mb-4 text-sm uppercase tracking-widest">Call or WhatsApp</p>
+                  <p className="text-xl font-medium text-white">
+                    0732009268
+                  </p>
+                </div>
               </div>
-              <div>
-                <h2 className="text-xl font-bold mb-1">Phone Line</h2>
-                <p className="text-slate-500 font-light mb-4 text-sm uppercase tracking-widest">Support Hours: 24/7</p>
-                <p className="text-xl font-medium text-white">
-                  0732009268
-                </p>
-              </div>
-            </motion.div>
+            </ScrollReveal>
           </div>
 
           {/* Contact Form */}
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            className="p-6 sm:p-10 rounded-[2rem] sm:rounded-[3rem] bg-slate-900/20 border border-white/5 backdrop-blur-3xl relative overflow-hidden"
-          >
+          <ScrollReveal direction="right">
+            <div className="p-6 sm:p-10 rounded-[2rem] sm:rounded-[3rem] bg-slate-900/20 border border-white/5 backdrop-blur-3xl relative overflow-hidden">
             <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 blur-3xl rounded-full" />
             
             <form className="space-y-6 relative z-10" onSubmit={handleSubmit}>
@@ -164,7 +160,8 @@ export default function ContactPage() {
                 Note: All platform deployments require signed legal agreements and physical documentation for compliance.
               </p>
             </form>
-          </motion.div>
+            </div>
+          </ScrollReveal>
         </div>
       </div>
     </div>

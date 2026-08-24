@@ -3,6 +3,7 @@ const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
 const apiHost = apiUrl.replace(/^https?:\/\//, "").split("/")[0];
 
 const nextConfig = {
+  poweredByHeader: false,
   images: {
     remotePatterns: [
       { protocol: "https", hostname: "images.unsplash.com", pathname: "/**" },

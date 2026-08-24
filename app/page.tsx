@@ -1,21 +1,58 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   Shield,
-  Zap,
+  RefreshCw,
   BarChart3,
   Globe,
   Monitor,
   ChevronRight,
+  ChevronLeft,
   ArrowRight,
   Layers,
   Database,
-  Cpu,
   Layout,
+  Rocket,
+  Link2,
+  TrendingUp,
+  CheckCircle2,
+  Bell,
+  Wrench,
 } from "lucide-react";
+import { TypewriterRotator } from "@/components/TypewriterRotator";
+import { ScrollReveal } from "@/components/ScrollReveal";
+import { TypewriterHeading } from "@/components/TypewriterHeading";
+import { ActivityFeed } from "@/components/ActivityFeed";
+
+const CONTROL_FEED_ROWS = [
+  { icon: CheckCircle2, text: "VIN-2024-0847 — cost audit complete", tag: "Audited" },
+  { icon: TrendingUp, text: "Sales velocity up 18% this week", tag: "Trending" },
+  { icon: Bell, text: "New lead: Toyota Harrier 2024", tag: "New" },
+  { icon: CheckCircle2, text: "Deal closed — KES 4.2M", tag: "Closed" },
+  { icon: Wrench, text: "Job card #112 assigned to workshop", tag: "Assigned" },
+];
+
+const HERO_SLIDES = [
+  { src: "/assets/hero-dealership-lot.jpg", caption: "Premium Digital Showrooms", kb: "kenburns-1" },
+  { src: "/assets/hero-new-1.png", caption: "Live Yard Inventory", kb: "kenburns-2" },
+  { src: "/assets/console-tech.png", caption: "Industrial Command Portal", kb: "kenburns-3" },
+  { src: "/assets/hero-nairobi.jpg", caption: "Built for Kenya", kb: "kenburns-4" },
+];
+
+const FEATURE_TILES = [
+  { icon: RefreshCw, title: "Showroom Sync", desc: "Live reflection of your actual yard inventory." },
+  { icon: Layout, title: "High-Fidelity UI", desc: "Premium side-by-side vehicle comparison engine." },
+  { icon: Shield, title: "Data Sovereignty", desc: "Industrial-grade architecture for total privacy." },
+  { icon: BarChart3, title: "Financial Pulse", desc: "Trusted payment integration and real-time ledgers." },
+  { icon: Monitor, title: "Command Portal", desc: "Mission control for your entire operation." },
+  { icon: Globe, title: "SEO Mastery", desc: "Engineered for search engine dominance." },
+  { icon: Layers, title: "Legal Automation", desc: "Instant generation of professional documents." },
+  { icon: Database, title: "Lifecycle Tracking", desc: "End-to-end tracking from import to sale." },
+];
 
 export default function CentralLanding() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -26,6 +63,37 @@ export default function CentralLanding() {
 
   const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
   const scale = useTransform(scrollYProgress, [0, 0.2], [1, 0.95]);
+
+  const [slide, setSlide] = useState(0);
+  const [sliderPaused, setSliderPaused] = useState(false);
+
+  useEffect(() => {
+    if (sliderPaused) return;
+    const t = setInterval(() => {
+      setSlide((s) => (s + 1) % HERO_SLIDES.length);
+    }, 3000);
+    return () => clearInterval(t);
+  }, [sliderPaused]);
+
+  const trackRef = useRef<HTMLDivElement>(null);
+  const [trackPaused, setTrackPaused] = useState(false);
+
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return;
+    if (window.matchMedia("(pointer: coarse)").matches) return; // no auto-scroll on touch
+
+    let raf = 0;
+    const step = () => {
+      if (!trackPaused) {
+        const atEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - 1;
+        track.scrollLeft = atEnd ? 0 : track.scrollLeft + 0.6;
+      }
+      raf = requestAnimationFrame(step);
+    };
+    raf = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(raf);
+  }, [trackPaused]);
 
   return (
     <div
@@ -40,7 +108,11 @@ export default function CentralLanding() {
       </div>
 
       {/* Hero Section */}
-      <section className="relative h-screen flex flex-col items-center justify-center px-6 text-center z-10">
+      <section
+        className="relative h-screen flex flex-col items-center justify-center px-6 text-center z-10"
+        onMouseEnter={() => setSliderPaused(true)}
+        onMouseLeave={() => setSliderPaused(false)}
+      >
         <motion.div
           style={{ opacity, scale }}
           initial={{ opacity: 0, y: 20 }}
@@ -59,10 +131,15 @@ export default function CentralLanding() {
           </div>
 
           <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-9xl font-black tracking-tighter mb-8 bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white/40 leading-[0.9] px-2 sm:px-0">
-            THE BEST CAR YARD <span className="text-blue-500 italic">SYSTEM</span> IN KENYA
+            THE BEST CAR YARD{" "}
+            <TypewriterRotator
+              words={["SYSTEM", "PLATFORM", "ECOSYSTEM", "ENGINE"]}
+              className="text-blue-500 italic"
+            />{" "}
+            IN KENYA
           </h1>
           <p className="max-w-2xl mx-auto text-lg sm:text-xl md:text-3xl text-slate-400 font-light mb-12 tracking-tight leading-relaxed px-4">
-            ShiftOS is the <span className="text-white font-medium">elite dealership automation platform</span> for luxury vehicle yards in Nairobi and across East Africa.
+            ShiftOS is the <span className="text-white font-medium">leading dealership automation platform</span> for car yards in Nairobi and across East Africa.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -74,7 +151,7 @@ export default function CentralLanding() {
               Get Started{" "}
               <ArrowRight className="size-5 group-hover:translate-x-1 transition-transform" />
             </Link>
-            <Link 
+            <Link
               href="/contact"
               className="px-10 py-5 border border-white/10 bg-white/5 backdrop-blur-md rounded-2xl font-bold text-lg hover:bg-white/10 transition-all active:scale-95 flex items-center justify-center"
             >
@@ -83,23 +160,55 @@ export default function CentralLanding() {
           </div>
         </motion.div>
 
-        {/* Ambient Graphics & Hero Image */}
-        <div className="absolute inset-0 z-[-1] opacity-60">
-          <motion.img
-            initial={{ scale: 1.1, opacity: 0 }}
-            animate={{ scale: 1, opacity: 0.6 }}
-            transition={{ duration: 2, ease: "easeOut" }}
-            src="/assets/shiftos-hero.png"
-            alt="ShiftOS - The Best Car Yard Management System in Kenya Hero Image"
-            className="w-full h-full object-cover"
+        {/* Hero Slider — Ken Burns crossfade */}
+        <div className="absolute inset-0 z-[-1] overflow-hidden">
+          {HERO_SLIDES.map((s, i) => (
+            <div
+              key={s.src}
+              className="absolute inset-0 transition-opacity ease-in-out"
+              style={{
+                opacity: i === slide ? 0.6 : 0,
+                transitionDuration: "800ms",
+              }}
+            >
+              <Image
+                src={s.src}
+                alt={s.caption}
+                fill
+                priority={i === 0}
+                sizes="100vw"
+                className={`object-cover ${i === slide ? `animate-${s.kb}` : ""}`}
+              />
+            </div>
+          ))}
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(to bottom, rgba(0,0,5,0.55) 0%, rgba(0,0,20,0.7) 100%)",
+            }}
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-slate-950/40 via-transparent to-slate-950/80" />
         </div>
+
+        {/* Slide dot indicators */}
+        <div className="absolute bottom-28 left-1/2 -translate-x-1/2 flex items-center gap-2 z-10">
+          {HERO_SLIDES.map((s, i) => (
+            <button
+              key={s.src}
+              onClick={() => setSlide(i)}
+              aria-label={`Show ${s.caption} slide`}
+              className={`h-2 rounded-full transition-all duration-300 ${
+                i === slide ? "w-6 bg-blue-500" : "w-2 bg-white/30 hover:bg-white/50"
+              }`}
+            />
+          ))}
+        </div>
+
         <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 opacity-40">
-          <motion.div 
+          <motion.div
             animate={{ y: [0, 10, 0] }}
             transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-            className="h-12 w-px bg-gradient-to-b from-blue-500 to-transparent" 
+            className="h-12 w-px bg-gradient-to-b from-blue-500 to-transparent"
           />
           <span className="text-[10px] font-black uppercase tracking-[0.5em] text-slate-500">
             Explore Architecture
@@ -111,48 +220,79 @@ export default function CentralLanding() {
       <section className="relative py-32 px-6 z-10 bg-slate-950 overflow-hidden">
         <div className="max-w-7xl mx-auto">
           <div className="relative rounded-[2.5rem] md:rounded-[4rem] border border-white/10 bg-slate-900/40 backdrop-blur-3xl overflow-hidden shadow-[0_0_100px_rgba(59,130,246,0.1)]">
-            <div className="grid grid-cols-1 lg:grid-cols-2 items-center">
-              <div className="p-8 sm:p-12 lg:p-16 space-y-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-10 lg:gap-0">
+              <div className="p-8 sm:p-12 lg:p-16">
                 <h2 className="text-4xl md:text-6xl font-black tracking-tight leading-none">
                   Total Control, <br />
                   <span className="text-blue-500">Zero Friction.</span>
                 </h2>
-                <p className="text-xl text-slate-400 font-light leading-relaxed">
-                  The Command Portal is your window into every facet of the
-                  dealership. From real-time sales velocity to VIN-level cost
-                  audits, experience the power of industrial-grade management.
-                </p>
-                <div className="flex flex-wrap gap-6">
-                  <div className="flex flex-col">
-                    <span className="text-2xl md:text-3xl font-black text-white">
-                      100ms
-                    </span>
-                    <span className="text-[10px] uppercase tracking-widest text-slate-500 font-bold">
-                      Data Latency
-                    </span>
-                  </div>
-                  <div className="w-px h-12 bg-white/10 hidden sm:block" />
-                  <div className="flex flex-col">
-                    <span className="text-2xl md:text-3xl font-black text-white">
-                      256-bit
-                    </span>
-                    <span className="text-[10px] uppercase tracking-widest text-slate-500 font-bold">
-                      AES Isolation
-                    </span>
-                  </div>
-                </div>
               </div>
-              <div className="relative h-full min-h-[500px] border-l border-white/10 overflow-hidden group">
-                <motion.img
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ duration: 1.5, ease: "easeOut" }}
-                  src="/assets/dealership-modern.png"
-                  alt="ShiftOS Modern Showroom"
-                  className="absolute inset-0 w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-blue-500/10 mix-blend-overlay group-hover:opacity-0 transition-opacity duration-700" />
+              <div className="p-8 sm:p-12 lg:pr-16">
+                <ActivityFeed rows={CONTROL_FEED_ROWS} />
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* How It Works */}
+      <section className="relative py-32 px-6 z-10 bg-[#0a0f1e] border-t border-white/5">
+        <div className="max-w-7xl mx-auto">
+          <ScrollReveal direction="fade">
+            <div className="max-w-2xl mb-24">
+              <h2 className="text-4xl md:text-6xl font-black tracking-tight leading-none mb-6">
+                <TypewriterHeading
+                  segments={[
+                    { text: "From Sign-Up to " },
+                    { break: true },
+                    { text: "Full Operation.", accent: true },
+                  ]}
+                />
+              </h2>
+              <p className="text-xl text-slate-400 font-light">
+                Three steps. No fluff. No long onboarding. Just your car yard, automated.
+              </p>
+            </div>
+          </ScrollReveal>
+
+          <div className="relative grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6">
+            <div className="hidden md:block absolute top-[52px] left-[16.5%] right-[16.5%] h-px bg-gradient-to-r from-blue-500/0 via-blue-500/40 to-blue-500/0" />
+
+            {[
+              {
+                num: "01",
+                icon: Rocket,
+                title: "Deploy Your Portal",
+                desc: "We spin up your private portal in under 24 hours. Custom subdomain, brand colours, and your inventory structure — configured to your yard.",
+              },
+              {
+                num: "02",
+                icon: Link2,
+                title: "Connect Your Inventory",
+                desc: "Upload your stock manually or sync from your existing records. Every vehicle gets a full profile — specs, photos, pricing, duty status, and a trusted payment flow.",
+              },
+              {
+                num: "03",
+                icon: TrendingUp,
+                title: "Go Live & Scale",
+                desc: "Your public showroom goes live instantly. Customers compare, enquire, and transact. You track every lead and close every deal from the Command Portal.",
+              },
+            ].map((step, i) => (
+              <ScrollReveal key={step.num} direction="up" delay={i * 150}>
+                <div className="relative p-8 rounded-3xl bg-[#0a0f1e] border border-blue-900/60 h-full">
+                  <span className="text-xs font-black uppercase tracking-[0.3em] text-blue-500 block mb-6">
+                    {step.num}
+                  </span>
+                  <div className="size-14 rounded-2xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center mb-6">
+                    <step.icon className="size-7 text-blue-500" />
+                  </div>
+                  <h3 className="text-xl font-bold mb-3">{step.title}</h3>
+                  <p className="text-sm text-slate-400 font-light leading-relaxed">
+                    {step.desc}
+                  </p>
+                </div>
+              </ScrollReveal>
+            ))}
           </div>
         </div>
       </section>
@@ -170,10 +310,17 @@ export default function CentralLanding() {
               >
                 <span className="text-blue-500 font-bold uppercase tracking-widest text-sm mb-4 block">Our Origin & Vision</span>
                 <h2 className="text-5xl md:text-7xl font-black tracking-tighter leading-[0.9] mb-8">
-                  Engineering <br/><span className="text-blue-500">Trust</span>.
+                  <TypewriterHeading
+                    segments={[
+                      { text: "Engineering " },
+                      { break: true },
+                      { text: "Trust", accent: true },
+                      { text: "." },
+                    ]}
+                  />
                 </h2>
                 <p className="text-xl text-slate-400 font-light leading-relaxed mb-6">
-                  ShiftOS isn't just software; it's the digital backbone of Kenya's premier automotive dealerships. Born from the need for absolute data sovereignty and operational excellence, we've built an ecosystem that empowers car yards to scale with high-fidelity security architecture.
+                  ShiftOS isn't just software; it's the digital backbone of Kenya's premier automotive dealerships — and the first system of its kind built for the Kenyan car yard. Born from the need for absolute data sovereignty and operational excellence, we've built an ecosystem that empowers car yards to scale with high-fidelity security architecture.
                 </p>
                 <p className="text-lg text-slate-500 font-light leading-relaxed mb-12">
                   We believe that every dealership deserves the same technical power as global automotive giants. Our mission is to bridge the gap between traditional car yard operations and the future of digital commerce in Nairobi and across East Africa.
@@ -183,9 +330,9 @@ export default function CentralLanding() {
             
             <div className="relative">
               <div className="aspect-video lg:aspect-square rounded-[2.5rem] md:rounded-[4rem] border border-white/10 bg-slate-900/40 relative overflow-hidden group">
-                 <img 
-                   src="/assets/shiftos-hero.png" 
-                   alt="ShiftOS Architecture" 
+                 <img
+                   src="/assets/trust-photo.jpg"
+                   alt="A Kenyan car yard packed with stock"
                    className="w-full h-full object-cover grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-1000"
                  />
                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent" />
@@ -211,7 +358,12 @@ export default function CentralLanding() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-24">
             <h2 className="text-4xl md:text-6xl font-black mb-6 tracking-tight leading-none">
-              Elite <span className="text-blue-500">Operational Power</span>
+              <TypewriterHeading
+                segments={[
+                  { text: "Elite " },
+                  { text: "Operational Power", accent: true },
+                ]}
+              />
             </h2>
             <p className="max-w-3xl mx-auto text-slate-400 font-light text-xl">
               Engineered specifically for the Kenyan luxury car market. We turn manual car yards into high-performance digital nodes.
@@ -246,6 +398,7 @@ export default function CentralLanding() {
                   "Help your clients decide faster. Let them compare up to 3 cars side-by-side with full technical specs and high-resolution galleries, making the buying decision easier and more professional than ever.",
                 icon: Layout,
                 color: "purple",
+                image: "/assets/compare-dashboard.png"
               },
               {
                 title: "Industrial Command Portal",
@@ -259,19 +412,21 @@ export default function CentralLanding() {
                   "Total control at your fingertips. Manage your entire inventory, track every lead from query to keys, and handle every deal from one central, industrial-grade dashboard built for speed.",
                 icon: Monitor,
                 color: "emerald",
+                image: "/assets/interior-digital.png"
               },
               {
-                title: "Financial Pulse & Legal",
+                title: "Every deal. Every shilling. Every document. Automated.",
                 services: [
-                  "M-Pesa STK Push Sync",
+                  "Trusted Payment Sync",
                   "Automated Sale Contracts",
                   "Commission Ledger Tracking",
                   "Digital Invoice Vault",
                 ],
                 description:
-                  "Track every shilling. From instant M-Pesa payments to automated legal agreements and sales commissions, keep your finger on the pulse of your dealership's finances with zero manual paperwork.",
+                  "Financial Pulse & Legal — payments, contracts, and commissions handled the moment a deal closes, with zero manual paperwork.",
                 icon: BarChart3,
                 color: "blue",
+                image: "/assets/contract-signing.png"
               },
             ].map((service, i) => (
               <motion.div
@@ -334,35 +489,21 @@ export default function CentralLanding() {
                     ))}
                   </motion.ul>
                 </div>
-                <div className="flex-1 relative aspect-video md:aspect-[4/5] w-full max-w-lg group">
-                  <div
-                    className={`absolute inset-0 bg-${service.color}-500/10 blur-[120px] rounded-full animate-pulse group-hover:bg-${service.color}-500/20 transition-colors`}
-                  />
-                  <div className="relative h-full w-full rounded-[2.5rem] md:rounded-[4rem] border border-white/10 bg-slate-900/40 backdrop-blur-xl flex items-center justify-center overflow-hidden">
+                <div className="flex-1 relative aspect-video md:aspect-[4/5] w-full max-w-lg">
+                  <div className="group relative h-full w-full rounded-[2.5rem] md:rounded-[4rem] border border-white/10 bg-slate-900/40 backdrop-blur-xl flex items-center justify-center overflow-hidden">
                     {service.image ? (
-                      <motion.img 
-                        whileHover={{ scale: 1.1 }}
-                        transition={{ duration: 1.5 }}
+                      <motion.img
+                        whileHover={{ scale: 1.05 }}
+                        transition={{ duration: 0.6 }}
                         src={service.image}
                         alt={service.title}
                         className="absolute inset-0 w-full h-full object-cover p-4 rounded-[4.5rem]"
                       />
                     ) : (
-                      <>
-                        <div
-                          className={`absolute inset-0 bg-gradient-to-br from-${service.color}-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity`}
-                        />
-                        <service.icon
-                          className={`size-48 text-${service.color}-500/20 relative z-10 group-hover:scale-110 group-hover:text-${service.color}-500 transition-all duration-700`}
-                        />
-                      </>
+                      <service.icon
+                        className={`size-48 text-${service.color}-500/20 relative z-10 group-hover:text-${service.color}-500 transition-colors duration-500`}
+                      />
                     )}
-
-                    {/* Decorative elements */}
-                    <div className="absolute top-10 left-10 size-3 rounded-full bg-white/10 animate-ping" />
-                    <div className="absolute top-10 right-10 size-3 rounded-full bg-white/10" />
-                    <div className="absolute bottom-10 left-10 size-3 rounded-full bg-white/10" />
-                    <div className="absolute bottom-10 right-10 size-3 rounded-full bg-white/10" />
                   </div>
                 </div>
               </motion.div>
@@ -371,82 +512,66 @@ export default function CentralLanding() {
         </div>
       </section>
 
-      {/* Feature Grid */}
-      <section className="relative py-32 px-6 z-10 bg-slate-900/20">
-        <div className="max-w-7xl mx-auto">
+      {/* Horizontal Feature Showcase */}
+      <section className="relative py-32 z-10 bg-slate-900/20">
+        <div className="max-w-7xl mx-auto px-6">
           <div className="flex flex-col md:flex-row items-end justify-between gap-8 mb-16">
             <div className="max-w-2xl">
               <h2 className="text-5xl md:text-6xl font-black tracking-tight mb-6">
-                Built for the{" "}
-                <span className="text-blue-500">Modern Dealer.</span>
+                <TypewriterHeading
+                  segments={[
+                    { text: "Built for the " },
+                    { text: "Modern Dealer.", accent: true },
+                  ]}
+                />
               </h2>
               <p className="text-xl text-slate-400 font-light">
                 Comprehensive modules engineered for every aspect of your
                 operation.
               </p>
             </div>
-            <Link
-              href="#"
-              className="flex items-center gap-2 group text-sm font-bold uppercase tracking-widest text-blue-500"
-            >
-              View All Features{" "}
-              <ChevronRight className="size-4 group-hover:translate-x-1 transition-transform" />
-            </Link>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              {
-                icon: Zap,
-                title: "Showroom Sync",
-                desc: "Live reflection of your actual yard inventory.",
-              },
-              {
-                icon: Layout,
-                title: "High-Fidelity UI",
-                desc: "Premium side-by-side vehicle comparison engine.",
-              },
-              {
-                icon: Shield,
-                title: "Data Sovereignty",
-                desc: "Industrial-grade architecture for total privacy.",
-              },
-              {
-                icon: BarChart3,
-                title: "Financial Pulse",
-                desc: "M-Pesa integration and real-time ledgers.",
-              },
-              {
-                icon: Monitor,
-                title: "Command Portal",
-                desc: "Mission control for your entire operation.",
-              },
-              {
-                icon: Globe,
-                title: "SEO Mastery",
-                desc: "Engineered for search engine dominance.",
-              },
-              {
-                icon: Layers,
-                title: "Legal Automation",
-                desc: "Instant generation of professional documents.",
-              },
-              {
-                icon: Database,
-                title: "Lifecycle Tracking",
-                desc: "End-to-end tracking from import to sale.",
-              },
-            ].map((f, i) => (
-              <div
-                key={i}
-                className="p-8 rounded-3xl bg-slate-900/30 border border-white/5 hover:bg-slate-900/50 transition-all"
+            <div className="hidden md:flex items-center gap-3">
+              <button
+                onClick={() =>
+                  trackRef.current?.scrollBy({ left: -316, behavior: "smooth" })
+                }
+                aria-label="Scroll features left"
+                className="size-11 rounded-full border border-white/10 flex items-center justify-center text-slate-400 hover:text-white hover:border-blue-500/40 transition-all"
               >
-                <f.icon className="size-10 text-slate-500 mb-6" />
-                <h3 className="text-lg font-bold mb-2">{f.title}</h3>
-                <p className="text-sm text-slate-500 font-light">{f.desc}</p>
-              </div>
-            ))}
+                <ChevronLeft className="size-5" />
+              </button>
+              <button
+                onClick={() =>
+                  trackRef.current?.scrollBy({ left: 316, behavior: "smooth" })
+                }
+                aria-label="Scroll features right"
+                className="size-11 rounded-full border border-white/10 flex items-center justify-center text-slate-400 hover:text-white hover:border-blue-500/40 transition-all"
+              >
+                <ChevronRight className="size-5" />
+              </button>
+            </div>
           </div>
+        </div>
+
+        <div
+          ref={trackRef}
+          onMouseEnter={() => setTrackPaused(true)}
+          onMouseLeave={() => setTrackPaused(false)}
+          onTouchStart={() => setTrackPaused(true)}
+          className="flex gap-6 overflow-x-auto px-6 pb-4 [scrollbar-width:thin] [scrollbar-color:rgba(59,130,246,0.4)_transparent]"
+        >
+          {FEATURE_TILES.map((f, i) => (
+            <ScrollReveal key={i} direction="up" delay={(i % 4) * 100} className="shrink-0">
+              <div className="group w-[280px] sm:w-[300px] p-8 rounded-3xl bg-slate-900/30 border border-white/5 hover:bg-slate-900/50 hover:border-blue-500/20 transition-all">
+                <f.icon className="size-10 text-slate-500 mb-6 group-hover:text-blue-500 transition-colors" />
+                <h3 className="text-lg font-bold mb-2">{f.title}</h3>
+                <p className="text-sm text-slate-500 font-light mb-4">{f.desc}</p>
+                <span className="text-blue-500 opacity-0 group-hover:opacity-100 transition-opacity">
+                  →
+                </span>
+              </div>
+            </ScrollReveal>
+          ))}
         </div>
       </section>
 
@@ -463,8 +588,14 @@ export default function CentralLanding() {
                 className="space-y-6"
               >
                 <h2 className="text-5xl md:text-7xl font-black tracking-tight leading-[0.9] text-white">
-                  The Luxury <br />
-                  <span className="text-blue-500 italic">Digital Cockpit.</span>
+                  <TypewriterHeading
+                    accentClassName="text-blue-500 italic"
+                    segments={[
+                      { text: "The Luxury " },
+                      { break: true },
+                      { text: "Digital Cockpit.", accent: true },
+                    ]}
+                  />
                 </h2>
                 <p className="text-2xl text-slate-400 font-light leading-relaxed">
                   We provide the elite system and the high-performance website your car yard deserves. ShiftOS fusion handles your entire operation from the internal cockpit to the public showroom.
@@ -473,8 +604,8 @@ export default function CentralLanding() {
 
               <div className="grid grid-cols-2 gap-6">
                 {[
-                  { label: "Precision Inventory", img: "/assets/console-tech.png" },
-                  { label: "Premium Experience", img: "/assets/seat-ambient.png" }
+                  { label: "Precision Inventory", img: "/assets/precision-inventory.png" },
+                  { label: "Premium Experience", img: "/assets/premium-experience.png" }
                 ].map((item, i) => (
                   <motion.div
                     key={i}
@@ -502,7 +633,7 @@ export default function CentralLanding() {
                   viewport={{ once: true }}
                   className="relative rounded-[4rem] border border-white/10 bg-slate-900/40 backdrop-blur-3xl overflow-hidden aspect-[16/10] shadow-[0_0_100px_rgba(59,130,246,0.1)] group"
                 >
-                  <img src="/assets/interior-digital.png" alt="Full System View" className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-1000" />
+                  <img src="/assets/unified-command.png" alt="Full System View" className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-1000" />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent" />
                   <div className="absolute bottom-12 left-12 right-12 flex justify-between items-end">
                     <div className="space-y-2">
@@ -522,7 +653,7 @@ export default function CentralLanding() {
                   viewport={{ once: true }}
                   className="relative ml-12 lg:-ml-24 rounded-[3rem] border border-white/10 bg-slate-900/50 backdrop-blur-3xl overflow-hidden aspect-[16/9] shadow-2xl group"
                 >
-                  <img src="/assets/steering-detail.png" alt="Operational Detail" className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-100 transition-all duration-1000 group-hover:scale-105" />
+                  <img src="/assets/elite-yard.png" alt="Elite Yard Management" className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-100 transition-all duration-1000 group-hover:scale-105" />
                   <div className="absolute inset-0 bg-gradient-to-r from-slate-950 to-transparent" />
                   <div className="absolute inset-y-0 left-12 flex flex-col justify-center max-w-xs space-y-4">
                     <div className="size-12 rounded-2xl bg-blue-600 flex items-center justify-center">
@@ -548,8 +679,13 @@ export default function CentralLanding() {
           className="max-w-3xl mx-auto"
         >
           <h2 className="text-5xl md:text-7xl font-black mb-8 leading-tight">
-            Ready to shift your operation into{" "}
-            <span className="italic text-blue-500">high gear?</span>
+            <TypewriterHeading
+              accentClassName="text-blue-500 italic"
+              segments={[
+                { text: "Ready to shift your operation into " },
+                { text: "high gear?", accent: true },
+              ]}
+            />
           </h2>
           <p className="text-xl text-slate-400 mb-12 font-light">
             Join the elite dealerships scaling with ShiftOS technology.

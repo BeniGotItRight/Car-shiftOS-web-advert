@@ -159,7 +159,7 @@ export function WebHeader() {
                 animate={{ x: 0 }}
                 exit={{ x: "100%" }}
                 transition={{ type: "spring", damping: 28, stiffness: 200 }}
-                className="fixed top-0 right-0 z-50 w-[85%] max-w-sm h-full bg-slate-900/90 backdrop-blur-2xl flex flex-col p-8 pt-32 shadow-[-20px_0_50px_rgba(0,0,0,0.5)] border-l border-white/10"
+                className="fixed top-0 right-0 z-50 w-[85%] max-w-sm h-screen bg-slate-900 flex flex-col p-8 pt-32 shadow-[-20px_0_50px_rgba(0,0,0,0.5)] border-l border-white/10 overflow-y-auto"
               >
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_100%_0%,_rgba(59,130,246,0.1)_0%,_transparent_50%)]" />
                 

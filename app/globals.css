@@ -50,3 +50,42 @@
 .hero-text {
   @apply font-bold tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white to-slate-400;
 }
+
+/* Hero slider — Ken Burns pan/zoom, one direction per slide */
+@keyframes kenburns-1 {
+  0% { transform: scale(1) translate(0, 0); }
+  100% { transform: scale(1.08) translate(-2%, -2%); }
+}
+@keyframes kenburns-2 {
+  0% { transform: scale(1) translate(0, 0); }
+  100% { transform: scale(1.08) translate(2%, 2%); }
+}
+@keyframes kenburns-3 {
+  0% { transform: scale(1) translate(0, 0); }
+  100% { transform: scale(1.08) translate(2%, -2%); }
+}
+@keyframes kenburns-4 {
+  0% { transform: scale(1) translate(0, 0); }
+  100% { transform: scale(1.08) translate(-2%, 2%); }
+}
+.animate-kenburns-1 { animation: kenburns-1 7s ease-out forwards; will-change: transform; }
+.animate-kenburns-2 { animation: kenburns-2 7s ease-out forwards; will-change: transform; }
+.animate-kenburns-3 { animation: kenburns-3 7s ease-out forwards; will-change: transform; }
+.animate-kenburns-4 { animation: kenburns-4 7s ease-out forwards; will-change: transform; }
+
+/* Typewriter cursor */
+@keyframes blink-caret {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+.animate-blink-caret { animation: blink-caret 1s step-end infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-kenburns-1,
+  .animate-kenburns-2,
+  .animate-kenburns-3,
+  .animate-kenburns-4,
+  .animate-blink-caret {
+    animation: none !important;
+  }
+}

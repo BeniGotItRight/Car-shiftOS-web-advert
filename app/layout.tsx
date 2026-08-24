@@ -7,6 +7,8 @@ import { WebFooter } from "./components/WebFooter";
 import { Toaster } from "sonner";
 import { SmoothScrollProvider } from "@/components/shared/SmoothScrollProvider";
 import { WhatsAppButton } from "./components/public/WhatsAppButton";
+import { StickyBar } from "@/components/StickyBar";
+import { CursorGlow } from "@/components/CursorGlow";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -46,8 +48,7 @@ export async function generateMetadata(): Promise<Metadata> {
       "automotive inventory management software Kenya",
       "car dealership marketing software Nairobi",
       "Japanese car import management Kenya",
-      "NTSA TIMS integration software",
-      "M-Pesa payment for car dealers",
+      "trusted payment integration for car dealers",
       "legal agreements for car sales Kenya",
       "ShiftOS automotive technology",
       "Benson Motari Lead Developer",
@@ -153,21 +154,14 @@ export default function RootLayout({
                   "priceCurrency": "KES",
                   "availability": "https://schema.org/InStock"
                 },
-                "description": "ShiftOS is the best car yard management system in Kenya, providing elite automation for luxury vehicle dealerships. Features include real-time showroom sync, inventory lifecycle tracking, and M-Pesa integration.",
-                "aggregateRating": {
-                  "@type": "AggregateRating",
-                  "ratingValue": "4.9",
-                  "reviewCount": "128"
-                },
+                "description": "ShiftOS is the best car yard management system in Kenya, providing elite automation for luxury vehicle dealerships. Features include real-time showroom sync, inventory lifecycle tracking, and trusted payment integration.",
                 "publisher": {
                   "@type": "Organization",
                   "name": "ShiftOS Technology Kenya",
                   "url": "https://carshiftos.co.ke",
                   "logo": "https://carshiftos.co.ke/favicon.png",
                   "sameAs": [
-                    "https://facebook.com/carshiftos",
-                    "https://twitter.com/carshiftos",
-                    "https://linkedin.com/company/carshiftos"
+                    "https://www.instagram.com/carshiftos"
                   ]
                 }
               },
@@ -217,6 +211,8 @@ export default function RootLayout({
         />
           <Providers>
             <SmoothScrollProvider>
+              <CursorGlow />
+              <StickyBar />
               <div className="min-h-screen flex flex-col">
                 <WebHeader />
                 <main className="flex-1">
