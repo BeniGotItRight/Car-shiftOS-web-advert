@@ -30,7 +30,7 @@ export async function generateMetadata(): Promise<Metadata> {
       template: "Car ShiftOS | %s"
     },
     description: "ShiftOS is Kenya's leading dealer management system. Inventory, CRM, import tracking, workshop management, and payments, all in one place for car yards and dealerships in Nairobi and across Kenya.",
-    authors: [{ name: "ShiftOS Architecture Team" }],
+    authors: [{ name: "Car ShiftOS Team" }],
     creator: "Car ShiftOS",
     publisher: "Car ShiftOS",
     metadataBase: new URL("https://carshiftos.co.ke"),

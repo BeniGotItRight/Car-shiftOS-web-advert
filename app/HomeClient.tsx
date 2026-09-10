@@ -19,38 +19,33 @@ import {
   Rocket,
   Link2,
   TrendingUp,
-  CheckCircle2,
-  Bell,
-  Wrench,
 } from "lucide-react";
-import { TypewriterRotator } from "@/components/TypewriterRotator";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { TypewriterHeading } from "@/components/TypewriterHeading";
 import { TiltCard } from "@/components/TiltCard";
-import { ActivityFeed } from "@/components/ActivityFeed";
+import { InventoryTable } from "@/components/InventoryTable";
 
-const CONTROL_FEED_ROWS = [
-  { icon: CheckCircle2, text: "VIN-2024-0847: cost audit complete", tag: "Audited" },
-  { icon: TrendingUp, text: "Sales velocity up 18% this week", tag: "Trending" },
-  { icon: Bell, text: "New lead: Toyota Harrier 2024", tag: "New" },
-  { icon: CheckCircle2, text: "Deal closed: KES 4.2M", tag: "Closed" },
-  { icon: Wrench, text: "Job card #112 assigned to workshop", tag: "Assigned" },
+const INVENTORY_PREVIEW_ROWS = [
+  { vehicle: "Toyota Harrier 2024", cost: "KES 5.2M", asking: "KES 6.1M", status: "Available", tone: "neutral" as const },
+  { vehicle: "BMW X5 2023", cost: "KES 8.4M", asking: "KES 9.2M", status: "Reserved", tone: "pending" as const },
+  { vehicle: "Mazda CX-5 2023", cost: "KES 4.5M", asking: "KES 5.0M", status: "Available", tone: "neutral" as const },
+  { vehicle: "Nissan X-Trail 2022", cost: "KES 3.1M", asking: "KES 3.6M", status: "Sold", tone: "success" as const },
 ];
 
 const HERO_SLIDES = [
   { src: "/assets/hero-dealership-lot.jpg", caption: "Premium Digital Showrooms", kb: "kenburns-1" },
   { src: "/assets/hero-new-1.png", caption: "Live Yard Inventory", kb: "kenburns-2" },
-  { src: "/assets/console-tech.png", caption: "Industrial Command Portal", kb: "kenburns-3" },
+  { src: "/assets/console-tech.png", caption: "Command Portal", kb: "kenburns-3" },
   { src: "/assets/hero-nairobi.jpg", caption: "Built for Kenya", kb: "kenburns-4" },
 ];
 
 const FEATURE_TILES = [
   { icon: RefreshCw, title: "Showroom Sync", desc: "Live reflection of your actual yard inventory." },
-  { icon: Layout, title: "High-Fidelity UI", desc: "Premium side-by-side vehicle comparison engine." },
-  { icon: Shield, title: "Data Sovereignty", desc: "Industrial-grade architecture for total privacy." },
-  { icon: BarChart3, title: "Financial Pulse", desc: "Trusted payment integration and real-time ledgers." },
-  { icon: Monitor, title: "Command Portal", desc: "Mission control for your entire operation." },
-  { icon: Globe, title: "SEO Mastery", desc: "Engineered for search engine dominance." },
+  { icon: Layout, title: "Side-by-Side Compare", desc: "Buyers compare up to 3 vehicles at once." },
+  { icon: Shield, title: "Your Data Stays Yours", desc: "Customer records stay with your dealership, not a departing salesperson." },
+  { icon: BarChart3, title: "Financial Control", desc: "Track every deal from deposit to final payment." },
+  { icon: Monitor, title: "Command Portal", desc: "See your whole operation from one dashboard." },
+  { icon: Globe, title: "Found Online", desc: "Your cars show up when customers search for them." },
   { icon: Layers, title: "Legal Automation", desc: "Instant generation of professional documents." },
   { icon: Database, title: "Lifecycle Tracking", desc: "End-to-end tracking from import to sale." },
 ];
@@ -127,20 +122,16 @@ export default function CentralLanding() {
               <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
             </span>
             <span className="text-base font-bold uppercase tracking-[0.2em] text-blue-400">
-              Premium Automotive Software as a Service
+              Dealer Management System for Kenya
             </span>
           </div>
 
-          <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-9xl font-black tracking-tighter mb-8 bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white/40 leading-[0.9] px-2 sm:px-0">
-            THE BEST CAR YARD{" "}
-            <TypewriterRotator
-              words={["SYSTEM", "PLATFORM", "ECOSYSTEM", "ENGINE"]}
-              className="text-blue-500 italic"
-            />{" "}
-            IN KENYA
+          <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter mb-8 text-white leading-[0.95] px-2 sm:px-0">
+            Run your car dealership{" "}
+            <span className="text-blue-500 italic">from one place.</span>
           </h1>
           <p className="max-w-2xl mx-auto text-lg sm:text-xl md:text-3xl text-slate-400 font-light mb-12 tracking-tight leading-relaxed px-4">
-            ShiftOS is the <span className="text-white font-medium">leading dealership automation platform</span> for car yards in Nairobi and across East Africa.
+            Car ShiftOS brings your vehicles, customers, sales, documents and online showroom together, built for Kenyan car dealerships.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -216,7 +207,7 @@ export default function CentralLanding() {
             className="h-12 w-px bg-gradient-to-b from-blue-500 to-transparent"
           />
           <span className="text-[10px] font-black uppercase tracking-[0.5em] text-slate-500">
-            Explore Architecture
+            Scroll to Explore
           </span>
         </div>
       </section>
@@ -224,7 +215,7 @@ export default function CentralLanding() {
       {/* Product Showcase - Dashboard Preview */}
       <section className="relative py-32 px-6 z-10 bg-slate-950 overflow-hidden">
         <div className="max-w-7xl mx-auto">
-          <div className="relative rounded-[2.5rem] md:rounded-[4rem] border border-white/10 bg-slate-900/40 backdrop-blur-3xl overflow-hidden shadow-[0_0_100px_rgba(59,130,246,0.1)]">
+          <div className="relative rounded-[2.5rem] md:rounded-[4rem] border border-white/10 bg-slate-900/40 backdrop-blur-3xl overflow-hidden shadow-xl shadow-black/40">
             <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-10 lg:gap-0">
               <div className="p-8 sm:p-12 lg:p-16">
                 <h2 className="text-4xl md:text-6xl font-black tracking-tight leading-none">
@@ -233,7 +224,7 @@ export default function CentralLanding() {
                 </h2>
               </div>
               <div className="p-8 sm:p-12 lg:pr-16">
-                <ActivityFeed rows={CONTROL_FEED_ROWS} />
+                <InventoryTable rows={INVENTORY_PREVIEW_ROWS} />
               </div>
             </div>
           </div>
@@ -325,10 +316,10 @@ export default function CentralLanding() {
                   />
                 </h2>
                 <p className="text-xl text-slate-400 font-light leading-relaxed mb-6">
-                  ShiftOS isn't just software; it's the digital backbone of Kenya's premier automotive dealerships, and the first system of its kind built for the Kenyan car yard. Born from the need for absolute data sovereignty and operational excellence, we've built an ecosystem that empowers car yards to scale with high-fidelity security architecture.
+                  Everything your dealership does, in one place. ShiftOS is the first system built specifically for the Kenyan car yard: inventory, customer records, payments, and your online showroom, together.
                 </p>
                 <p className="text-lg text-slate-500 font-light leading-relaxed mb-12">
-                  We believe that every dealership deserves the same technical power as global automotive giants. Our mission is to bridge the gap between traditional car yard operations and the future of digital commerce in Nairobi and across East Africa.
+                  Most car yards in Kenya still run on WhatsApp and a notebook. ShiftOS gives independent dealers the same tools the biggest dealerships use, built for how Kenyan yards actually work.
                 </p>
               </motion.div>
             </div>
@@ -347,7 +338,7 @@ export default function CentralLanding() {
                     <div className="flex justify-between items-end">
                       <div>
                         <span className="text-4xl font-black italic text-blue-500">2026</span>
-                        <p className="text-sm font-bold uppercase tracking-widest text-white/60">Operational Sovereignty</p>
+                        <p className="text-sm font-bold uppercase tracking-widest text-white/60">Built in Nairobi, Kenya</p>
                       </div>
                       <div className="size-16 rounded-3xl bg-blue-500/10 border border-blue-500/20 backdrop-blur-xl flex items-center justify-center">
                         <Shield className="size-8 text-blue-500" />
@@ -367,13 +358,13 @@ export default function CentralLanding() {
             <h2 className="text-4xl md:text-6xl font-black mb-6 tracking-tight leading-none">
               <TypewriterHeading
                 segments={[
-                  { text: "Elite " },
-                  { text: "Operational Power", accent: true },
+                  { text: "Everything Your Dealership " },
+                  { text: "Needs", accent: true },
                 ]}
               />
             </h2>
             <p className="max-w-3xl mx-auto text-slate-400 font-light text-xl">
-              Engineered specifically for the Kenyan luxury car market. We turn manual car yards into high-performance digital nodes.
+              Turn your physical car yard into a dealership customers can discover, browse and enquire from online.
             </p>
           </div>
 
@@ -385,7 +376,7 @@ export default function CentralLanding() {
                   "Instant Inventory Sync",
                   "Automated Marketing SEO",
                   "Real-Time 'Sold' Status",
-                  "Mobile-First Luxury UI",
+                  "Mobile-First Design",
                 ],
                 description:
                   "Your showroom, online 24/7. When a car is sold at your yard, your website updates instantly. No more manual uploads or outdated listings. Just a seamless reflection of your actual inventory.",
@@ -398,17 +389,17 @@ export default function CentralLanding() {
                 services: [
                   "3-Car Side-by-Side View",
                   "Technical Spec Auditing",
-                  "High-Fidelity Galleries",
+                  "Full Vehicle Photo Galleries",
                   "Buyer Confidence Tools",
                 ],
                 description:
                   "Help your clients decide faster. Let them compare up to 3 cars side-by-side with full technical specs and high-resolution galleries, making the buying decision easier and more professional than ever.",
                 icon: Layout,
-                color: "purple",
+                color: "blue",
                 image: "/assets/compare-dashboard.png"
               },
               {
-                title: "Industrial Command Portal",
+                title: "Sales & Deal Command Center",
                 services: [
                   "Lead Tracking & Scoring",
                   "Deal Management Suite",
@@ -416,9 +407,9 @@ export default function CentralLanding() {
                   "Global Yard Visibility",
                 ],
                 description:
-                  "Total control at your fingertips. Manage your entire inventory, track every lead from query to keys, and handle every deal from one central, industrial-grade dashboard built for speed.",
+                  "Manage your entire inventory, track every lead from query to keys, and handle every deal from one central dashboard built for speed.",
                 icon: Monitor,
-                color: "emerald",
+                color: "blue",
                 image: "/assets/interior-digital.png"
               },
               {
@@ -430,7 +421,7 @@ export default function CentralLanding() {
                   "Digital Invoice Vault",
                 ],
                 description:
-                  "Financial Pulse & Legal: payments, contracts, and commissions handled the moment a deal closes, with zero manual paperwork.",
+                  "Track every deal from deposit to final payment. Keep payment records, invoices, sale agreements, commissions and outstanding balances organized in one place.",
                 icon: BarChart3,
                 color: "blue",
                 image: "/assets/contract-signing.png"
@@ -598,21 +589,21 @@ export default function CentralLanding() {
                   <TypewriterHeading
                     accentClassName="text-blue-500 italic"
                     segments={[
-                      { text: "The Luxury " },
+                      { text: "One System. " },
                       { break: true },
-                      { text: "Digital Cockpit.", accent: true },
+                      { text: "One Website.", accent: true },
                     ]}
                   />
                 </h2>
                 <p className="text-2xl text-slate-400 font-light leading-relaxed">
-                  We provide the elite system and the high-performance website your car yard deserves. ShiftOS fusion handles your entire operation from the internal cockpit to the public showroom.
+                  ShiftOS runs your back-office system and your public website from the same platform, so your inventory, leads, and online showroom always match.
                 </p>
               </motion.div>
 
               <div className="grid grid-cols-2 gap-6">
                 {[
                   { label: "Precision Inventory", img: "/assets/precision-inventory.png" },
-                  { label: "Premium Experience", img: "/assets/premium-experience.png" }
+                  { label: "Customer Experience", img: "/assets/premium-experience.png" }
                 ].map((item, i) => (
                   <motion.div
                     key={i}
@@ -644,7 +635,7 @@ export default function CentralLanding() {
                   whileInView={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 1 }}
                   viewport={{ once: true }}
-                  className="relative rounded-[4rem] border border-white/10 bg-slate-900/40 backdrop-blur-3xl overflow-hidden aspect-[16/10] shadow-[0_0_100px_rgba(59,130,246,0.1)] group"
+                  className="relative rounded-[4rem] border border-white/10 bg-slate-900/40 backdrop-blur-3xl overflow-hidden aspect-[16/10] shadow-xl shadow-black/40 group"
                 >
                   <Image
                     src="/assets/unified-command.png"
@@ -674,7 +665,7 @@ export default function CentralLanding() {
                 >
                   <Image
                     src="/assets/elite-yard.png"
-                    alt="Elite Yard Management"
+                    alt="Yard Management"
                     fill
                     sizes="(max-width: 1024px) 100vw, 55vw"
                     className="object-cover opacity-50 group-hover:opacity-100 transition-all duration-1000 group-hover:scale-105"
@@ -684,8 +675,8 @@ export default function CentralLanding() {
                     <div className="size-12 rounded-2xl bg-blue-600 flex items-center justify-center">
                       <Layout className="size-6 text-white" />
                     </div>
-                    <h3 className="text-2xl font-bold leading-tight">Elite Yard <br />Management</h3>
-                    <p className="text-sm text-slate-400 font-light">Total control over your inventory, leads, and web presence. Engineered specifically for luxury dealerships.</p>
+                    <h3 className="text-2xl font-bold leading-tight">Yard <br />Management</h3>
+                    <p className="text-sm text-slate-400 font-light">Your inventory, leads, and web presence, managed from one place.</p>
                   </div>
                 </motion.div>
               </div>
@@ -713,7 +704,7 @@ export default function CentralLanding() {
             />
           </h2>
           <p className="text-xl text-slate-400 mb-12 font-light">
-            Join the elite dealerships scaling with ShiftOS technology.
+            Book a demo and see how ShiftOS runs a car yard, start to finish.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
@@ -726,7 +717,7 @@ export default function CentralLanding() {
               href="/contact"
               className="px-12 py-5 border border-white/10 rounded-2xl font-black tracking-tight hover:bg-white/5 transition-all active:scale-95 uppercase flex items-center justify-center"
             >
-              Speak with Architecture
+              See How It Works
             </Link>
           </div>
         </motion.div>
@@ -739,7 +730,7 @@ export default function CentralLanding() {
             <span className="text-2xl font-black tracking-tighter">
               SHIFT<span className="text-blue-500 italic">OS</span>
             </span>
-            <p className="text-slate-400 text-sm font-light">The Industrial Automotive Ecosystem</p>
+            <p className="text-slate-400 text-sm font-light">The operating system for Kenyan car yards.</p>
           </div>
           <div className="flex flex-col sm:flex-row gap-8 items-center">
             <a 

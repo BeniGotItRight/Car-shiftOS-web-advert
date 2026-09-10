@@ -21,9 +21,6 @@ export default function ContactPage() {
 
   return (
     <div className="min-h-screen bg-slate-950 text-white pt-24 md:pt-32 pb-16 px-6 relative overflow-hidden">
-      {/* Background Glow */}
-      <div className="absolute top-0 right-0 w-[60vw] h-[60vw] bg-blue-600/5 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
-      
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="max-w-3xl mb-12 md:mb-16">
           <h1 className="text-4xl sm:text-5xl md:text-7xl font-black mb-6 md:mb-8 tracking-tighter">
@@ -60,8 +57,8 @@ export default function ContactPage() {
 
             <ScrollReveal direction="left" delay={100}>
               <div className="p-6 sm:p-8 rounded-3xl bg-slate-900/40 border border-white/5 backdrop-blur-xl flex flex-col sm:flex-row items-start gap-6 group hover:border-blue-500/20 transition-all">
-                <div className="size-12 sm:size-14 rounded-2xl bg-emerald-600/10 border border-emerald-500/20 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
-                  <Globe className="size-6 text-emerald-500" />
+                <div className="size-12 sm:size-14 rounded-2xl bg-blue-600/10 border border-blue-500/20 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                  <Globe className="size-6 text-blue-500" />
                 </div>
                 <div>
                   <h2 className="text-xl font-bold mb-1">Our Location</h2>
@@ -75,8 +72,8 @@ export default function ContactPage() {
 
             <ScrollReveal direction="left" delay={200}>
               <div className="p-6 sm:p-8 rounded-3xl bg-slate-900/40 border border-white/5 backdrop-blur-xl flex flex-col sm:flex-row items-start gap-6 group hover:border-blue-500/20 transition-all">
-                <div className="size-12 sm:size-14 rounded-2xl bg-purple-600/10 border border-purple-500/20 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
-                  <Phone className="size-6 text-purple-500" />
+                <div className="size-12 sm:size-14 rounded-2xl bg-blue-600/10 border border-blue-500/20 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                  <Phone className="size-6 text-blue-500" />
                 </div>
                 <div>
                   <h2 className="text-xl font-bold mb-1">Phone Line</h2>
@@ -92,8 +89,6 @@ export default function ContactPage() {
           {/* Contact Form */}
           <ScrollReveal direction="right">
             <div className="p-6 sm:p-10 rounded-[2rem] sm:rounded-[3rem] bg-slate-900/20 border border-white/5 backdrop-blur-3xl relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 blur-3xl rounded-full" />
-            
             <form className="space-y-6 relative z-10" onSubmit={handleSubmit}>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div className="space-y-2">

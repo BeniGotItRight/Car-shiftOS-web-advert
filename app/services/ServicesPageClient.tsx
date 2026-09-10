@@ -152,7 +152,6 @@ export default function ServicesPage() {
 
         {/* Page CTA */}
         <div className="relative text-center rounded-[2rem] md:rounded-[3rem] border border-white/5 bg-slate-900/20 p-10 sm:p-16 overflow-hidden">
-          <div className="absolute top-0 right-0 size-[400px] bg-blue-600/10 blur-[100px] rounded-full" />
           <div className="relative z-10 max-w-2xl mx-auto">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-black mb-4 tracking-tight">
               Ready to see it live?

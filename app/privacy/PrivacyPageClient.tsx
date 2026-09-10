@@ -153,9 +153,6 @@ const sections: Section[] = [
 export default function PrivacyPage() {
   return (
     <div className="min-h-screen bg-slate-950 text-white pt-24 md:pt-32 pb-16 px-6 relative overflow-hidden">
-      {/* Background Glow */}
-      <div className="absolute top-0 left-0 w-[50vw] h-[50vw] bg-blue-600/5 rounded-full blur-[120px] -translate-y-1/2 -translate-x-1/2 pointer-events-none" />
-
       <div className="max-w-4xl mx-auto relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

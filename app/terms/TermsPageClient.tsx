@@ -24,9 +24,6 @@ export default function TermsPage() {
 
   return (
     <div className="min-h-screen bg-slate-950 text-white pt-24 md:pt-32 pb-16 px-6 relative overflow-hidden">
-      {/* Background Glow */}
-      <div className="absolute top-0 right-0 w-[50vw] h-[50vw] bg-purple-600/5 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
-      
       <div className="max-w-4xl mx-auto relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -37,7 +34,7 @@ export default function TermsPage() {
             Terms of <span className="text-blue-500">Service.</span>
           </h1>
           <p className="text-lg sm:text-xl text-slate-400 font-light leading-relaxed">
-            Understand the operational protocols and architectural sovereignty of the ShiftOS ecosystem.
+            The rules for using the ShiftOS platform.
           </p>
         </motion.div>
 

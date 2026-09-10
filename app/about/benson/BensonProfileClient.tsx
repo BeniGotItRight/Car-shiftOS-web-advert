@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Mail, Github, Linkedin, Cpu, Code2, Rocket, Globe, ArrowLeft, X } from "lucide-react";
+import { Mail, Github, Linkedin, Cpu, Code2, Rocket, ArrowLeft, X } from "lucide-react";
 import Link from "next/link";
 import { TypewriterHeading } from "@/components/TypewriterHeading";
 import { ScrollReveal } from "@/components/ScrollReveal";
@@ -45,7 +45,7 @@ export default function BensonProfile() {
               transition={{ delay: 0.1 }}
             >
               <span className="inline-block px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-black uppercase tracking-widest mb-4">
-                Architecture Lead
+                Founder & Lead Developer
               </span>
               <h1 className="text-5xl md:text-7xl font-black tracking-tighter mb-2">
                 <TypewriterHeading
@@ -57,7 +57,7 @@ export default function BensonProfile() {
                 />
               </h1>
               <p className="text-xl text-slate-400 font-light max-w-lg italic">
-                "Building the industrial-grade future of automotive commerce in Kenya."
+                "Building the tools Kenyan car dealerships actually need."
               </p>
             </motion.div>
 
@@ -94,7 +94,7 @@ export default function BensonProfile() {
         </div>
 
         {/* Content Modules */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1">
           <ScrollReveal direction="left">
             <div className="h-full p-8 rounded-[2.5rem] bg-slate-900/30 border border-white/5 space-y-6">
               <div className="flex items-center gap-4">
@@ -104,26 +104,14 @@ export default function BensonProfile() {
                 <h2 className="text-2xl font-bold">The Mission</h2>
               </div>
               <p className="text-slate-400 font-light leading-relaxed">
-                As the Lead Developer at ShiftOS, I focus on building high-performance, multi-tenant architectures that solve real-world problems for Kenyan dealerships. My goal is to combine world-class user experience with high-fidelity security assurance backend stability.
+                We're building Car ShiftOS to give Kenyan car dealerships a better way to manage their day-to-day operations.
               </p>
-            </div>
-          </ScrollReveal>
-
-          <ScrollReveal direction="right">
-            <div className="h-full p-8 rounded-[2.5rem] bg-slate-900/30 border border-white/5 space-y-6">
-              <div className="flex items-center gap-4">
-                <div className="size-10 rounded-xl bg-purple-500/10 flex items-center justify-center text-purple-500">
-                  <Globe className="size-5" />
-                </div>
-                <h2 className="text-2xl font-bold">Core Focus</h2>
-              </div>
-              <div className="flex flex-wrap gap-2">
-                {["Multi-Tenant Architecture", "Data Security & Isolation", "Real-Time Systems", "Kenyan Market Localization", "Performance Engineering"].map((focus, i) => (
-                  <span key={i} className="px-3 py-1 bg-white/5 rounded-lg border border-white/10 text-xs text-slate-300 font-medium">
-                    {focus}
-                  </span>
-                ))}
-              </div>
+              <p className="text-slate-400 font-light leading-relaxed">
+                From vehicle inventory and customer enquiries to sales, financial records, documents and online showrooms, ShiftOS brings the key parts of a dealership together in one platform.
+              </p>
+              <p className="text-slate-400 font-light leading-relaxed">
+                Our focus is simple: build software that is reliable, easy to use and designed around how car dealerships in Kenya actually work.
+              </p>
             </div>
           </ScrollReveal>
         </div>
@@ -131,7 +119,7 @@ export default function BensonProfile() {
         {/* Footer Credit */}
         <div className="mt-24 text-center">
           <p className="text-slate-600 text-xs uppercase tracking-[0.3em] font-black italic">
-            ShiftOS Architecture & Design, EST 2026
+            Car ShiftOS · Founded 2026
           </p>
         </div>
       </div>
