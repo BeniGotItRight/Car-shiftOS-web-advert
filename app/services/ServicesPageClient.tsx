@@ -21,7 +21,7 @@ const MODULES = [
     num: "01",
     icon: PackageSearch,
     title: "Inventory Command Centre",
-    tagline: "Know exactly what's on your lot — right now.",
+    tagline: "Know exactly what's on your lot, right now.",
     description:
       "Your entire stock, organised and visible in one place. Every vehicle has its own profile with photos, purchase cost, selling price, and full history from the day it arrived to the day it left. You always know what you have, what it cost you, and how long it's been sitting.",
   },
@@ -31,15 +31,15 @@ const MODULES = [
     title: "CRM & Lead Management",
     tagline: "Never lose a buyer again.",
     description:
-      "Every enquiry, every call, every walk-in — captured and tracked. Your sales team knows exactly where each lead stands, who's following up, and what the next step is. No more relying on memory or WhatsApp chats to manage your pipeline.",
+      "Every enquiry, every call, every walk-in: captured and tracked. Your sales team knows exactly where each lead stands, who's following up, and what the next step is. No more relying on memory or WhatsApp chats to manage your pipeline.",
   },
   {
     num: "03",
     icon: Ship,
     title: "Import Pipeline Tracker",
-    tagline: "From auction to your yard — every step accounted for.",
+    tagline: "From auction to your yard: every step accounted for.",
     description:
-      "Importing is complicated. ShiftOS makes it manageable. Track every vehicle through the full import journey — from purchase abroad, through shipping and clearance, to final delivery at your yard. Know your real cost before the car even arrives.",
+      "Importing is complicated. ShiftOS makes it manageable. Track every vehicle through the full import journey: from purchase abroad, through shipping and clearance, to final delivery at your yard. Know your real cost before the car even arrives.",
   },
   {
     num: "04",
@@ -47,7 +47,7 @@ const MODULES = [
     title: "Workshop & Service Management",
     tagline: "Your workshop is a revenue stream. Run it like one.",
     description:
-      "Everything your workshop does is logged, tracked, and billed properly. Job cards, parts, technician assignments, and service invoices — all in one place. At the end of the month, you know exactly what your workshop made.",
+      "Everything your workshop does is logged, tracked, and billed properly. Job cards, parts, technician assignments, and service invoices, all in one place. At the end of the month, you know exactly what your workshop made.",
   },
   {
     num: "05",
@@ -55,7 +55,7 @@ const MODULES = [
     title: "Live Customer Showroom",
     tagline: "Your yard, online and open 24/7.",
     description:
-      "Every yard on ShiftOS gets its own professional online showroom. Your inventory is always up to date — no manual uploads, no stale listings. Customers can browse, enquire, and share listings directly from their phones without you lifting a finger.",
+      "Every yard on ShiftOS gets its own professional online showroom. Your inventory is always up to date. No manual uploads, no stale listings. Customers can browse, enquire, and share listings directly from their phones without you lifting a finger.",
   },
   {
     num: "06",
@@ -63,7 +63,7 @@ const MODULES = [
     title: "Payment Records & Receipts",
     tagline: "Every deal closes with a paper trail.",
     description:
-      "Every buyer leaves with a receipt. Every shilling your yard receives is logged against the right vehicle, the right sale, the right date — without your finance officer touching a spreadsheet. When money moves, the system knows.",
+      "Every buyer leaves with a receipt. Every shilling your yard receives is logged against the right vehicle, the right sale, the right date, without your finance officer touching a spreadsheet. When money moves, the system knows.",
   },
   {
     num: "07",
@@ -71,13 +71,13 @@ const MODULES = [
     title: "HP & Financing Calculator",
     tagline: "Most buyers don't pay cash. Now you're ready for them.",
     description:
-      "Give every customer a clear picture of what a hire purchase deal looks like before negotiations even begin. Monthly repayments, deposit options, and loan terms — calculated instantly on any vehicle listing.",
+      "Give every customer a clear picture of what a hire purchase deal looks like before negotiations even begin. Monthly repayments, deposit options, and loan terms, calculated instantly on any vehicle listing.",
   },
   {
     num: "08",
     icon: MessageSquare,
     title: "SMS Notifications",
-    tagline: "Everyone who needs to know, knows — automatically.",
+    tagline: "Everyone who needs to know knows, automatically.",
     description:
       "From new leads to closed deals to payment confirmations, the right people get the right message at the right time. No manual follow-up, no missed updates.",
   },
@@ -87,13 +87,13 @@ const MODULES = [
     title: "Mechanic Portal",
     tagline: "A dedicated space for your workshop team.",
     description:
-      "Your mechanics get their own login, their own view, and access to only what they need. Job cards, task updates, parts logging — all without touching any sales or financial information.",
+      "Your mechanics get their own login, their own view, and access to only what they need. Job cards, task updates, parts logging, all without touching any sales or financial information.",
   },
   {
     num: "10",
     icon: Globe,
     title: "Public Vehicle Marketplace",
-    tagline: "cars.carshiftos.co.ke — coming soon.",
+    tagline: "cars.carshiftos.co.ke: coming soon.",
     comingSoon: true,
     description:
       "A single destination where Kenyan buyers can search for vehicles across every ShiftOS-powered yard in the country. Your inventory gets in front of buyers who were never going to find your yard on their own.",

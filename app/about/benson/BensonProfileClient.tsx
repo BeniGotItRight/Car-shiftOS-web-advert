@@ -131,7 +131,7 @@ export default function BensonProfile() {
         {/* Footer Credit */}
         <div className="mt-24 text-center">
           <p className="text-slate-600 text-xs uppercase tracking-[0.3em] font-black italic">
-            ShiftOS Architecture & Design — EST 2026
+            ShiftOS Architecture & Design, EST 2026
           </p>
         </div>
       </div>

@@ -40,14 +40,14 @@ export default function AboutPage() {
               />
             </h1>
             <p className="text-xl sm:text-2xl text-slate-400 font-light leading-relaxed mb-6 md:mb-8">
-              I kept seeing the same thing — car yards moving KES 5–10 million in stock, run entirely on WhatsApp threads and a notebook.
+              I kept seeing the same thing: car yards moving KES 5-10 million in stock, run entirely on WhatsApp threads and a notebook.
             </p>
             <div className="space-y-4 md:space-y-6 text-base sm:text-lg text-slate-500 font-light leading-relaxed mb-12">
               <p>
-                No one knew what was actually in stock. No one knew the real profit per car. Imports were tracked by phoning the clearing agent. So we built ShiftOS — as far as we know, the first dedicated SaaS platform built specifically for car yards in Kenya. The gap was real, it was Kenya-specific, and no one else was solving it properly for the independent yard.
+                No one knew what was actually in stock. No one knew the real profit per car. Imports were tracked by phoning the clearing agent. So we built ShiftOS. As far as we know, it's the first dedicated SaaS platform built specifically for car yards in Kenya. The gap was real, it was Kenya-specific, and no one else was solving it properly for the independent yard.
               </p>
               <p>
-                ShiftOS is built by a small, focused team — not a faceless enterprise vendor. Every feature exists because a real yard needed it, not because it looked good on a features page.
+                ShiftOS is built by a small, focused team, not a faceless enterprise vendor. Every feature exists because a real yard needed it, not because it looked good on a features page.
               </p>
             </div>
 

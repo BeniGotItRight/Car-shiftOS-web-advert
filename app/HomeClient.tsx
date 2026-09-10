@@ -30,10 +30,10 @@ import { TiltCard } from "@/components/TiltCard";
 import { ActivityFeed } from "@/components/ActivityFeed";
 
 const CONTROL_FEED_ROWS = [
-  { icon: CheckCircle2, text: "VIN-2024-0847 — cost audit complete", tag: "Audited" },
+  { icon: CheckCircle2, text: "VIN-2024-0847: cost audit complete", tag: "Audited" },
   { icon: TrendingUp, text: "Sales velocity up 18% this week", tag: "Trending" },
   { icon: Bell, text: "New lead: Toyota Harrier 2024", tag: "New" },
-  { icon: CheckCircle2, text: "Deal closed — KES 4.2M", tag: "Closed" },
+  { icon: CheckCircle2, text: "Deal closed: KES 4.2M", tag: "Closed" },
   { icon: Wrench, text: "Job card #112 assigned to workshop", tag: "Assigned" },
 ];
 
@@ -268,13 +268,13 @@ export default function CentralLanding() {
                 num: "01",
                 icon: Rocket,
                 title: "Deploy Your Portal",
-                desc: "We spin up your private portal in under 24 hours. Custom subdomain, brand colours, and your inventory structure — configured to your yard.",
+                desc: "We spin up your private portal in under 24 hours. Custom subdomain, brand colours, and your inventory structure, configured to your yard.",
               },
               {
                 num: "02",
                 icon: Link2,
                 title: "Connect Your Inventory",
-                desc: "Upload your stock manually or sync from your existing records. Every vehicle gets a full profile — specs, photos, pricing, duty status, and a trusted payment flow.",
+                desc: "Upload your stock manually or sync from your existing records. Every vehicle gets a full profile: specs, photos, pricing, duty status, and a trusted payment flow.",
               },
               {
                 num: "03",
@@ -325,7 +325,7 @@ export default function CentralLanding() {
                   />
                 </h2>
                 <p className="text-xl text-slate-400 font-light leading-relaxed mb-6">
-                  ShiftOS isn't just software; it's the digital backbone of Kenya's premier automotive dealerships — and the first system of its kind built for the Kenyan car yard. Born from the need for absolute data sovereignty and operational excellence, we've built an ecosystem that empowers car yards to scale with high-fidelity security architecture.
+                  ShiftOS isn't just software; it's the digital backbone of Kenya's premier automotive dealerships, and the first system of its kind built for the Kenyan car yard. Born from the need for absolute data sovereignty and operational excellence, we've built an ecosystem that empowers car yards to scale with high-fidelity security architecture.
                 </p>
                 <p className="text-lg text-slate-500 font-light leading-relaxed mb-12">
                   We believe that every dealership deserves the same technical power as global automotive giants. Our mission is to bridge the gap between traditional car yard operations and the future of digital commerce in Nairobi and across East Africa.
@@ -388,7 +388,7 @@ export default function CentralLanding() {
                   "Mobile-First Luxury UI",
                 ],
                 description:
-                  "Your showroom, online 24/7. When a car is sold at your yard, your website updates instantly. No more manual uploads or outdated listings—just a seamless reflection of your actual inventory.",
+                  "Your showroom, online 24/7. When a car is sold at your yard, your website updates instantly. No more manual uploads or outdated listings. Just a seamless reflection of your actual inventory.",
                 icon: Globe,
                 color: "blue",
                 image: "/assets/website-mockup.png"
@@ -430,7 +430,7 @@ export default function CentralLanding() {
                   "Digital Invoice Vault",
                 ],
                 description:
-                  "Financial Pulse & Legal — payments, contracts, and commissions handled the moment a deal closes, with zero manual paperwork.",
+                  "Financial Pulse & Legal: payments, contracts, and commissions handled the moment a deal closes, with zero manual paperwork.",
                 icon: BarChart3,
                 color: "blue",
                 image: "/assets/contract-signing.png"

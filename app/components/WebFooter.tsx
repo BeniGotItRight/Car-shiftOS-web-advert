@@ -35,7 +35,7 @@ export function WebFooter() {
               />
             </Link>
             <p className="text-slate-400 text-lg leading-relaxed">
-              The operating system for Kenyan car yards — inventory, leads, and payments in one place.
+              The operating system for Kenyan car yards: inventory, leads, and payments in one place.
             </p>
           </div>
           

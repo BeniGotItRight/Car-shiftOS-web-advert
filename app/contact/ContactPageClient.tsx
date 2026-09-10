@@ -36,7 +36,7 @@ export default function ContactPage() {
             />
           </h1>
           <p className="text-lg sm:text-xl text-slate-400 font-light leading-relaxed">
-            Talk to the ShiftOS team — book a demo, ask a question, or see what it looks like on your own inventory.
+            Talk to the ShiftOS team: book a demo, ask a question, or see what it looks like on your own inventory.
           </p>
         </div>
 

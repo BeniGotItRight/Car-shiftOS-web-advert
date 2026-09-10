@@ -13,14 +13,14 @@ const sections: Section[] = [
     title: "Who This Policy Covers",
     paragraphs: [
       "This policy explains how Car ShiftOS (\"ShiftOS\", \"we\", \"us\") handles personal data across two things: this website (carshiftos.co.ke), and the ShiftOS platform used by car dealerships (\"dealers\"), their staff, and their customers.",
-      "For data that a dealer enters about their own customers and vehicles — leads, buyers, sale records — the dealer is the data controller and ShiftOS acts as a data processor, handling that data only to provide the service and only under the dealer's instruction. For a dealer's own account, billing, and subscription data, ShiftOS is the data controller.",
+      "For data that a dealer enters about their own customers and vehicles (leads, buyers, sale records), the dealer is the data controller and ShiftOS acts as a data processor, handling that data only to provide the service and only under the dealer's instruction. For a dealer's own account, billing, and subscription data, ShiftOS is the data controller.",
     ],
   },
   {
     title: "Account & Business Information",
     paragraphs: [
       "When a dealership signs up, we collect the business name, physical address, phone number, and email address, along with billing and subscription details and payment references from our payment processor.",
-      "For each staff account: full name, email, phone number, role, and login credentials. Passwords are stored hashed — never in plain text — and we log the last login time and account creation date for security purposes.",
+      "For each staff account: full name, email, phone number, role, and login credentials. Passwords are stored hashed, never in plain text, and we log the last login time and account creation date for security purposes.",
     ],
   },
   {
@@ -46,7 +46,7 @@ const sections: Section[] = [
   {
     title: "Communications We Send on a Dealer's Behalf",
     paragraphs: [
-      "When a dealer sends an SMS or email through the platform — a lead notification, payment instruction, or receipt — we store the recipient, message content, timestamp, and delivery status.",
+      "When a dealer sends an SMS or email through the platform (a lead notification, payment instruction, or receipt), we store the recipient, message content, timestamp, and delivery status.",
     ],
   },
   {
@@ -70,8 +70,8 @@ const sections: Section[] = [
   {
     title: "Why We Process This Data",
     bullets: [
-      "To provide the core functionality dealers sign up for — inventory, CRM, workshop, and payment tracking.",
-      "To send the transactional messages a dealer's business depends on — receipts, lead alerts, payment confirmations.",
+      "To provide the core functionality dealers sign up for: inventory, CRM, workshop, and payment tracking.",
+      "To send the transactional messages a dealer's business depends on: receipts, lead alerts, payment confirmations.",
       "To meet Kenyan record-keeping obligations, such as retaining sale and payment records for tax purposes.",
       "To keep the platform secure, through audit logging and access controls.",
     ],
@@ -94,10 +94,10 @@ const sections: Section[] = [
       "We do not sell personal data. We share it only with the following categories of third parties, and only to the extent needed for them to do their job:",
     ],
     bullets: [
-      "Africa's Talking — delivers SMS messages sent through the platform.",
-      "Cloudflare — stores and serves vehicle photos.",
-      "Pesapal (including routing to M-Pesa and card networks) — processes payments.",
-      "Vercel — hosts this website and the platform's infrastructure.",
+      "Africa's Talking: delivers SMS messages sent through the platform.",
+      "Cloudflare: stores and serves vehicle photos.",
+      "Pesapal (including routing to M-Pesa and card networks): processes payments.",
+      "Vercel: hosts this website and the platform's infrastructure.",
     ],
   },
   {
@@ -125,7 +125,7 @@ const sections: Section[] = [
     title: "How We Protect Your Data",
     bullets: [
       "All traffic to this site and the platform is encrypted in transit (HTTPS/TLS).",
-      "Passwords are hashed and salted — we never store them in plain text.",
+      "Passwords are hashed and salted. We never store them in plain text.",
       "Sensitive fields, such as cost price and customer ID numbers, are restricted to authorised staff roles.",
       "Access and changes to records are logged for audit purposes.",
     ],

@@ -58,7 +58,7 @@ export function ActivityFeed({ rows, staggerMs = 450 }: ActivityFeedProps) {
           <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
         </span>
         <span className="text-[10px] font-black uppercase tracking-[0.25em] text-slate-400">
-          Command Portal — Live
+          Command Portal: Live
         </span>
       </div>
       <div className="p-3">
