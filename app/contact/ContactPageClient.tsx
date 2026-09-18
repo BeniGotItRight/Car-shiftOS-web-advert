@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { Mail, Phone, Send, Globe } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { Mail, Phone, Send, Globe, Check } from "lucide-react";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { TypewriterHeading } from "@/components/TypewriterHeading";
 
@@ -10,13 +10,36 @@ export default function ContactPage() {
     name: "",
     email: "",
     subject: "Platform Deployment",
-    message: ""
+    message: "",
+    website: ""
   });
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState("");
+  const sentRef = useRef<HTMLDivElement>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  useEffect(() => {
+    if (status === "sent") sentRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+  }, [status]);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const mailtoLink = `mailto:carshiftos@gmail.com?subject=${encodeURIComponent(formData.subject)} - ${encodeURIComponent(formData.name)}&body=${encodeURIComponent(formData.message)}%0D%0A%0D%0AFrom: ${encodeURIComponent(formData.name)} (${encodeURIComponent(formData.email)})`;
-    window.location.href = mailtoLink;
+    setStatus("sending");
+    setErrorMessage("");
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.error || "Something went wrong.");
+      }
+      setStatus("sent");
+    } catch (err) {
+      setErrorMessage(err instanceof Error ? err.message : "Something went wrong.");
+      setStatus("error");
+    }
   };
 
   return (
@@ -89,7 +112,31 @@ export default function ContactPage() {
           {/* Contact Form */}
           <ScrollReveal direction="right">
             <div className="p-6 sm:p-10 rounded-[2rem] sm:rounded-[3rem] bg-slate-900/20 border border-white/5 backdrop-blur-3xl relative overflow-hidden">
+            {status === "sent" ? (
+              <div ref={sentRef} className="relative z-10 py-10 text-center space-y-4" role="status">
+                <div className="mx-auto size-14 rounded-2xl bg-green-500/10 border border-green-500/20 flex items-center justify-center">
+                  <Check className="size-7 text-green-500" />
+                </div>
+                <h2 className="text-2xl font-bold">Message sent</h2>
+                <p className="text-slate-400 font-light">
+                  Thanks, {formData.name.split(" ")[0]}. We'll get back to you soon. If it's urgent, call or WhatsApp 0732 009 268.
+                </p>
+              </div>
+            ) : (
             <form className="space-y-6 relative z-10" onSubmit={handleSubmit}>
+              <div className="hidden" aria-hidden="true">
+                <label>
+                  Website
+                  <input
+                    type="text"
+                    name="website"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    value={formData.website}
+                    onChange={(e) => setFormData({...formData, website: e.target.value})}
+                  />
+                </label>
+              </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label className="text-xs font-bold uppercase tracking-widest text-slate-500 ml-1">Full Name</label>
@@ -141,20 +188,28 @@ export default function ContactPage() {
                 />
               </div>
 
-              <button 
+              {status === "error" && (
+                <p className="text-sm text-red-400 text-center" role="alert">
+                  {errorMessage} You can also email carshiftos@gmail.com or WhatsApp 0732 009 268.
+                </p>
+              )}
+
+              <button
                 type="submit"
-                className="w-full group relative flex items-center justify-center gap-2 px-10 py-5 bg-white text-slate-950 rounded-2xl font-black text-lg hover:bg-slate-200 transition-all overflow-hidden active:scale-[0.98]"
+                disabled={status === "sending"}
+                className="w-full group relative flex items-center justify-center gap-2 px-10 py-5 bg-white text-slate-950 rounded-2xl font-black text-lg hover:bg-slate-200 transition-all overflow-hidden active:scale-[0.98] disabled:opacity-60 disabled:cursor-not-allowed"
               >
                 <span className="relative z-10 flex items-center gap-2 uppercase tracking-tight">
-                  Send Message <Send className="size-5" />
+                  {status === "sending" ? "Sending..." : <>Send Message <Send className="size-5" /></>}
                 </span>
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-black/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
               </button>
-              
+
               <p className="text-[10px] text-center text-slate-600 uppercase tracking-[0.2em] font-bold mt-4">
                 Note: All platform deployments require signed legal agreements and physical documentation for compliance.
               </p>
             </form>
+            )}
             </div>
           </ScrollReveal>
         </div>

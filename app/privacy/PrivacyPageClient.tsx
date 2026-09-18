@@ -64,7 +64,7 @@ const sections: Section[] = [
   {
     title: "This Website (carshiftos.co.ke)",
     paragraphs: [
-      "This marketing website does not currently use analytics or tracking cookies. If you get in touch through our contact form, your message is sent directly to our email address and is not stored on our servers.",
+      "This marketing website does not currently use analytics or tracking cookies. If you use our contact form, your name, email address, and message are sent to our inbox through Resend, our email delivery provider. We don't keep a separate database of form submissions, and we use your details only to reply to you.",
     ],
   },
   {
@@ -98,6 +98,7 @@ const sections: Section[] = [
       "Cloudflare: stores and serves vehicle photos.",
       "Pesapal (including routing to M-Pesa and card networks): processes payments.",
       "Vercel: hosts this website and the platform's infrastructure.",
+      "Resend: delivers messages sent through this website's contact form.",
     ],
   },
   {
