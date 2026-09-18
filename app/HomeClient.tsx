@@ -23,14 +23,7 @@ import {
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { TypewriterHeading } from "@/components/TypewriterHeading";
 import { TiltCard } from "@/components/TiltCard";
-import { InventoryTable } from "@/components/InventoryTable";
-
-const INVENTORY_PREVIEW_ROWS = [
-  { vehicle: "Toyota Harrier 2024", cost: "KES 5.2M", asking: "KES 6.1M", status: "Available", tone: "neutral" as const },
-  { vehicle: "BMW X5 2023", cost: "KES 8.4M", asking: "KES 9.2M", status: "Reserved", tone: "pending" as const },
-  { vehicle: "Mazda CX-5 2023", cost: "KES 4.5M", asking: "KES 5.0M", status: "Available", tone: "neutral" as const },
-  { vehicle: "Nissan X-Trail 2022", cost: "KES 3.1M", asking: "KES 3.6M", status: "Sold", tone: "success" as const },
-];
+import { DemoVideo } from "@/components/DemoVideo";
 
 const HERO_SLIDES = [
   { src: "/assets/hero-dealership-lot.jpg", caption: "Premium Digital Showrooms", kb: "kenburns-1" },
@@ -216,15 +209,16 @@ export default function CentralLanding() {
       <section className="relative py-32 px-6 z-10 bg-slate-950 overflow-hidden">
         <div className="max-w-7xl mx-auto">
           <div className="relative rounded-[2.5rem] md:rounded-[4rem] border border-white/10 bg-slate-900/40 backdrop-blur-3xl overflow-hidden shadow-xl shadow-black/40">
-            <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-10 lg:gap-0">
-              <div className="p-8 sm:p-12 lg:p-16">
-                <h2 className="text-4xl md:text-6xl font-black tracking-tight leading-none">
-                  Total Control, <br />
-                  <span className="text-blue-500">Zero Friction.</span>
-                </h2>
-              </div>
-              <div className="p-8 sm:p-12 lg:pr-16">
-                <InventoryTable rows={INVENTORY_PREVIEW_ROWS} />
+            <div className="flex flex-col items-center gap-10 p-6 sm:p-12 lg:p-16">
+              <h2 className="text-4xl md:text-6xl font-black tracking-tight leading-none text-center">
+                Total Control, <span className="text-blue-500">Zero Friction.</span>
+              </h2>
+              <div className="w-full max-w-5xl">
+                <DemoVideo
+                  src="https://res.cloudinary.com/dru0aee47/video/upload/q_auto/brag.mp4"
+                  poster="https://res.cloudinary.com/dru0aee47/video/upload/so_8,w_1280/brag.jpg"
+                  title="Car ShiftOS demo"
+                />
               </div>
             </div>
           </div>
