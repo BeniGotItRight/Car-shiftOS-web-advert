@@ -29,8 +29,9 @@ export function StickyBar() {
 
   return (
     <div
-      className="fixed top-0 left-0 right-0 z-50 h-[52px] bg-[#0a0f1e]/95 backdrop-blur-md border-b border-blue-900 flex items-center justify-between gap-4 px-4 sm:px-6 transition-transform duration-300 ease-out"
-      style={{ transform: visible ? "translateY(70px)" : "translateY(-100%)" }}
+      className={`fixed top-0 left-0 right-0 z-50 h-[52px] bg-[#0a0f1e]/95 backdrop-blur-md border-b border-blue-900 flex items-center justify-between gap-4 px-4 sm:px-6 transition-transform duration-300 ease-out ${
+        visible ? "translate-y-[74px] md:translate-y-[80px]" : "-translate-y-full"
+      }`}
     >
       <p className="text-white text-xs sm:text-sm font-medium truncate">
         Ready to shift your car yard into high gear?

@@ -78,7 +78,7 @@ export function WebHeader() {
             width={200}
             height={109}
             priority
-            className="h-8 md:h-10 w-auto object-contain"
+            className="h-9 md:h-12 w-auto object-contain"
           />
         </Link>
         
