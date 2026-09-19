@@ -109,11 +109,7 @@ export default function CentralLanding() {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="max-w-5xl"
         >
-          <div className="inline-flex items-center gap-2 rounded-full border border-blue-500/20 bg-blue-500/5 px-4 py-1.5 mb-8">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
-            </span>
+          <div className="inline-flex items-center rounded-full border border-blue-500/20 bg-blue-500/5 px-4 py-1.5 mb-8">
             <span className="text-base font-bold uppercase tracking-[0.2em] text-blue-400">
               Dealer Management System for Kenya
             </span>

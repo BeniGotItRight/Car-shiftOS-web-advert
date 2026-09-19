@@ -12,6 +12,7 @@ import {
   MessageSquare,
   UserCog,
   Globe,
+  ArrowRight,
 } from "lucide-react";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { TypewriterHeading } from "@/components/TypewriterHeading";
@@ -95,6 +96,10 @@ const MODULES = [
     title: "Public Vehicle Marketplace",
     tagline: "cars.carshiftos.co.ke: coming soon.",
     comingSoon: true,
+    cta: {
+      label: "List your cars first",
+      href: "/contact?subject=List%20my%20cars%20on%20the%20marketplace",
+    },
     description:
       "A single destination where Kenyan buyers can search for vehicles across every ShiftOS-powered yard in the country. Your inventory gets in front of buyers who were never going to find your yard on their own.",
   },
@@ -145,6 +150,14 @@ export default function ServicesPage() {
                 <p className="text-slate-400 font-light text-sm leading-relaxed">
                   {m.description}
                 </p>
+                {m.cta && (
+                  <Link
+                    href={m.cta.href}
+                    className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-blue-400 hover:text-blue-300 transition-colors"
+                  >
+                    {m.cta.label} <ArrowRight className="size-4" />
+                  </Link>
+                )}
               </div>
             </ScrollReveal>
           ))}

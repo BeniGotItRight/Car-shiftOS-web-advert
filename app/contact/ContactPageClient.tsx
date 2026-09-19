@@ -34,6 +34,12 @@ export default function ContactPage() {
   const [errorMessage, setErrorMessage] = useState("");
   const sentRef = useRef<HTMLDivElement>(null);
 
+  // Lets other pages link here with a prefilled subject, e.g. /contact?subject=...
+  useEffect(() => {
+    const subject = new URLSearchParams(window.location.search).get("subject");
+    if (subject) setFormData((f) => ({ ...f, subject: subject.slice(0, 120) }));
+  }, []);
+
   useEffect(() => {
     if (status === "sent") sentRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
   }, [status]);

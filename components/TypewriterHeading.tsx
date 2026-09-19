@@ -55,25 +55,33 @@ export function TypewriterHeading({
 
   let consumed = 0;
 
+  // Full text is always in the DOM for crawlers and screen readers; the typed
+  // animation is a visual-only layer on top.
+  const fullText = segments
+    .map((s) => ("text" in s ? s.text : " "))
+    .join("")
+    .replace(/\s+/g, " ")
+    .trim();
+
   return (
     <span ref={ref}>
-      {segments.map((seg, i) => {
-        if ("break" in seg) return <br key={i} />;
-        const start = consumed;
-        consumed += seg.text.length;
-        const visible = Math.max(0, Math.min(seg.text.length, count - start));
-        return (
-          <span key={i} className={seg.accent ? accentClassName : undefined}>
-            {seg.text.slice(0, visible)}
-          </span>
-        );
-      })}
-      {started && (
-        <span
-          aria-hidden
-          className="inline-block w-[2px] h-[0.85em] bg-current ml-1 align-middle animate-blink-caret"
-        />
-      )}
+      <span className="sr-only">{fullText}</span>
+      <span aria-hidden="true">
+        {segments.map((seg, i) => {
+          if ("break" in seg) return <br key={i} />;
+          const start = consumed;
+          consumed += seg.text.length;
+          const visible = Math.max(0, Math.min(seg.text.length, count - start));
+          return (
+            <span key={i} className={seg.accent ? accentClassName : undefined}>
+              {seg.text.slice(0, visible)}
+            </span>
+          );
+        })}
+        {started && (
+          <span className="inline-block w-[2px] h-[0.85em] bg-current ml-1 align-middle animate-blink-caret" />
+        )}
+      </span>
     </span>
   );
 }
