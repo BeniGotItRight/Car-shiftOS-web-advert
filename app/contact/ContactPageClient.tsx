@@ -5,11 +5,28 @@ import { Mail, Phone, Send, Globe, Check } from "lucide-react";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { TypewriterHeading } from "@/components/TypewriterHeading";
 
+const inputClass =
+  "w-full bg-slate-950/50 border border-white/10 rounded-2xl px-6 py-4 outline-none focus:border-blue-500/50 transition-all text-white placeholder:text-slate-600 font-medium";
+
+function Field({ id, label, optional, children }: { id: string; label: string; optional?: boolean; children: React.ReactNode }) {
+  return (
+    <div className="space-y-2">
+      <label htmlFor={id} className="flex items-center justify-between text-xs font-bold uppercase tracking-widest text-slate-400 ml-1">
+        <span>{label}</span>
+        {optional && <span className="font-medium normal-case tracking-normal text-slate-500 mr-1">Optional</span>}
+      </label>
+      {children}
+    </div>
+  );
+}
+
 export default function ContactPage() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    subject: "Platform Deployment",
+    phone: "",
+    business: "",
+    subject: "",
     message: "",
     website: ""
   });
@@ -138,55 +155,91 @@ export default function ContactPage() {
                 </label>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                  <label className="text-xs font-bold uppercase tracking-widest text-slate-500 ml-1">Full Name</label>
-                  <input 
+                <Field id="name" label="Full name">
+                  <input
+                    id="name"
+                    name="name"
                     required
-                    type="text" 
-                    placeholder="John Doe"
+                    type="text"
+                    autoComplete="name"
+                    placeholder="John Mwangi"
+                    maxLength={100}
                     value={formData.name}
                     onChange={(e) => setFormData({...formData, name: e.target.value})}
-                    className="w-full bg-slate-950/50 border border-white/10 rounded-2xl px-6 py-4 outline-none focus:border-blue-500/50 transition-all text-white placeholder:text-slate-700 font-medium"
+                    className={inputClass}
                   />
-                </div>
-                <div className="space-y-2">
-                  <label className="text-xs font-bold uppercase tracking-widest text-slate-500 ml-1">Email Address</label>
-                  <input 
+                </Field>
+                <Field id="email" label="Email">
+                  <input
+                    id="email"
+                    name="email"
                     required
-                    type="email" 
+                    type="email"
+                    autoComplete="email"
                     placeholder="john@example.com"
+                    maxLength={200}
                     value={formData.email}
                     onChange={(e) => setFormData({...formData, email: e.target.value})}
-                    className="w-full bg-slate-950/50 border border-white/10 rounded-2xl px-6 py-4 outline-none focus:border-blue-500/50 transition-all text-white placeholder:text-slate-700 font-medium"
+                    className={inputClass}
                   />
-                </div>
-              </div>
-              
-              <div className="space-y-2">
-                <label className="text-xs font-bold uppercase tracking-widest text-slate-500 ml-1">Subject</label>
-                <select 
-                  value={formData.subject}
-                  onChange={(e) => setFormData({...formData, subject: e.target.value})}
-                  className="w-full bg-slate-950/50 border border-white/10 rounded-2xl px-6 py-4 outline-none focus:border-blue-500/50 transition-all text-white font-medium appearance-none"
-                >
-                  <option>Platform Deployment</option>
-                  <option>Custom Feature Request</option>
-                  <option>Partnership Inquiry</option>
-                  <option>Technical Support</option>
-                </select>
+                </Field>
               </div>
 
-              <div className="space-y-2">
-                <label className="text-xs font-bold uppercase tracking-widest text-slate-500 ml-1">Message</label>
-                <textarea 
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <Field id="phone" label="Phone / WhatsApp" optional>
+                  <input
+                    id="phone"
+                    name="phone"
+                    type="tel"
+                    autoComplete="tel"
+                    placeholder="0712 345 678"
+                    maxLength={20}
+                    value={formData.phone}
+                    onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                    className={inputClass}
+                  />
+                </Field>
+                <Field id="business" label="Dealership name" optional>
+                  <input
+                    id="business"
+                    name="business"
+                    type="text"
+                    autoComplete="organization"
+                    placeholder="Your car yard"
+                    maxLength={100}
+                    value={formData.business}
+                    onChange={(e) => setFormData({...formData, business: e.target.value})}
+                    className={inputClass}
+                  />
+                </Field>
+              </div>
+
+              <Field id="subject" label="Subject" optional>
+                <input
+                  id="subject"
+                  name="subject"
+                  type="text"
+                  placeholder="e.g. Demo for my yard"
+                  maxLength={120}
+                  value={formData.subject}
+                  onChange={(e) => setFormData({...formData, subject: e.target.value})}
+                  className={inputClass}
+                />
+              </Field>
+
+              <Field id="message" label="Message">
+                <textarea
+                  id="message"
+                  name="message"
                   required
-                  rows={4}
-                  placeholder="Tell us about your dealership..."
+                  rows={5}
+                  placeholder="Tell us about your yard: how many cars you stock, how you track them today, and what you'd like to fix."
+                  maxLength={3000}
                   value={formData.message}
                   onChange={(e) => setFormData({...formData, message: e.target.value})}
-                  className="w-full bg-slate-950/50 border border-white/10 rounded-2xl px-6 py-4 outline-none focus:border-blue-500/50 transition-all text-white placeholder:text-slate-700 font-medium resize-none"
+                  className={inputClass + " resize-none"}
                 />
-              </div>
+              </Field>
 
               {status === "error" && (
                 <p className="text-sm text-red-400 text-center" role="alert">
@@ -205,8 +258,8 @@ export default function ContactPage() {
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-black/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
               </button>
 
-              <p className="text-[10px] text-center text-slate-600 uppercase tracking-[0.2em] font-bold mt-4">
-                Note: All platform deployments require signed legal agreements and physical documentation for compliance.
+              <p className="text-sm text-center text-slate-500 mt-2">
+                We reply by email or phone. Prefer to chat? WhatsApp us on 0732 009 268.
               </p>
             </form>
             )}

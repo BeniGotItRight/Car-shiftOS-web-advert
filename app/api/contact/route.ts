@@ -3,14 +3,8 @@ import { Resend } from "resend";
 
 export const runtime = "nodejs";
 
-const SUBJECTS = [
-  "Platform Deployment",
-  "Custom Feature Request",
-  "Partnership Inquiry",
-  "Technical Support",
-];
-
-const MAX = { name: 100, email: 200, message: 3000 };
+const MAX = { name: 100, email: 200, phone: 20, business: 100, subject: 120, message: 3000 };
+const PHONE_RE = /^[+(]?\d[\d\s()-]{5,18}$/;
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 // Best-effort per-instance limiter: stops casual spam without needing a database.
@@ -26,8 +20,9 @@ function rateLimited(ip: string) {
   return recent.length > MAX_HITS;
 }
 
+// Collapses whitespace (including newlines) so values are safe in email headers.
 const clean = (v: unknown, max: number) =>
-  typeof v === "string" ? v.trim().slice(0, max) : "";
+  typeof v === "string" ? v.replace(/\s+/g, " ").trim().slice(0, max) : "";
 
 export async function POST(req: Request) {
   const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "unknown";
@@ -49,10 +44,13 @@ export async function POST(req: Request) {
 
   const name = clean(body.name, MAX.name);
   const email = clean(body.email, MAX.email);
-  const subject = clean(body.subject, 100);
-  const message = clean(body.message, MAX.message);
+  const phone = clean(body.phone, MAX.phone);
+  const business = clean(body.business, MAX.business);
+  const subject = clean(body.subject, MAX.subject) || "New enquiry";
+  const message =
+    typeof body.message === "string" ? body.message.trim().slice(0, MAX.message) : "";
 
-  if (!name || !message || !EMAIL_RE.test(email) || !SUBJECTS.includes(subject)) {
+  if (!name || !message || !EMAIL_RE.test(email) || (phone && !PHONE_RE.test(phone))) {
     return NextResponse.json({ error: "Please check your details and try again." }, { status: 400 });
   }
 
@@ -70,7 +68,17 @@ export async function POST(req: Request) {
     to,
     replyTo: email,
     subject: `${subject}: ${name}`,
-    text: `New message from the carshiftos.co.ke contact form\n\nName: ${name}\nEmail: ${email}\nSubject: ${subject}\n\n${message}`,
+    text: [
+      "New message from the carshiftos.co.ke contact form",
+      "",
+      `Name: ${name}`,
+      `Email: ${email}`,
+      ...(phone ? [`Phone / WhatsApp: ${phone}`] : []),
+      ...(business ? [`Dealership: ${business}`] : []),
+      `Subject: ${subject}`,
+      "",
+      message,
+    ].join("\n"),
   });
 
   if (error) {
