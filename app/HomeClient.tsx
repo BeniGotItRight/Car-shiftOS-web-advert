@@ -733,7 +733,7 @@ export default function CentralLanding() {
               <span className="font-bold tracking-tight text-lg">carshiftos@gmail.com</span>
             </a>
             <a 
-              href="tel:0732009268" 
+              href="tel:+254732009268"
               className="group flex items-center gap-3 text-slate-400 hover:text-white transition-colors"
             >
               <div className="size-10 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-blue-600 transition-colors">

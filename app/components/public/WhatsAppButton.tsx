@@ -16,7 +16,7 @@ export function WhatsAppButton() {
   const pathname = usePathname();
   
   // Configuration
-  const WHATSAPP_NUMBER = "0732009268"; 
+  const WHATSAPP_NUMBER = "254732009268"; // wa.me needs the country code and no leading zero
   const COMPANY_NAME = "Car ShiftOS";
 
   useEffect(() => {

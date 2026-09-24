@@ -5,7 +5,7 @@ import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { variants } from "@/lib/animations";
-import { Instagram } from "lucide-react";
+import { Instagram, Linkedin } from "lucide-react";
 
 export function WebFooter() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -37,6 +37,26 @@ export function WebFooter() {
             <p className="text-slate-400 text-lg leading-relaxed">
               The operating system for Kenyan car yards: inventory, leads, and payments in one place.
             </p>
+            <div className="flex gap-3 mt-6">
+              <a
+                href="https://www.instagram.com/carshiftos"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="CarShiftOS on Instagram"
+                className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-slate-400 hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-all"
+              >
+                <Instagram className="size-5" />
+              </a>
+              <a
+                href="https://www.linkedin.com/company/carshiftos"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Car ShiftOS on LinkedIn"
+                className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-slate-400 hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-all"
+              >
+                <Linkedin className="size-5" />
+              </a>
+            </div>
           </div>
           
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-8 md:gap-12">
@@ -90,17 +110,6 @@ export function WebFooter() {
             <span className="text-sm text-slate-400 max-w-sm text-center sm:text-left">
               &copy; {new Date().getFullYear()} Car ShiftOS Platform. All rights reserved.
             </span>
-            <div className="flex gap-4">
-              <a
-                href="https://www.instagram.com/carshiftos"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="CarShiftOS on Instagram"
-                className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-slate-400 hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-all"
-              >
-                <Instagram className="size-5" />
-              </a>
-            </div>
           </div>
         </motion.div>
       </motion.div>
