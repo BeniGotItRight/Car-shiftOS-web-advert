@@ -100,6 +100,10 @@ const MODULES = [
       label: "List your cars first",
       href: "/contact?subject=List%20my%20cars%20on%20the%20marketplace",
     },
+    secondaryCta: {
+      label: "See what buyers will find",
+      href: "https://cars.carshiftos.co.ke",
+    },
     description:
       "A single destination where Kenyan buyers can search for vehicles across every ShiftOS-powered yard in the country. Your inventory gets in front of buyers who were never going to find your yard on their own.",
   },
@@ -151,12 +155,24 @@ export default function ServicesPage() {
                   {m.description}
                 </p>
                 {m.cta && (
-                  <Link
-                    href={m.cta.href}
-                    className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-blue-400 hover:text-blue-300 transition-colors"
-                  >
-                    {m.cta.label} <ArrowRight className="size-4" />
-                  </Link>
+                  <div className="mt-6 flex flex-col items-start gap-2">
+                    <Link
+                      href={m.cta.href}
+                      className="inline-flex items-center gap-2 text-sm font-bold text-blue-400 hover:text-blue-300 transition-colors"
+                    >
+                      {m.cta.label} <ArrowRight className="size-4" />
+                    </Link>
+                    {m.secondaryCta && (
+                      <a
+                        href={m.secondaryCta.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 text-sm font-medium text-slate-500 hover:text-slate-300 transition-colors"
+                      >
+                        {m.secondaryCta.label} <ArrowRight className="size-4" />
+                      </a>
+                    )}
+                  </div>
                 )}
               </div>
             </ScrollReveal>
