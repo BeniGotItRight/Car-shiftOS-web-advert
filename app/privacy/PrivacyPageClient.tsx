@@ -59,6 +59,7 @@ const sections: Section[] = [
     title: "Public Marketplace Listings",
     paragraphs: [
       "Vehicle listings shown on the public marketplace (photos, specs, asking price, dealer name and location) are intentionally public. If you enquire about a listing, your name and phone number are shared with that dealer as a new lead in their account.",
+      "While the marketplace is being built, cars.carshiftos.co.ke collects only an email address if you ask to be notified when it opens. That address is used for a single launch notification, is not shared with dealers or any other third party, and is deleted once that notification is sent or on request.",
     ],
   },
   {
