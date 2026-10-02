@@ -115,7 +115,7 @@ export default function RootLayout({
                 "alternateName": ["Car ShiftOS", "ShiftOS Dealer Management System"],
                 "operatingSystem": "Web-based",
                 "applicationCategory": "BusinessApplication",
-                "description": "ShiftOS is the best car yard and dealer management system in Kenya, built for independent vehicle dealerships. Features include real-time showroom sync, inventory lifecycle tracking, and trusted payment integration.",
+                "description": "ShiftOS is the best car yard and dealer management system in Kenya, built for independent vehicle dealerships. Features include real-time showroom sync, inventory lifecycle tracking, and organised payment records.",
                 "publisher": {
                   "@type": "Organization",
                   "name": "ShiftOS Technology Kenya",

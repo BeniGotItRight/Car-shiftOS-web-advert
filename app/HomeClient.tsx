@@ -255,7 +255,7 @@ export default function CentralLanding() {
                 num: "02",
                 icon: Link2,
                 title: "Connect Your Inventory",
-                desc: "Upload your stock manually or sync from your existing records. Every vehicle gets a full profile: specs, photos, pricing, duty status, and a trusted payment flow.",
+                desc: "Upload your stock manually or sync from your existing records. Every vehicle gets a full profile: specs, photos, pricing, duty status, and organised payment records.",
               },
               {
                 num: "03",
@@ -405,7 +405,7 @@ export default function CentralLanding() {
               {
                 title: "Every deal. Every shilling. Every document. Automated.",
                 services: [
-                  "Trusted Payment Sync",
+                  "Payment Records & Tracking",
                   "Automated Sale Contracts",
                   "Commission Ledger Tracking",
                   "Digital Invoice Vault",

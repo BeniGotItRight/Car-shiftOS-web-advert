@@ -1,199 +1,319 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import {
   PackageSearch,
   Users,
-  Ship,
-  Wrench,
-  Monitor,
   CreditCard,
-  Calculator,
-  MessageSquare,
+  Wrench,
   UserCog,
   Globe,
   ArrowRight,
+  ArrowDown,
 } from "lucide-react";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { TypewriterHeading } from "@/components/TypewriterHeading";
 
-const MODULES = [
+const AREAS = [
   {
     num: "01",
     icon: PackageSearch,
-    title: "Inventory Command Centre",
-    tagline: "Know exactly what's on your lot, right now.",
+    title: "Dealership Operations",
     description:
-      "Your entire stock, organised and visible in one place. Every vehicle has its own profile with photos, purchase cost, selling price, and full history from the day it arrived to the day it left. You always know what you have, what it cost you, and how long it's been sitting.",
+      "Keep the operational side of your dealership organised, from the vehicles you acquire to the information and documents surrounding them.",
+    capabilities: [
+      "Your vehicle stock",
+      "Cars you're importing",
+      "What each car really costs you",
+      "Your paperwork, organised",
+      "Day-to-day admin",
+    ],
   },
   {
     num: "02",
     icon: Users,
-    title: "CRM & Lead Management",
-    tagline: "Never lose a buyer again.",
+    title: "Sales & Customers",
     description:
-      "Every enquiry, every call, every walk-in: captured and tracked. Your sales team knows exactly where each lead stands, who's following up, and what the next step is. No more relying on memory or WhatsApp chats to manage your pipeline.",
+      "Keep customers, enquiries, sales opportunities, and deals connected, so your team knows what needs attention.",
+    capabilities: [
+      "Your customer list",
+      "Who's enquired about what",
+      "Deals in progress",
+      "Staying in touch with buyers",
+      "What each salesperson earns",
+    ],
   },
   {
     num: "03",
-    icon: Ship,
-    title: "Import Pipeline Tracker",
-    tagline: "From auction to your yard: every step accounted for.",
+    icon: CreditCard,
+    title: "Finance & Control",
     description:
-      "Importing is complicated. ShiftOS makes it manageable. Track every vehicle through the full import journey: from purchase abroad, through shipping and clearance, to final delivery at your yard. Know your real cost before the car even arrives.",
+      "Keep the financial information around your dealership organised and connected to the vehicles, customers, and deals that created it. ShiftOS records this information; it doesn't hold or process vehicle-sale funds.",
+    capabilities: [
+      "Payments and receipts",
+      "Invoices, kept on file",
+      "What you're actually making",
+      "Commission records",
+      "A clear financial picture",
+    ],
   },
   {
     num: "04",
     icon: Wrench,
-    title: "Workshop & Service Management",
-    tagline: "Your workshop is a revenue stream. Run it like one.",
+    title: "Workshop & Service",
     description:
-      "Everything your workshop does is logged, tracked, and billed properly. Job cards, parts, technician assignments, and service invoices, all in one place. At the end of the month, you know exactly what your workshop made.",
+      "Run workshop and service activity alongside the rest of your dealership, instead of treating it as a separate operation.",
+    capabilities: [
+      "Running the workshop",
+      "Booking in service jobs",
+      "A car's full service history",
+      "A login just for mechanics",
+    ],
   },
   {
     num: "05",
-    icon: Monitor,
-    title: "Live Customer Showroom",
-    tagline: "Your yard, online and open 24/7.",
+    icon: UserCog,
+    title: "People & Management",
     description:
-      "Every yard on ShiftOS gets its own professional online showroom. Your inventory is always up to date. No manual uploads, no stale listings. Customers can browse, enquire, and share listings directly from their phones without you lifting a finger.",
+      "Give your team the access they need, while giving management a clearer view of what's happening across the dealership.",
+    capabilities: [
+      "Your staff list",
+      "Who can see what",
+      "Reports on how business is going",
+      "Simple business numbers",
+      "Who did what, and when",
+    ],
   },
   {
     num: "06",
-    icon: CreditCard,
-    title: "Payment Records & Receipts",
-    tagline: "Every deal closes with a paper trail.",
-    description:
-      "Every buyer leaves with a receipt. Every shilling your yard receives is logged against the right vehicle, the right sale, the right date, without your finance officer touching a spreadsheet. When money moves, the system knows.",
-  },
-  {
-    num: "07",
-    icon: Calculator,
-    title: "HP & Financing Calculator",
-    tagline: "Most buyers don't pay cash. Now you're ready for them.",
-    description:
-      "Give every customer a clear picture of what a hire purchase deal looks like before negotiations even begin. Monthly repayments, deposit options, and loan terms, calculated instantly on any vehicle listing.",
-  },
-  {
-    num: "08",
-    icon: MessageSquare,
-    title: "SMS Notifications",
-    tagline: "Everyone who needs to know knows, automatically.",
-    description:
-      "From new leads to closed deals to payment confirmations, the right people get the right message at the right time. No manual follow-up, no missed updates.",
-  },
-  {
-    num: "09",
-    icon: UserCog,
-    title: "Mechanic Portal",
-    tagline: "A dedicated space for your workshop team.",
-    description:
-      "Your mechanics get their own login, their own view, and access to only what they need. Job cards, task updates, parts logging, all without touching any sales or financial information.",
-  },
-  {
-    num: "10",
     icon: Globe,
-    title: "Public Vehicle Marketplace",
-    tagline: "cars.carshiftos.co.ke: coming soon.",
-    comingSoon: true,
-    cta: {
-      label: "List your cars first",
-      href: "/contact?subject=List%20my%20cars%20on%20the%20marketplace",
-    },
-    secondaryCta: {
-      label: "See what buyers will find",
-      href: "https://cars.carshiftos.co.ke",
-    },
+    title: "Digital Presence & Marketplace",
     description:
-      "A single destination where Kenyan buyers can search for vehicles across every ShiftOS-powered yard in the country. Your inventory gets in front of buyers who were never going to find your yard on their own.",
+      "Take your dealership beyond the physical yard with a professional digital showroom and a public marketplace designed around dealership inventory.",
+    capabilities: [
+      "Your own online showroom",
+      "Cars listed online",
+      "A shared marketplace (coming soon)",
+      "Your dealership's public profile",
+      "Buyers finding your cars",
+      "Reviews from real buyers",
+    ],
   },
 ];
+
+const CONNECTS = ["Vehicles", "Customers", "Sales", "Financials", "Documents", "Workshop", "Digital Presence"];
+
+const SHOWROOM_FLOW = ["Your Dealership", "Digital Showroom", "Vehicle", "Buyer", "WhatsApp / Call / Enquiry", "Dealership Team"];
+
+function FlowRow({ steps, dense }: { steps: string[]; dense?: boolean }) {
+  return (
+    <div className="flex flex-col md:flex-row md:flex-wrap items-center justify-center gap-2.5">
+      {steps.map((step, i) => (
+        <div key={step} className="flex flex-col md:flex-row items-center gap-2.5">
+          <span
+            className={`rounded-lg bg-white/[0.04] border border-white/10 text-slate-300 font-semibold uppercase tracking-wide text-center ${
+              dense ? "px-3 py-2 text-xs" : "px-4 py-2.5 text-sm"
+            }`}
+          >
+            {step}
+          </span>
+          {i < steps.length - 1 && (
+            <ArrowRight className="size-4 text-blue-500 shrink-0 hidden md:block" />
+          )}
+          {i < steps.length - 1 && (
+            <ArrowDown className="size-4 text-blue-500 shrink-0 md:hidden" />
+          )}
+        </div>
+      ))}
+    </div>
+  );
+}
 
 export default function ServicesPage() {
   return (
     <div className="min-h-screen bg-slate-950 text-white pt-24 md:pt-32 pb-16 px-6">
-      <div className="max-w-7xl mx-auto">
-        <div className="max-w-3xl mb-16 md:mb-24 px-2 sm:px-0">
+      <div className="max-w-6xl mx-auto">
+        {/* Hero */}
+        <div className="max-w-3xl mb-10 px-2 sm:px-0">
           <span className="text-blue-500 font-bold uppercase tracking-widest text-sm mb-4 block">
             Our Platform
           </span>
-          <h1 className="text-4xl sm:text-5xl md:text-7xl font-black mb-6 md:mb-8 tracking-tighter">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-black mb-6 tracking-tighter">
             <TypewriterHeading
               segments={[
-                { text: "Everything your yard needs. " },
-                { text: "Built for Kenya.", accent: true },
+                { text: "Everything your dealership needs. " },
+                { text: "In one system.", accent: true },
               ]}
             />
           </h1>
-          <p className="text-lg sm:text-xl text-slate-400 font-light leading-relaxed">
-            One platform. Ten modules. Zero spreadsheets.
+          <p className="text-lg sm:text-xl text-slate-400 font-light leading-relaxed mb-8">
+            Car ShiftOS connects the everyday work of a dealership, from vehicles and customers to sales, financial records, documents, workshop operations, and your digital presence.
           </p>
+          <div className="flex flex-col sm:flex-row gap-4">
+            <Link
+              href="/contact"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-blue-600 rounded-xl font-bold hover:bg-blue-500 transition-colors"
+            >
+              Book a Demo
+            </Link>
+            <a
+              href="#areas"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 border border-white/15 rounded-xl font-bold hover:bg-white/5 transition-colors"
+            >
+              See How It Works
+            </a>
+          </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-24">
-          {MODULES.map((m, i) => (
-            <ScrollReveal key={m.num} direction="up" delay={(i % 2) * 100}>
-              <div className="relative h-full p-6 sm:p-8 rounded-[2rem] bg-slate-900/40 border border-white/5 backdrop-blur-xl group hover:border-blue-500/20 transition-all">
-                <div className="flex items-start justify-between mb-6">
-                  <div className="size-14 rounded-2xl bg-blue-950 border border-blue-500/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-200">
-                    <m.icon className="w-6 h-6 text-blue-500" />
+        {/* Six connected areas */}
+        <div id="areas" className="grid grid-cols-1 md:grid-cols-2 items-start gap-5 mb-20 scroll-mt-28">
+          {AREAS.map((a, i) => (
+            <ScrollReveal key={a.num} direction="up" delay={(i % 2) * 100}>
+              <div className="p-7 sm:p-8 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-blue-500/30 transition-colors">
+                <div className="flex items-center gap-4 mb-5">
+                  <div className="size-11 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center shrink-0">
+                    <a.icon className="w-5 h-5 text-blue-500" />
                   </div>
-                  <div className="flex items-center gap-3">
-                    {m.comingSoon && (
-                      <span className="text-[10px] font-bold uppercase tracking-widest text-amber-400 bg-amber-400/10 border border-amber-400/20 rounded-full px-3 py-1">
-                        Coming Soon
-                      </span>
-                    )}
-                    <span className="text-xs font-bold uppercase tracking-widest text-slate-600">
-                      {m.num}
-                    </span>
-                  </div>
+                  <span className="text-xs font-bold uppercase tracking-widest text-slate-600">
+                    {a.num}
+                  </span>
                 </div>
-                <h2 className="text-xl sm:text-2xl font-black mb-2">{m.title}</h2>
-                <p className="text-blue-400 font-medium mb-4">{m.tagline}</p>
-                <p className="text-slate-400 font-light text-sm leading-relaxed">
-                  {m.description}
+                <h2 className="text-xl sm:text-2xl font-bold mb-3">{a.title}</h2>
+                <p className="text-slate-400 font-light text-sm leading-relaxed mb-6">
+                  {a.description}
                 </p>
-                {m.cta && (
-                  <div className="mt-6 flex flex-col items-start gap-2">
-                    <Link
-                      href={m.cta.href}
-                      className="inline-flex items-center gap-2 text-sm font-bold text-blue-400 hover:text-blue-300 transition-colors"
-                    >
-                      {m.cta.label} <ArrowRight className="size-4" />
-                    </Link>
-                    {m.secondaryCta && (
-                      <a
-                        href={m.secondaryCta.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 text-sm font-medium text-slate-500 hover:text-slate-300 transition-colors"
-                      >
-                        {m.secondaryCta.label} <ArrowRight className="size-4" />
-                      </a>
-                    )}
-                  </div>
-                )}
+                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2.5">
+                  {a.capabilities.map((c) => (
+                    <li key={c} className="flex items-center gap-2.5 text-sm text-slate-300">
+                      <span className="size-1 rounded-full bg-blue-500 shrink-0" />
+                      {c}
+                    </li>
+                  ))}
+                </ul>
               </div>
             </ScrollReveal>
           ))}
         </div>
 
-        {/* Page CTA */}
-        <div className="relative text-center rounded-[2rem] md:rounded-[3rem] border border-white/5 bg-slate-900/20 p-10 sm:p-16 overflow-hidden">
-          <div className="relative z-10 max-w-2xl mx-auto">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black mb-4 tracking-tight">
-              Ready to see it live?
+        {/* One dealership. One system. — the visual high point of the page */}
+        <ScrollReveal direction="up">
+          <div className="relative overflow-hidden rounded-2xl border border-white/10 mb-14 text-center">
+            <Image
+              src="/assets/hero-nairobi.jpg"
+              alt=""
+              fill
+              sizes="(max-width: 1152px) 100vw, 1152px"
+              className="object-cover opacity-20"
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-slate-950/70 via-slate-950/85 to-slate-950" />
+            <div className="relative p-10 sm:p-20">
+              <h2 className="text-3xl sm:text-5xl font-black mb-5 tracking-tight">
+                One dealership. One system.
+              </h2>
+              <p className="max-w-xl mx-auto text-slate-300 font-light leading-relaxed mb-10">
+                Your dealership already has a way of working. Car ShiftOS brings the important parts together in one connected system.
+              </p>
+              <div className="flex flex-wrap justify-center gap-2.5 mb-8">
+                {CONNECTS.map((c) => (
+                  <span
+                    key={c}
+                    className="px-4 py-2 rounded-lg bg-white/[0.06] border border-white/10 text-sm font-medium text-slate-200"
+                  >
+                    {c}
+                  </span>
+                ))}
+              </div>
+              <ArrowDown className="size-5 text-blue-500 mx-auto mb-8" />
+              <span className="inline-block px-6 py-3 mb-10 rounded-lg bg-blue-600 text-white font-black tracking-tight">
+                Car ShiftOS
+              </span>
+              <div>
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-slate-950 rounded-xl font-bold hover:bg-slate-200 transition-colors"
+                >
+                  Book a Demo
+                </Link>
+              </div>
+            </div>
+          </div>
+        </ScrollReveal>
+
+        {/* Digital presence, expanded */}
+        <ScrollReveal direction="up">
+          <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-8 sm:p-14 mb-14">
+            <div className="max-w-2xl mb-10">
+              <h2 className="text-2xl sm:text-3xl font-black mb-3 tracking-tight">
+                Put your dealership online.
+              </h2>
+              <p className="text-slate-400 font-light leading-relaxed">
+                Give your dealership a professional digital showroom connected to the vehicles you actually have in stock.
+              </p>
+            </div>
+            <div className="mb-14">
+              <FlowRow steps={SHOWROOM_FLOW} dense />
+            </div>
+
+            <div className="border-t border-white/10 pt-10 flex flex-col md:flex-row md:items-start md:justify-between gap-6">
+              <div className="max-w-xl">
+                <div className="flex items-center gap-3 mb-3">
+                  <h3 className="text-xl sm:text-2xl font-black tracking-tight">
+                    Take your vehicles beyond the yard.
+                  </h3>
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-amber-400 bg-amber-400/10 border border-amber-400/20 rounded-full px-3 py-1 shrink-0">
+                    Coming Soon
+                  </span>
+                </div>
+                <p className="text-slate-400 font-light leading-relaxed">
+                  Car ShiftOS is building a public marketplace where buyers can discover vehicles from ShiftOS-powered dealerships.
+                </p>
+              </div>
+              <div className="flex flex-col items-start gap-2 shrink-0">
+                <Link
+                  href="/contact?subject=List%20my%20cars%20on%20the%20marketplace"
+                  className="inline-flex items-center gap-2 text-sm font-bold text-blue-400 hover:text-blue-300 transition-colors"
+                >
+                  List your cars first <ArrowRight className="size-4" />
+                </Link>
+                <a
+                  href="https://cars.carshiftos.co.ke"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-sm font-medium text-slate-500 hover:text-slate-300 transition-colors"
+                >
+                  See what buyers will find <ArrowRight className="size-4" />
+                </a>
+              </div>
+            </div>
+          </div>
+        </ScrollReveal>
+
+        {/* Final CTA */}
+        <div className="relative text-center rounded-2xl border border-white/10 bg-white/[0.02] p-10 sm:p-16">
+          <div className="max-w-2xl mx-auto">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black mb-4 tracking-tight leading-tight">
+              Your dealership already has a way of working.
+              <br />
+              Car ShiftOS gives it one system.
             </h2>
             <p className="text-lg text-slate-400 font-light mb-8">
-              Book a free 30-minute demo. We&apos;ll walk through the system on your own inventory.
+              Built for Kenyan car dealerships.
             </p>
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 px-10 py-5 bg-blue-600 rounded-2xl font-bold text-lg hover:bg-blue-500 transition-all active:scale-95 shadow-2xl shadow-blue-600/20"
-            >
-              Book a Free Demo
-            </Link>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                href="/contact"
+                className="inline-flex items-center justify-center gap-2 px-10 py-5 bg-blue-600 rounded-xl font-bold text-lg hover:bg-blue-500 transition-colors"
+              >
+                Book a Demo
+              </Link>
+              <Link
+                href="/contact"
+                className="inline-flex items-center justify-center gap-2 px-10 py-5 border border-white/15 rounded-xl font-bold text-lg hover:bg-white/5 transition-colors"
+              >
+                Contact Us
+              </Link>
+            </div>
           </div>
         </div>
       </div>
