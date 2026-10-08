@@ -10,6 +10,38 @@ export const metadata: Metadata = {
   },
 };
 
+const videoJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "VideoObject",
+  name: "Car ShiftOS Demo - Car Yard & Dealer Management System",
+  description:
+    "A walkthrough of Car ShiftOS: real-time showroom sync, inventory lifecycle tracking, and organised payment records for Kenyan car yards.",
+  thumbnailUrl: [
+    "https://res.cloudinary.com/dru0aee47/video/upload/so_8,w_1280/brag.jpg",
+  ],
+  uploadDate: "2026-09-18T23:26:55Z",
+  duration: "PT21S",
+  contentUrl:
+    "https://res.cloudinary.com/dru0aee47/video/upload/q_auto/brag.mp4",
+  embedUrl: "https://carshiftos.co.ke",
+  publisher: {
+    "@type": "Organization",
+    name: "ShiftOS Technology Kenya",
+    logo: {
+      "@type": "ImageObject",
+      url: "https://carshiftos.co.ke/favicon.png",
+    },
+  },
+};
+
 export default function Page() {
-  return <CentralLanding />;
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(videoJsonLd) }}
+      />
+      <CentralLanding />
+    </>
+  );
 }
