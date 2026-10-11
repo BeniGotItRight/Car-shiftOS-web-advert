@@ -68,10 +68,10 @@ export async function generateMetadata(): Promise<Metadata> {
       siteName: "Car ShiftOS Kenya",
       images: [
         {
-          url: "/assets/shiftos-hero.png",
-          width: 1200,
-          height: 630,
-          alt: "ShiftOS - The Best Car Yard Management System in Kenya",
+          url: "/assets/carshiftos-logo.png",
+          width: 1024,
+          height: 559,
+          alt: "Car ShiftOS logo",
         },
       ],
       locale: "en_KE",
@@ -81,7 +81,7 @@ export async function generateMetadata(): Promise<Metadata> {
       card: "summary_large_image",
       title: "Car ShiftOS | Best Car Yard & Dealer Management System in Kenya",
       description: "The leading dealer management system for car yards in Kenya.",
-      images: ["/assets/shiftos-hero.png"],
+      images: ["/assets/carshiftos-logo.png"],
     },
     alternates: {
       canonical: "https://carshiftos.co.ke",
