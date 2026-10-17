@@ -86,7 +86,7 @@ const sections: Section[] = [
       "Sale, payment, and financial records: 7 years after the transaction, in line with standard Kenyan tax record-keeping practice.",
       "Leads and enquiries with no resulting sale: 24 months after the last activity, then deleted.",
       "System and audit logs: 12 months, then deleted.",
-      "Account data: retained while the account is active, deleted or anonymised within 90 days of account closure unless we're required to keep it longer by law.",
+      "Account data: retained while the account is active. We are still building out a formal account-closure and deletion process; if you contact us to close your account or request deletion, we will act on it as soon as we are able, subject to the legal retention periods above.",
     ],
   },
   {
