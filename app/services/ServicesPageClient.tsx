@@ -314,6 +314,12 @@ export default function ServicesPage() {
                 Contact Us
               </Link>
             </div>
+            <Link
+              href="/faq"
+              className="inline-flex items-center gap-2 mt-6 text-sm font-medium text-slate-500 hover:text-slate-300 transition-colors"
+            >
+              Have questions first? Read the FAQ <ArrowRight className="size-4" />
+            </Link>
           </div>
         </div>
       </div>

@@ -3,6 +3,7 @@ export const faqs = [
     question: "What is Car ShiftOS?",
     answer:
       "Car ShiftOS is a dealer management system built for independent car yards in Kenya. It brings inventory, customer leads, workshop jobs, payment records, and your online showroom into one connected system, so your team isn't tracking everything across WhatsApp chats and spreadsheets.",
+    relatedLink: { label: "See everything the platform covers", href: "/services" },
   },
   {
     question: "How is this different from what I'm already doing on WhatsApp and Excel?",
@@ -49,21 +50,25 @@ export const faqs = [
     question: "What does the Workshop & Service module do?",
     answer:
       "It turns your workshop into a tracked revenue stream: job cards, parts, technician assignments, and service invoices are all logged in one place, so at the end of the month you know exactly what the workshop made.",
+    relatedLink: { label: "Read more about the Workshop & Service module", href: "/services" },
   },
   {
     question: "Is there a public marketplace where buyers can find my cars?",
     answer:
       "Yes. cars.carshiftos.co.ke is a marketplace where buyers across Kenya can search inventory from ShiftOS-powered dealerships. It's opening soon, join the waitlist on that site to be notified when it launches.",
+    relatedLink: { label: "Visit the marketplace", href: "https://cars.carshiftos.co.ke" },
   },
   {
     question: "How much does Car ShiftOS cost?",
     answer:
       "Pricing depends on the size of your dealership and which modules you need. Book a free demo and we'll walk you through pricing on your own inventory.",
+    relatedLink: { label: "Book a free demo", href: "/contact" },
   },
   {
     question: "Is my dealership's data kept separate from other dealerships?",
     answer:
       "Yes. Each dealership's inventory, leads, and records are kept separate and accessible only to your own team.",
+    relatedLink: { label: "Read our privacy policy", href: "/privacy" },
   },
   {
     question: "How long does setup take?",

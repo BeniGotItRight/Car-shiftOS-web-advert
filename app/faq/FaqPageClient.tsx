@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown, X, Check } from "lucide-react";
+import { motion } from "framer-motion";
+import { ChevronDown, X, Check, ArrowRight } from "lucide-react";
 import { faqs } from "./faqs";
 
 export default function FaqPageClient() {
@@ -51,54 +51,66 @@ export default function FaqPageClient() {
                     }`}
                   />
                 </button>
-                <AnimatePresence initial={false}>
-                  {isOpen && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.25 }}
-                      className="overflow-hidden"
-                    >
-                      <div className="px-6 sm:px-8 pb-6 sm:pb-8">
-                        <p className="text-base sm:text-lg text-slate-400 font-light leading-relaxed">
-                          {faq.answer}
-                        </p>
-                        {"comparison" in faq && faq.comparison && (
-                          <div className="mt-6 rounded-2xl border border-white/5 overflow-hidden">
-                            <div className="grid grid-cols-2">
-                              <div className="px-4 sm:px-6 py-3 bg-white/5 text-xs sm:text-sm font-bold uppercase tracking-wider text-slate-400 border-r border-white/5">
-                                {faq.comparison.leftLabel}
+                {/* Always rendered in the HTML (even when collapsed) so the
+                    answer text is crawlable; visibility is purely CSS-driven
+                    via the grid-rows collapse trick, not conditional mounting. */}
+                <div
+                  aria-hidden={!isOpen}
+                  className={`grid transition-[grid-template-rows] duration-300 ease-in-out ${
+                    isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+                  }`}
+                >
+                  <div className="overflow-hidden">
+                    <div className="px-6 sm:px-8 pb-6 sm:pb-8">
+                      <p className="text-base sm:text-lg text-slate-400 font-light leading-relaxed">
+                        {faq.answer}
+                      </p>
+                      {"comparison" in faq && faq.comparison && (
+                        <div className="mt-6 rounded-2xl border border-white/5 overflow-hidden">
+                          <div className="grid grid-cols-2">
+                            <div className="px-4 sm:px-6 py-3 bg-white/5 text-xs sm:text-sm font-bold uppercase tracking-wider text-slate-400 border-r border-white/5">
+                              {faq.comparison.leftLabel}
+                            </div>
+                            <div className="px-4 sm:px-6 py-3 bg-blue-600/10 text-xs sm:text-sm font-bold uppercase tracking-wider text-blue-400">
+                              {faq.comparison.rightLabel}
+                            </div>
+                          </div>
+                          {faq.comparison.rows.map((row, ri) => (
+                            <div
+                              key={ri}
+                              className="grid grid-cols-2 border-t border-white/5"
+                            >
+                              <div className="px-4 sm:px-6 py-4 border-r border-white/5 flex gap-2 sm:gap-3">
+                                <X className="size-4 shrink-0 text-slate-600 mt-0.5" />
+                                <span className="text-sm sm:text-base text-slate-400 font-light leading-snug">
+                                  {row.left}
+                                </span>
                               </div>
-                              <div className="px-4 sm:px-6 py-3 bg-blue-600/10 text-xs sm:text-sm font-bold uppercase tracking-wider text-blue-400">
-                                {faq.comparison.rightLabel}
+                              <div className="px-4 sm:px-6 py-4 bg-blue-600/5 flex gap-2 sm:gap-3">
+                                <Check className="size-4 shrink-0 text-blue-500 mt-0.5" />
+                                <span className="text-sm sm:text-base text-white font-light leading-snug">
+                                  {row.right}
+                                </span>
                               </div>
                             </div>
-                            {faq.comparison.rows.map((row, ri) => (
-                              <div
-                                key={ri}
-                                className="grid grid-cols-2 border-t border-white/5"
-                              >
-                                <div className="px-4 sm:px-6 py-4 border-r border-white/5 flex gap-2 sm:gap-3">
-                                  <X className="size-4 shrink-0 text-slate-600 mt-0.5" />
-                                  <span className="text-sm sm:text-base text-slate-400 font-light leading-snug">
-                                    {row.left}
-                                  </span>
-                                </div>
-                                <div className="px-4 sm:px-6 py-4 bg-blue-600/5 flex gap-2 sm:gap-3">
-                                  <Check className="size-4 shrink-0 text-blue-500 mt-0.5" />
-                                  <span className="text-sm sm:text-base text-white font-light leading-snug">
-                                    {row.right}
-                                  </span>
-                                </div>
-                              </div>
-                            ))}
-                          </div>
-                        )}
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                          ))}
+                        </div>
+                      )}
+                      {"relatedLink" in faq && faq.relatedLink && (
+                        <Link
+                          href={faq.relatedLink.href}
+                          target={faq.relatedLink.href.startsWith("http") ? "_blank" : undefined}
+                          rel={faq.relatedLink.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                          tabIndex={isOpen ? 0 : -1}
+                          className="mt-4 inline-flex items-center gap-1.5 text-sm font-bold text-blue-400 hover:text-blue-300 transition-colors"
+                        >
+                          {faq.relatedLink.label}
+                          <ArrowRight className="size-4" />
+                        </Link>
+                      )}
+                    </div>
+                  </div>
+                </div>
               </motion.div>
             );
           })}
