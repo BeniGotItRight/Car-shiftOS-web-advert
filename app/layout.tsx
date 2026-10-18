@@ -123,7 +123,7 @@ export default function RootLayout({
                   "url": "https://carshiftos.co.ke",
                   "logo": "https://carshiftos.co.ke/favicon.png",
                   "sameAs": [
-                    "https://www.facebook.com/profile.php?id=61594660537678",
+                    "https://www.facebook.com/profile.php?id=61578542036938",
                     "https://www.instagram.com/carshiftos",
                     "https://www.linkedin.com/company/carshiftos",
                     "https://www.tiktok.com/@carshiftos"
@@ -148,7 +148,7 @@ export default function RootLayout({
                   "email": "carshiftos@gmail.com",
                   "image": "https://carshiftos.co.ke/assets/shiftos-hero.png",
                   "sameAs": [
-                    "https://www.facebook.com/profile.php?id=61594660537678",
+                    "https://www.facebook.com/profile.php?id=61578542036938",
                     "https://www.instagram.com/carshiftos",
                     "https://www.linkedin.com/company/carshiftos",
                     "https://www.tiktok.com/@carshiftos"

@@ -39,7 +39,7 @@ export function WebFooter() {
             </p>
             <div className="flex gap-3 mt-6">
               <a
-                href="https://www.facebook.com/profile.php?id=61594660537678"
+                href="https://www.facebook.com/profile.php?id=61578542036938"
                 target="_blank"
                 rel="me noopener noreferrer"
                 aria-label="Car ShiftOS on Facebook"
