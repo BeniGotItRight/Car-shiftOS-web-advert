@@ -122,8 +122,10 @@ export default function RootLayout({
                   "url": "https://carshiftos.co.ke",
                   "logo": "https://carshiftos.co.ke/favicon.png",
                   "sameAs": [
+                    "https://www.facebook.com/profile.php?id=61594660537678",
                     "https://www.instagram.com/carshiftos",
-                    "https://www.linkedin.com/company/carshiftos"
+                    "https://www.linkedin.com/company/carshiftos",
+                    "https://www.tiktok.com/@carshiftos"
                   ]
                 }
               },
