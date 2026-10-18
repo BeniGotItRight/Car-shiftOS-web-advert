@@ -36,6 +36,14 @@ export const metadata: Metadata = {
   },
 };
 
+function fullAnswerText(faq: (typeof faqs)[number]): string {
+  if (!("comparison" in faq) || !faq.comparison) return faq.answer;
+  const rows = faq.comparison.rows
+    .map((row) => `Instead of: ${row.left} Car ShiftOS: ${row.right}`)
+    .join(" ");
+  return `${faq.answer} ${rows}`;
+}
+
 const faqJsonLd = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -44,7 +52,7 @@ const faqJsonLd = {
     name: faq.question,
     acceptedAnswer: {
       "@type": "Answer",
-      text: faq.answer,
+      text: fullAnswerText(faq),
     },
   })),
 };
