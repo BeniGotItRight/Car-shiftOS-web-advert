@@ -2,12 +2,37 @@ import type { Metadata } from "next";
 import FaqPageClient from "./FaqPageClient";
 import { faqs } from "./faqs";
 
+const faqTitle = "FAQ";
+const faqDescription =
+  "Answers to common questions about Car ShiftOS: pricing, payments, the workshop module, the marketplace, and how to get started.";
+
 export const metadata: Metadata = {
-  title: "FAQ",
-  description:
-    "Answers to common questions about Car ShiftOS: pricing, payments, the workshop module, the marketplace, and how to get started.",
+  title: faqTitle,
+  description: faqDescription,
   alternates: {
     canonical: "https://carshiftos.co.ke/faq",
+  },
+  openGraph: {
+    title: "Car ShiftOS | FAQ",
+    description: faqDescription,
+    url: "https://carshiftos.co.ke/faq",
+    siteName: "Car ShiftOS",
+    images: [
+      {
+        url: "/assets/carshiftos-logo.png",
+        width: 1024,
+        height: 559,
+        alt: "Car ShiftOS logo",
+      },
+    ],
+    locale: "en_KE",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Car ShiftOS | FAQ",
+    description: faqDescription,
+    images: ["/assets/carshiftos-logo.png"],
   },
 };
 
