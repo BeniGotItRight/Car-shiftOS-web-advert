@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, X, Check } from "lucide-react";
 import { faqs } from "./faqs";
 
 export default function FaqPageClient() {
@@ -60,9 +60,42 @@ export default function FaqPageClient() {
                       transition={{ duration: 0.25 }}
                       className="overflow-hidden"
                     >
-                      <p className="px-6 sm:px-8 pb-6 sm:pb-8 text-base sm:text-lg text-slate-400 font-light leading-relaxed">
-                        {faq.answer}
-                      </p>
+                      <div className="px-6 sm:px-8 pb-6 sm:pb-8">
+                        <p className="text-base sm:text-lg text-slate-400 font-light leading-relaxed">
+                          {faq.answer}
+                        </p>
+                        {"comparison" in faq && faq.comparison && (
+                          <div className="mt-6 rounded-2xl border border-white/5 overflow-hidden">
+                            <div className="grid grid-cols-2">
+                              <div className="px-4 sm:px-6 py-3 bg-white/5 text-xs sm:text-sm font-bold uppercase tracking-wider text-slate-400 border-r border-white/5">
+                                {faq.comparison.leftLabel}
+                              </div>
+                              <div className="px-4 sm:px-6 py-3 bg-blue-600/10 text-xs sm:text-sm font-bold uppercase tracking-wider text-blue-400">
+                                {faq.comparison.rightLabel}
+                              </div>
+                            </div>
+                            {faq.comparison.rows.map((row, ri) => (
+                              <div
+                                key={ri}
+                                className="grid grid-cols-2 border-t border-white/5"
+                              >
+                                <div className="px-4 sm:px-6 py-4 border-r border-white/5 flex gap-2 sm:gap-3">
+                                  <X className="size-4 shrink-0 text-slate-600 mt-0.5" />
+                                  <span className="text-sm sm:text-base text-slate-400 font-light leading-snug">
+                                    {row.left}
+                                  </span>
+                                </div>
+                                <div className="px-4 sm:px-6 py-4 bg-blue-600/5 flex gap-2 sm:gap-3">
+                                  <Check className="size-4 shrink-0 text-blue-500 mt-0.5" />
+                                  <span className="text-sm sm:text-base text-white font-light leading-snug">
+                                    {row.right}
+                                  </span>
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                      </div>
                     </motion.div>
                   )}
                 </AnimatePresence>

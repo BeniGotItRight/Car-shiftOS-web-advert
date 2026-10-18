@@ -7,7 +7,33 @@ export const faqs = [
   {
     question: "How is this different from what I'm already doing on WhatsApp and Excel?",
     answer:
-      "WhatsApp and Excel work until your yard grows past a handful of cars. A WhatsApp enquiry gets buried the moment the next message comes in, so leads quietly go cold with no record of who followed up or when. A spreadsheet can list a car, but it can't track that vehicle's full lifecycle, its real cost, its financing options, its workshop history, or its payment trail, and it can't give buyers a live, always-updated showroom to browse on their own. Car ShiftOS replaces that patchwork with one connected system: every enquiry is logged and assigned so nothing falls through the cracks, every vehicle has its own profile from the day it arrives to the day it's sold, your workshop's jobs and invoices are tracked as real revenue instead of scattered notes, and every payment is recorded against the right car automatically. It's the difference between hoping you remember what happened and having the full history in front of you.",
+      "WhatsApp and Excel work until your yard grows past a handful of cars. Car ShiftOS replaces that patchwork with one connected system, so you're not hoping you remember what happened, you have the full history in front of you.",
+    comparison: {
+      leftLabel: "WhatsApp & Excel",
+      rightLabel: "Car ShiftOS",
+      rows: [
+        {
+          left: "An enquiry gets buried the moment the next message comes in, no record of who followed up or when.",
+          right: "Every enquiry is logged and assigned, so nothing falls through the cracks.",
+        },
+        {
+          left: "A spreadsheet can list a car, but not its real cost, financing options, or full lifecycle.",
+          right: "Every vehicle has its own profile, from the day it arrives to the day it's sold.",
+        },
+        {
+          left: "No link between a car and its workshop history.",
+          right: "Workshop jobs and invoices are tracked as real revenue, not scattered notes.",
+        },
+        {
+          left: "No payment trail tied to the vehicle.",
+          right: "Every payment is recorded against the right car, automatically.",
+        },
+        {
+          left: "Buyers can't browse your stock on their own.",
+          right: "A live, always-updated showroom buyers can browse themselves.",
+        },
+      ],
+    },
   },
   {
     question: "Who is Car ShiftOS for?",
