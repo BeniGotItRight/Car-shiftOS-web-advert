@@ -65,7 +65,7 @@ export async function generateMetadata(): Promise<Metadata> {
       title: "Car ShiftOS | Best Car Yard & Dealer Management System in Kenya",
       description: "Inventory, CRM, import tracking, workshop management, and payments, the dealer management system for Kenyan car yards.",
       url: "https://carshiftos.co.ke",
-      siteName: "Car ShiftOS Kenya",
+      siteName: "Car ShiftOS",
       images: [
         {
           url: "/assets/carshiftos-logo.png",
@@ -111,14 +111,15 @@ export default function RootLayout({
               {
                 "@context": "https://schema.org",
                 "@type": "SoftwareApplication",
-                "name": "ShiftOS",
-                "alternateName": ["Car ShiftOS", "ShiftOS Dealer Management System"],
+                "name": "Car ShiftOS",
+                "alternateName": ["ShiftOS", "ShiftOS Kenya", "ShiftOS Dealer Management System"],
                 "operatingSystem": "Web-based",
                 "applicationCategory": "BusinessApplication",
-                "description": "ShiftOS is the best car yard and dealer management system in Kenya, built for independent vehicle dealerships. Features include real-time showroom sync, inventory lifecycle tracking, and organised payment records.",
+                "description": "Car ShiftOS is the best car yard and dealer management system in Kenya, built for independent vehicle dealerships. Features include real-time showroom sync, inventory lifecycle tracking, and organised payment records.",
                 "publisher": {
                   "@type": "Organization",
-                  "name": "ShiftOS Technology Kenya",
+                  "name": "Car ShiftOS",
+                  "alternateName": ["ShiftOS", "ShiftOS Kenya"],
                   "url": "https://carshiftos.co.ke",
                   "logo": "https://carshiftos.co.ke/favicon.png",
                   "sameAs": [
@@ -136,7 +137,8 @@ export default function RootLayout({
                 "description": "A dealer management system (DMS) built for Kenyan car yards: inventory, CRM, workshop, and payment tracking in one platform.",
                 "provider": {
                   "@type": "LocalBusiness",
-                  "name": "ShiftOS Kenya",
+                  "name": "Car ShiftOS",
+                  "alternateName": ["ShiftOS", "ShiftOS Kenya"],
                   "address": {
                     "@type": "PostalAddress",
                     "addressLocality": "Nairobi",
@@ -144,7 +146,13 @@ export default function RootLayout({
                   },
                   "telephone": "+254732009268",
                   "email": "carshiftos@gmail.com",
-                  "image": "https://carshiftos.co.ke/assets/shiftos-hero.png"
+                  "image": "https://carshiftos.co.ke/assets/shiftos-hero.png",
+                  "sameAs": [
+                    "https://www.facebook.com/profile.php?id=61594660537678",
+                    "https://www.instagram.com/carshiftos",
+                    "https://www.linkedin.com/company/carshiftos",
+                    "https://www.tiktok.com/@carshiftos"
+                  ]
                 },
                 "areaServed": {
                   "@type": "Country",

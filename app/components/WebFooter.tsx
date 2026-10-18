@@ -41,7 +41,7 @@ export function WebFooter() {
               <a
                 href="https://www.facebook.com/profile.php?id=61594660537678"
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="me noopener noreferrer"
                 aria-label="Car ShiftOS on Facebook"
                 className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-slate-400 hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-all"
               >
@@ -50,7 +50,7 @@ export function WebFooter() {
               <a
                 href="https://www.instagram.com/carshiftos"
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="me noopener noreferrer"
                 aria-label="CarShiftOS on Instagram"
                 className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-slate-400 hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-all"
               >
@@ -59,7 +59,7 @@ export function WebFooter() {
               <a
                 href="https://www.linkedin.com/company/carshiftos"
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="me noopener noreferrer"
                 aria-label="Car ShiftOS on LinkedIn"
                 className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-slate-400 hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-all"
               >
@@ -68,7 +68,7 @@ export function WebFooter() {
               <a
                 href="https://www.tiktok.com/@carshiftos"
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="me noopener noreferrer"
                 aria-label="Car ShiftOS on TikTok"
                 className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-slate-400 hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-all"
               >
@@ -86,8 +86,9 @@ export function WebFooter() {
               </h3>
               <Link href="/services" className="text-slate-400 hover:text-white transition-colors text-sm sm:text-base">Our Services</Link>
               <Link href="/about" className="text-slate-400 hover:text-white transition-colors text-sm sm:text-base">About Us</Link>
+              <Link href="/faq" className="text-slate-400 hover:text-white transition-colors text-sm sm:text-base">FAQ</Link>
             </div>
-            
+
             <div className="flex flex-col gap-3 sm:gap-4">
               <h3 className="text-white font-medium uppercase tracking-wider text-xs sm:text-sm mb-1 sm:mb-2">Company</h3>
               <Link href="/about" className="text-slate-400 hover:text-white transition-colors text-sm sm:text-base">About Us</Link>

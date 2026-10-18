@@ -26,7 +26,8 @@ const videoJsonLd = {
   embedUrl: "https://carshiftos.co.ke",
   publisher: {
     "@type": "Organization",
-    name: "ShiftOS Technology Kenya",
+    name: "Car ShiftOS",
+    alternateName: ["ShiftOS", "ShiftOS Kenya"],
     logo: {
       "@type": "ImageObject",
       url: "https://carshiftos.co.ke/favicon.png",
