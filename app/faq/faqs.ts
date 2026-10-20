@@ -59,9 +59,9 @@ export const faqs = [
     relatedLink: { label: "Visit the marketplace", href: "https://cars.carshiftos.co.ke" },
   },
   {
-    question: "How much does Car ShiftOS cost?",
+    question: "How much does car dealership software cost in Kenya?",
     answer:
-      "Pricing depends on the size of your dealership and which modules you need. Book a free demo and we'll walk you through pricing on your own inventory.",
+      "For Car ShiftOS, pricing depends on the size of your dealership and which modules you need. Book a free demo and we'll walk you through exact pricing on your own inventory.",
     relatedLink: { label: "Book a free demo", href: "/contact" },
   },
   {

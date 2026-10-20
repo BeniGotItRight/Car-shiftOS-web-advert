@@ -124,9 +124,9 @@ export default function ContactPage() {
                 <div>
                   <h2 className="text-xl font-bold mb-1">Phone Line</h2>
                   <p className="text-slate-500 font-light mb-4 text-sm uppercase tracking-widest">Call or WhatsApp</p>
-                  <p className="text-xl font-medium text-white">
-                    0732009268
-                  </p>
+                  <a href="tel:+254732009268" className="text-xl font-medium text-white hover:text-blue-400 transition-colors">
+                    0732 009 268
+                  </a>
                 </div>
               </div>
             </ScrollReveal>

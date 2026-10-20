@@ -4,7 +4,7 @@ import CentralLanding from "./HomeClient";
 export const metadata: Metadata = {
   title: "Car ShiftOS | Best Car Yard & Dealer Management System Kenya",
   description:
-    "Kenya's leading dealer management system for car yards: inventory, CRM, import tracking, workshop and payments in one place.",
+    "Car ShiftOS is the best car yard management software in Kenya: inventory, CRM, import tracking, workshop and payments in one place.",
   alternates: {
     canonical: "https://carshiftos.co.ke",
   },

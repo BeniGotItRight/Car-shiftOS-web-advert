@@ -30,6 +30,14 @@ export async function generateMetadata(): Promise<Metadata> {
       template: "Car ShiftOS | %s"
     },
     description: "Kenya's leading dealer management system for car yards: inventory, CRM, import tracking, workshop and payments in one place.",
+    keywords: [
+      "best car yard management software Kenya",
+      "car dealership software Kenya",
+      "car dealership software Kenya pricing",
+      "car yard management system Kenya",
+      "dealer management system Kenya",
+      "car yard software Kenya",
+    ],
     authors: [{ name: "Car ShiftOS Team" }],
     creator: "Car ShiftOS",
     publisher: "Car ShiftOS",
