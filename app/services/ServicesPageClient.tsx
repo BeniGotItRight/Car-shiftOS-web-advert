@@ -133,7 +133,7 @@ function FlowRow({ steps, dense }: { steps: string[]; dense?: boolean }) {
 export default function ServicesPage() {
   return (
     <div className="min-h-screen bg-slate-950 text-white pt-24 md:pt-32 pb-16 px-6">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-[1600px] mx-auto">
         {/* Hero */}
         <div className="max-w-3xl mb-10 px-2 sm:px-0">
           <span className="text-blue-500 font-bold uppercase tracking-widest text-sm mb-4 block">

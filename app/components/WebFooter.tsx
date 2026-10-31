@@ -21,7 +21,7 @@ export function WebFooter() {
     <footer ref={containerRef} className="bg-black text-white overflow-hidden relative pt-16 pb-8 sm:pt-24 sm:pb-12 flex flex-col justify-end min-h-[50vh]">
       <motion.div 
         style={{ y, opacity }}
-        className="mx-auto w-full max-w-7xl px-6 sm:px-8 relative z-10 flex-1 flex flex-col justify-between"
+        className="mx-auto w-full max-w-[1600px] px-6 sm:px-8 relative z-10 flex-1 flex flex-col justify-between"
       >
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
           <div className="max-w-md">

@@ -9,7 +9,7 @@ import { TypewriterHeading } from "@/components/TypewriterHeading";
 export default function AboutPage() {
   return (
     <div className="min-h-screen bg-slate-950 text-white pt-24 md:pt-32 pb-16 px-6">
-      <div className="max-w-5xl mx-auto">
+      <div className="max-w-[1600px] mx-auto">
         <ScrollReveal direction="fade">
           <div className="relative aspect-[21/9] rounded-[2.5rem] md:rounded-[3rem] border border-white/10 bg-slate-900/40 overflow-hidden group mb-12 md:mb-16">
             <Image

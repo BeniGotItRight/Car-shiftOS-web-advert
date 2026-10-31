@@ -205,7 +205,7 @@ export default function CentralLanding() {
 
       {/* Product Showcase - Dashboard Preview */}
       <section className="relative py-32 px-6 z-10 bg-slate-950 overflow-hidden">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-[1600px] mx-auto">
           <div className="relative rounded-[2.5rem] md:rounded-[4rem] border border-white/10 bg-slate-900/40 backdrop-blur-3xl overflow-hidden shadow-xl shadow-black/40">
             <div className="flex flex-col items-center gap-10 p-6 sm:p-12 lg:p-16">
               <h2 className="text-4xl md:text-6xl font-black tracking-tight leading-none text-center">
@@ -225,7 +225,7 @@ export default function CentralLanding() {
 
       {/* How It Works */}
       <section className="relative py-32 px-6 z-10 bg-[#0a0f1e] border-t border-white/5">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-[1600px] mx-auto">
           <ScrollReveal direction="fade">
             <div className="max-w-2xl mb-24">
               <h2 className="text-4xl md:text-6xl font-black tracking-tight leading-none mb-6">
@@ -287,7 +287,7 @@ export default function CentralLanding() {
 
       {/* About Us Section - The Vision */}
       <section className="relative py-32 px-6 z-10 bg-slate-950/50 border-t border-white/5">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-[1600px] mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="space-y-8">
               <motion.div
@@ -345,7 +345,7 @@ export default function CentralLanding() {
 
       {/* Service Spectrum - Deep Dive into "What we do" */}
       <section className="relative py-32 px-6 z-10 border-t border-white/5 bg-slate-950">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-[1600px] mx-auto">
           <div className="text-center mb-24">
             <h2 className="text-4xl md:text-6xl font-black mb-6 tracking-tight leading-none">
               <TypewriterHeading
@@ -504,7 +504,7 @@ export default function CentralLanding() {
 
       {/* Horizontal Feature Showcase */}
       <section className="relative py-32 z-10 bg-slate-900/20">
-        <div className="max-w-7xl mx-auto px-6">
+        <div className="max-w-[1600px] mx-auto px-6">
           <div className="flex flex-col md:flex-row items-end justify-between gap-8 mb-16">
             <div className="max-w-2xl">
               <h2 className="text-5xl md:text-6xl font-black tracking-tight mb-6">
@@ -567,7 +567,7 @@ export default function CentralLanding() {
 
       {/* Premium Experience Section - Expanded Gallery */}
       <section className="relative py-32 px-6 z-10 bg-slate-950 overflow-hidden border-t border-white/5">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-[1600px] mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div className="lg:col-span-5 space-y-12">
               <motion.div
@@ -679,7 +679,7 @@ export default function CentralLanding() {
 
       {/* Ecosystem - Beyond the Yard */}
       <section className="relative py-32 px-6 z-10 bg-[#0a0f1e] border-t border-white/5 overflow-hidden">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-[1600px] mx-auto">
           <ScrollReveal direction="fade">
             <div className="max-w-2xl mb-20">
               <h2 className="text-4xl md:text-6xl font-black tracking-tight leading-none mb-6">
@@ -818,7 +818,7 @@ export default function CentralLanding() {
 
       {/* Footer Contact Info */}
       <footer className="relative py-12 px-6 border-t border-white/5 z-10 bg-slate-950/50">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+        <div className="max-w-[1600px] mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
           <div className="flex flex-col items-center md:items-start gap-2">
             <span className="text-2xl font-black tracking-tighter">
               SHIFT<span className="text-blue-500 italic">OS</span>
