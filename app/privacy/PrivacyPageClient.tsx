@@ -12,7 +12,7 @@ const sections: Section[] = [
   {
     title: "Who This Policy Covers",
     paragraphs: [
-      "This policy explains how Car ShiftOS (\"ShiftOS\", \"we\", \"us\") handles personal data across two things: this website (carshiftos.co.ke), and the ShiftOS platform used by car dealerships (\"dealers\"), their staff, and their customers.",
+      "This policy explains how Car ShiftOS (\"ShiftOS\", \"we\", \"us\") handles personal data across this website (carshiftos.co.ke), the public marketplace and free listings tool (cars.carshiftos.co.ke and listings.carshiftos.co.ke), and the ShiftOS platform used by car dealerships (\"dealers\"), their staff, and their customers.",
       "For data that a dealer enters about their own customers and vehicles (leads, buyers, sale records), the dealer is the data controller and ShiftOS acts as a data processor, handling that data only to provide the service and only under the dealer's instruction. For a dealer's own account, billing, and subscription data, ShiftOS is the data controller.",
     ],
   },
@@ -59,7 +59,13 @@ const sections: Section[] = [
     title: "Public Marketplace Listings",
     paragraphs: [
       "Vehicle listings shown on the public marketplace (photos, specs, asking price, dealer name and location) are intentionally public. If you enquire about a listing, your name and phone number are shared with that dealer as a new lead in their account.",
-      "While the marketplace is being built, cars.carshiftos.co.ke collects only an email address if you ask to be notified when it opens. That address is used for a single launch notification, is not shared with dealers or any other third party, and is deleted once that notification is sent or on request.",
+      "cars.carshiftos.co.ke also lets you create a buyer account to save your shortlist and activity: name, email, password, and phone number if you choose to add it, or your name and email from Google if you sign in that way. Creating an account is optional, you can browse without one. On pages still being finished ahead of launch, we only collect the email address you give us to be notified when that page opens. We use Meta (Facebook) and Google tools on the marketplace for basic traffic and ad-performance measurement; see their respective privacy policies for how they handle that data.",
+    ],
+  },
+  {
+    title: "Free Listings (listings.carshiftos.co.ke)",
+    paragraphs: [
+      "You can list a vehicle through Car ShiftOS Showcase without signing up for the full dealer platform. Creating a Showcase account collects your name (or yard name), phone number, email address, and password. If you apply for a verified badge, we also collect your business KRA PIN to check it. Listing details you publish (photos, price, specs) are public, the same as marketplace listings above.",
     ],
   },
   {
