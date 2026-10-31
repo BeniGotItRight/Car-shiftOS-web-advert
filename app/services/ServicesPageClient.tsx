@@ -94,7 +94,7 @@ const AREAS = [
     capabilities: [
       "Your own online showroom",
       "Cars listed online",
-      "A shared marketplace (coming soon)",
+      "A shared marketplace, launching 2 November 2026",
       "Your dealership's public profile",
       "Buyers finding your cars",
       "Reviews from real buyers",
@@ -262,20 +262,22 @@ export default function ServicesPage() {
                     Take your vehicles beyond the yard.
                   </h3>
                   <span className="text-[10px] font-bold uppercase tracking-widest text-amber-400 bg-amber-400/10 border border-amber-400/20 rounded-full px-3 py-1 shrink-0">
-                    Coming Soon
+                    Launching 2 Nov 2026
                   </span>
                 </div>
                 <p className="text-slate-400 font-light leading-relaxed">
-                  Car ShiftOS is building a public marketplace where buyers can discover vehicles from ShiftOS-powered dealerships.
+                  Verified ShiftOS dealerships, and anyone listing free on Car ShiftOS Showcase, all appear together in the Car ShiftOS Marketplace, Kenya's single place for buyers to search.
                 </p>
               </div>
               <div className="flex flex-col items-start gap-2 shrink-0">
-                <Link
-                  href="/contact?subject=List%20my%20cars%20on%20the%20marketplace"
+                <a
+                  href="https://listings.carshiftos.co.ke"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-sm font-bold text-blue-400 hover:text-blue-300 transition-colors"
                 >
-                  List your cars first <ArrowRight className="size-4" />
-                </Link>
+                  List your cars free <ArrowRight className="size-4" />
+                </a>
                 <a
                   href="https://cars.carshiftos.co.ke"
                   target="_blank"

@@ -19,6 +19,8 @@ import {
   Rocket,
   Link2,
   TrendingUp,
+  Tag,
+  Search,
 } from "lucide-react";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { TypewriterHeading } from "@/components/TypewriterHeading";
@@ -671,6 +673,107 @@ export default function CentralLanding() {
                 </motion.div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Ecosystem - Beyond the Yard */}
+      <section className="relative py-32 px-6 z-10 bg-[#0a0f1e] border-t border-white/5 overflow-hidden">
+        <div className="max-w-7xl mx-auto">
+          <ScrollReveal direction="fade">
+            <div className="max-w-2xl mb-20">
+              <h2 className="text-4xl md:text-6xl font-black tracking-tight leading-none mb-6">
+                <TypewriterHeading
+                  segments={[
+                    { text: "Beyond " },
+                    { text: "Your Yard.", accent: true },
+                  ]}
+                />
+              </h2>
+              <p className="text-xl text-slate-400 font-light leading-relaxed">
+                Everything above runs your dealership. The same platform also gives casual sellers a free way to list, and buyers a single place in Kenya to search.
+              </p>
+            </div>
+          </ScrollReveal>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <ScrollReveal direction="up">
+              <div className="group relative h-full p-10 rounded-[2.5rem] md:rounded-[3rem] border border-white/10 bg-slate-900/40 backdrop-blur-xl overflow-hidden hover:border-blue-500/30 transition-colors">
+                <Tag className="absolute -right-6 -bottom-6 size-48 text-blue-500/10 group-hover:text-blue-500/20 transition-colors" />
+                <div className="relative z-10 space-y-6">
+                  <span className="inline-flex items-center rounded-full border border-blue-500/20 bg-blue-500/5 px-4 py-1.5 text-[10px] font-bold uppercase tracking-[0.2em] text-blue-400">
+                    Free, no system required
+                  </span>
+                  <h3 className="text-3xl font-bold tracking-tight">
+                    List a car without buying a system.
+                  </h3>
+                  <p className="text-slate-400 font-light leading-relaxed">
+                    Selling one car, or running a small yard that isn't ready for the full platform yet? List free on Car ShiftOS Showcase, no credit card, no software to learn. Verified listings show up in the Marketplace automatically.
+                  </p>
+                  <ul className="space-y-2 text-sm text-slate-300">
+                    <li className="flex items-center gap-3">
+                      <span className="size-1.5 rounded-full bg-blue-500 shrink-0" />
+                      Up to 2 free listings if you're selling your own car
+                    </li>
+                    <li className="flex items-center gap-3">
+                      <span className="size-1.5 rounded-full bg-blue-500 shrink-0" />
+                      Up to 10 free listings if you run a yard
+                    </li>
+                    <li className="flex items-center gap-3">
+                      <span className="size-1.5 rounded-full bg-blue-500 shrink-0" />
+                      Upgrade to the full system any time
+                    </li>
+                  </ul>
+                  <a
+                    href="https://listings.carshiftos.co.ke"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-blue-400 font-bold hover:text-blue-300 transition-colors"
+                  >
+                    List for free <ArrowRight className="size-4" />
+                  </a>
+                </div>
+              </div>
+            </ScrollReveal>
+
+            <ScrollReveal direction="up" delay={150}>
+              <div className="group relative h-full p-10 rounded-[2.5rem] md:rounded-[3rem] border border-white/10 bg-slate-900/40 backdrop-blur-xl overflow-hidden hover:border-blue-500/30 transition-colors">
+                <Search className="absolute -right-6 -bottom-6 size-48 text-blue-500/10 group-hover:text-blue-500/20 transition-colors" />
+                <div className="relative z-10 space-y-6">
+                  <span className="inline-flex items-center rounded-full border border-blue-500/20 bg-blue-500/5 px-4 py-1.5 text-[10px] font-bold uppercase tracking-[0.2em] text-blue-400">
+                    Launching 2 November 2026
+                  </span>
+                  <h3 className="text-3xl font-bold tracking-tight">
+                    Every buyer, searching in one place.
+                  </h3>
+                  <p className="text-slate-400 font-light leading-relaxed">
+                    The Car ShiftOS Marketplace brings verified dealerships together by make, body type and location, so buyers find your stock without needing to know your yard exists first.
+                  </p>
+                  <ul className="space-y-2 text-sm text-slate-300">
+                    <li className="flex items-center gap-3">
+                      <span className="size-1.5 rounded-full bg-blue-500 shrink-0" />
+                      Every verified yard, searchable by buyers across Kenya
+                    </li>
+                    <li className="flex items-center gap-3">
+                      <span className="size-1.5 rounded-full bg-blue-500 shrink-0" />
+                      Compare, shortlist, and contact the dealer directly
+                    </li>
+                    <li className="flex items-center gap-3">
+                      <span className="size-1.5 rounded-full bg-blue-500 shrink-0" />
+                      Included automatically once your yard is verified
+                    </li>
+                  </ul>
+                  <a
+                    href="https://cars.carshiftos.co.ke"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-blue-400 font-bold hover:text-blue-300 transition-colors"
+                  >
+                    Visit the Marketplace <ArrowRight className="size-4" />
+                  </a>
+                </div>
+              </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>
