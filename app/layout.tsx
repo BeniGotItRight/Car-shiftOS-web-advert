@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Montserrat, Inter } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./providers";
@@ -112,6 +113,32 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${montserrat.variable} ${inter.variable} font-sans antialiased bg-background text-foreground selection:bg-slate-500/30`}>
+        {/* Google Tag Manager — site-wide, every page */}
+        <Script
+          id="gtm-datalayer"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+            `,
+          }}
+        />
+        <Script
+          id="gtm-script"
+          src="https://www.googletagmanager.com/gtm.js?id=GTM-P8TCS2LZ"
+          strategy="afterInteractive"
+        />
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-P8TCS2LZ"
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+            title="Google Tag Manager"
+          />
+        </noscript>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

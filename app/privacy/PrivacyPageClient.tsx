@@ -71,7 +71,7 @@ const sections: Section[] = [
   {
     title: "This Website (carshiftos.co.ke)",
     paragraphs: [
-      "This marketing website does not currently use analytics or tracking cookies. If you use our contact form, your name, email address, and message are sent to our inbox through Resend, our email delivery provider. We don't keep a separate database of form submissions, and we use your details only to reply to you.",
+      "This marketing website uses Google Tag Manager for basic traffic analytics (pages viewed, general location, device type). If you use our contact form, your name, email address, and message are sent to our inbox through Resend, our email delivery provider. We don't keep a separate database of form submissions, and we use your details only to reply to you.",
     ],
   },
   {
