@@ -2,14 +2,14 @@
 
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Cookie, ChevronDown, ChevronUp } from "lucide-react";
+import { Check, X, ChevronDown, ChevronUp, ArrowRight } from "lucide-react";
 
 const CONSENT_KEY = "shiftos-cookie-consent";
 const REOPEN_EVENT = "open-cookie-preferences";
 
 type ConsentChoice = {
   analytics: boolean;
-  advertising: boolean;
+  marketing: boolean;
 };
 
 declare global {
@@ -25,9 +25,9 @@ function pushConsent(command: "default" | "update", choice: ConsentChoice) {
     command,
     {
       analytics_storage: choice.analytics ? "granted" : "denied",
-      ad_storage: choice.advertising ? "granted" : "denied",
-      ad_user_data: choice.advertising ? "granted" : "denied",
-      ad_personalization: choice.advertising ? "granted" : "denied",
+      ad_storage: choice.marketing ? "granted" : "denied",
+      ad_user_data: choice.marketing ? "granted" : "denied",
+      ad_personalization: choice.marketing ? "granted" : "denied",
     },
   ]);
 }
@@ -37,8 +37,8 @@ function readStoredChoice(): ConsentChoice | null {
     const raw = localStorage.getItem(CONSENT_KEY);
     if (!raw) return null;
     const parsed = JSON.parse(raw);
-    if (typeof parsed.analytics === "boolean" && typeof parsed.advertising === "boolean") {
-      return { analytics: parsed.analytics, advertising: parsed.advertising };
+    if (typeof parsed.analytics === "boolean" && typeof parsed.marketing === "boolean") {
+      return { analytics: parsed.analytics, marketing: parsed.marketing };
     }
     return null;
   } catch {
@@ -55,10 +55,46 @@ function storeChoice(choice: ConsentChoice) {
   }
 }
 
+function Toggle({
+  checked,
+  disabled,
+  onChange,
+}: {
+  checked: boolean;
+  disabled?: boolean;
+  onChange?: () => void;
+}) {
+  return (
+    <button
+      type="button"
+      role="switch"
+      aria-checked={checked}
+      disabled={disabled}
+      onClick={onChange}
+      className={`relative shrink-0 w-11 h-6 rounded-full transition-colors ${
+        disabled ? "cursor-not-allowed" : "cursor-pointer"
+      } ${checked ? "bg-violet-600" : "bg-slate-900"} ${disabled ? "opacity-70" : ""}`}
+    >
+      <span
+        className={`absolute top-0.5 size-5 rounded-full bg-white flex items-center justify-center transition-transform ${
+          checked ? "translate-x-[22px]" : "translate-x-0.5"
+        }`}
+      >
+        {checked ? (
+          <Check className="size-3 text-violet-600" strokeWidth={3} />
+        ) : (
+          <X className="size-3 text-slate-900" strokeWidth={3} />
+        )}
+      </span>
+    </button>
+  );
+}
+
 export function CookieConsentBanner() {
   const [open, setOpen] = useState(false);
   const [expanded, setExpanded] = useState(false);
-  const [draft, setDraft] = useState<ConsentChoice>({ analytics: true, advertising: true });
+  const [detailsOpen, setDetailsOpen] = useState(false);
+  const [draft, setDraft] = useState<ConsentChoice>({ analytics: true, marketing: true });
 
   useEffect(() => {
     const stored = readStoredChoice();
@@ -69,7 +105,7 @@ export function CookieConsentBanner() {
     }
 
     const reopen = () => {
-      setDraft(readStoredChoice() ?? { analytics: true, advertising: true });
+      setDraft(readStoredChoice() ?? { analytics: true, marketing: true });
       setExpanded(true);
       setOpen(true);
     };
@@ -82,126 +118,142 @@ export function CookieConsentBanner() {
     storeChoice(choice);
     setOpen(false);
     setExpanded(false);
+    setDetailsOpen(false);
   };
 
   return (
     <AnimatePresence>
       {open && (
         <motion.div
-          initial={{ y: 100, opacity: 0 }}
+          initial={{ y: 40, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          exit={{ y: 100, opacity: 0 }}
+          exit={{ y: 40, opacity: 0 }}
           transition={{ duration: 0.4, ease: "easeOut" }}
-          className="fixed bottom-4 left-4 right-4 sm:left-6 sm:right-auto sm:max-w-md z-[60]"
+          className="fixed bottom-6 left-1/2 -translate-x-1/2 z-[60] w-[calc(100%-2rem)] max-w-sm"
           role="dialog"
           aria-label="Cookie preferences"
         >
-          <div className="rounded-3xl border border-white/10 bg-slate-900/95 backdrop-blur-xl shadow-2xl shadow-black/40 p-6">
-            <div className="flex items-start gap-3 mb-4">
-              <div className="size-9 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center shrink-0">
-                <Cookie className="size-4.5 text-blue-400" />
-              </div>
-              <div>
-                <h2 className="text-sm font-bold text-white mb-1">We use cookies</h2>
-                <p className="text-xs text-slate-400 font-light leading-relaxed">
-                  We use cookies for site analytics and advertising measurement. Choose what you&apos;re comfortable with — you can change this anytime from the footer.
+          <div className="rounded-3xl bg-white shadow-2xl shadow-black/30 p-7 text-center">
+            {!expanded ? (
+              <>
+                <h2 className="text-xl font-bold text-slate-900 mb-3">Can we use cookies?</h2>
+                <p className="text-sm text-slate-500 leading-relaxed mb-6">
+                  We use cookies for site analytics and to measure how our ads perform. You can change your choice anytime from the footer.
                 </p>
-              </div>
-            </div>
-
-            <AnimatePresence initial={false}>
-              {expanded && (
-                <motion.div
-                  initial={{ height: 0, opacity: 0 }}
-                  animate={{ height: "auto", opacity: 1 }}
-                  exit={{ height: 0, opacity: 0 }}
-                  transition={{ duration: 0.25 }}
-                  className="overflow-hidden"
+                <div className="flex items-center justify-center gap-3 mb-4">
+                  <button
+                    type="button"
+                    onClick={() => choose({ analytics: true, marketing: true })}
+                    className="flex items-center gap-1.5 px-6 py-2.5 rounded-full bg-violet-600 hover:bg-violet-700 text-white text-sm font-semibold transition-colors"
+                  >
+                    Yes
+                    <Check className="size-4" strokeWidth={3} />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => choose({ analytics: false, marketing: false })}
+                    className="flex items-center gap-1.5 px-6 py-2.5 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-sm font-semibold transition-colors"
+                  >
+                    No
+                    <X className="size-4" strokeWidth={3} />
+                  </button>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setExpanded(true)}
+                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-violet-600 hover:text-violet-700 transition-colors"
                 >
-                  <div className="space-y-3 mb-4 pt-1">
-                    <label className="flex items-center justify-between gap-4 cursor-pointer">
-                      <span className="text-xs text-slate-300">
-                        <span className="font-semibold text-white block">Analytics</span>
-                        Helps us see which pages people use.
-                      </span>
-                      <button
-                        type="button"
-                        role="switch"
-                        aria-checked={draft.analytics}
-                        onClick={() => setDraft((d) => ({ ...d, analytics: !d.analytics }))}
-                        className={`relative shrink-0 w-10 h-6 rounded-full transition-colors ${
-                          draft.analytics ? "bg-blue-500" : "bg-white/10"
-                        }`}
-                      >
-                        <span
-                          className={`absolute top-0.5 size-5 rounded-full bg-white transition-transform ${
-                            draft.analytics ? "translate-x-[18px]" : "translate-x-0.5"
-                          }`}
-                        />
-                      </button>
-                    </label>
-                    <label className="flex items-center justify-between gap-4 cursor-pointer">
-                      <span className="text-xs text-slate-300">
-                        <span className="font-semibold text-white block">Advertising</span>
-                        Used to measure and personalise ads.
-                      </span>
-                      <button
-                        type="button"
-                        role="switch"
-                        aria-checked={draft.advertising}
-                        onClick={() => setDraft((d) => ({ ...d, advertising: !d.advertising }))}
-                        className={`relative shrink-0 w-10 h-6 rounded-full transition-colors ${
-                          draft.advertising ? "bg-blue-500" : "bg-white/10"
-                        }`}
-                      >
-                        <span
-                          className={`absolute top-0.5 size-5 rounded-full bg-white transition-transform ${
-                            draft.advertising ? "translate-x-[18px]" : "translate-x-0.5"
-                          }`}
-                        />
-                      </button>
-                    </label>
+                  Customise
+                  <ArrowRight className="size-3.5" />
+                </button>
+              </>
+            ) : (
+              <>
+                <h2 className="text-xl font-bold text-slate-900 mb-5">Customise your preferences</h2>
+                <div className="space-y-4 mb-5 text-left">
+                  <div>
+                    <div className="flex items-center justify-between gap-4">
+                      <span className="text-sm font-semibold text-slate-900">Necessary</span>
+                      <Toggle checked disabled />
+                    </div>
+                    <AnimatePresence>
+                      {detailsOpen && (
+                        <motion.p
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          className="text-xs text-slate-500 leading-relaxed mt-2 overflow-hidden"
+                        >
+                          Required to use certain features of the site, like remembering that you accepted this policy.
+                        </motion.p>
+                      )}
+                    </AnimatePresence>
                   </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
 
-            <div className="flex flex-wrap items-center gap-2">
-              {expanded ? (
+                  <div>
+                    <div className="flex items-center justify-between gap-4">
+                      <span className="text-sm font-semibold text-slate-900">Analytics &amp; performance</span>
+                      <Toggle
+                        checked={draft.analytics}
+                        onChange={() => setDraft((d) => ({ ...d, analytics: !d.analytics }))}
+                      />
+                    </div>
+                    <AnimatePresence>
+                      {detailsOpen && (
+                        <motion.p
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          className="text-xs text-slate-500 leading-relaxed mt-2 overflow-hidden"
+                        >
+                          Lets us see which pages people visit and how the site is used, so we can improve it.
+                        </motion.p>
+                      )}
+                    </AnimatePresence>
+                  </div>
+
+                  <div>
+                    <div className="flex items-center justify-between gap-4">
+                      <span className="text-sm font-semibold text-slate-900">Marketing</span>
+                      <Toggle
+                        checked={draft.marketing}
+                        onChange={() => setDraft((d) => ({ ...d, marketing: !d.marketing }))}
+                      />
+                    </div>
+                    <AnimatePresence>
+                      {detailsOpen && (
+                        <motion.p
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          className="text-xs text-slate-500 leading-relaxed mt-2 overflow-hidden"
+                        >
+                          Used to measure ad performance and personalise the ads you see elsewhere.
+                        </motion.p>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                </div>
+
                 <button
                   type="button"
                   onClick={() => choose(draft)}
-                  className="flex-1 px-4 py-2.5 bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold rounded-xl transition-colors"
+                  className="w-full flex items-center justify-center gap-1.5 px-6 py-2.5 rounded-full bg-violet-600 hover:bg-violet-700 text-white text-sm font-semibold transition-colors mb-4"
                 >
                   Save preferences
+                  <Check className="size-4" strokeWidth={3} />
                 </button>
-              ) : (
-                <>
-                  <button
-                    type="button"
-                    onClick={() => choose({ analytics: true, advertising: true })}
-                    className="flex-1 px-4 py-2.5 bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold rounded-xl transition-colors"
-                  >
-                    Accept all
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => choose({ analytics: false, advertising: false })}
-                    className="flex-1 px-4 py-2.5 bg-white/5 hover:bg-white/10 border border-white/10 text-white text-xs font-bold rounded-xl transition-colors"
-                  >
-                    Reject all
-                  </button>
-                </>
-              )}
-              <button
-                type="button"
-                onClick={() => setExpanded((e) => !e)}
-                className="flex items-center gap-1 px-2 py-2.5 text-[11px] font-medium text-slate-400 hover:text-white transition-colors"
-              >
-                {expanded ? "Simple" : "Customize"}
-                {expanded ? <ChevronUp className="size-3" /> : <ChevronDown className="size-3" />}
-              </button>
-            </div>
+
+                <button
+                  type="button"
+                  onClick={() => setDetailsOpen((d) => !d)}
+                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-violet-600 hover:text-violet-700 transition-colors"
+                >
+                  {detailsOpen ? "Hide details" : "Expand details"}
+                  {detailsOpen ? <ChevronUp className="size-3.5" /> : <ChevronDown className="size-3.5" />}
+                </button>
+              </>
+            )}
           </div>
         </motion.div>
       )}
