@@ -55,6 +55,24 @@ function storeChoice(choice: ConsentChoice) {
   }
 }
 
+function BittenCookieIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 64 64" className={className} aria-hidden="true">
+      <mask id="cookie-bite-mask">
+        <rect width="64" height="64" fill="white" />
+        <circle cx="50" cy="14" r="15" fill="black" />
+      </mask>
+      <circle cx="31" cy="33" r="27" fill="#D2A679" mask="url(#cookie-bite-mask)" />
+      <circle cx="20" cy="26" r="3" fill="#6B4423" />
+      <circle cx="33" cy="19" r="2.3" fill="#6B4423" />
+      <circle cx="43" cy="33" r="3" fill="#6B4423" />
+      <circle cx="20" cy="42" r="2.6" fill="#6B4423" />
+      <circle cx="35" cy="45" r="3" fill="#6B4423" />
+      <circle cx="26" cy="34" r="2" fill="#6B4423" />
+    </svg>
+  );
+}
+
 function Toggle({
   checked,
   disabled,
@@ -136,6 +154,7 @@ export function CookieConsentBanner() {
           <div className="rounded-3xl bg-white shadow-2xl shadow-black/30 p-7 text-center">
             {!expanded ? (
               <>
+                <BittenCookieIcon className="size-12 mx-auto mb-3" />
                 <h2 className="text-xl font-bold text-slate-900 mb-3">Can we use cookies?</h2>
                 <p className="text-sm text-slate-500 leading-relaxed mb-6">
                   We use cookies for site analytics and to measure how our ads perform. You can change your choice anytime from the footer.
