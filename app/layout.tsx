@@ -10,6 +10,7 @@ import { SmoothScrollProvider } from "@/components/shared/SmoothScrollProvider";
 import { WhatsAppButton } from "./components/public/WhatsAppButton";
 import { StickyBar } from "@/components/StickyBar";
 import { CursorGlow } from "@/components/CursorGlow";
+import { CookieConsentBanner } from "@/components/CookieConsentBanner";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -113,6 +114,25 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${montserrat.variable} ${inter.variable} font-sans antialiased bg-background text-foreground selection:bg-slate-500/30`}>
+        {/* Consent Mode default — must run before the GTM script below.
+            Denies analytics/ad storage until CookieConsentBanner records a
+            real choice and pushes a 'consent' 'update' overriding this. */}
+        <Script
+          id="consent-default"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              window.dataLayer.push(['consent', 'default', {
+                'analytics_storage': 'denied',
+                'ad_storage': 'denied',
+                'ad_user_data': 'denied',
+                'ad_personalization': 'denied',
+                'wait_for_update': 500
+              }]);
+            `,
+          }}
+        />
         {/* Google Tag Manager — site-wide, every page. Google's official
             snippet: pushes the gtm.start event the container needs to
             initialize, then creates and inserts the gtm.js script tag
@@ -232,6 +252,7 @@ export default function RootLayout({
               </div>
               <WhatsAppButton />
               <Toaster position="top-right" richColors />
+              <CookieConsentBanner />
             </SmoothScrollProvider>
           </Providers>
       </body>

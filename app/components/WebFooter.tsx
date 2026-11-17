@@ -6,6 +6,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { variants } from "@/lib/animations";
 import { Instagram, Linkedin, Facebook } from "lucide-react";
+import { openCookiePreferences } from "@/components/CookieConsentBanner";
 
 export function WebFooter() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -100,6 +101,13 @@ export function WebFooter() {
               <h3 className="text-white font-medium uppercase tracking-wider text-xs sm:text-sm mb-1 sm:mb-2">Legal</h3>
               <Link href="/privacy" className="text-slate-400 hover:text-white transition-colors text-sm sm:text-base">Privacy</Link>
               <Link href="/terms" className="text-slate-400 hover:text-white transition-colors text-sm sm:text-base">Terms</Link>
+              <button
+                type="button"
+                onClick={openCookiePreferences}
+                className="text-left text-slate-400 hover:text-white transition-colors text-sm sm:text-base"
+              >
+                Cookie Preferences
+              </button>
             </div>
           </div>
         </div>
