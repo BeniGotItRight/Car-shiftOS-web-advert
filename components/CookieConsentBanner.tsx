@@ -71,9 +71,9 @@ function Toggle({
       aria-checked={checked}
       disabled={disabled}
       onClick={onChange}
-      className={`relative shrink-0 w-11 h-6 rounded-full transition-colors ${
+      className={`relative shrink-0 w-11 h-6 rounded-full transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 ${
         disabled ? "cursor-not-allowed" : "cursor-pointer"
-      } ${checked ? "bg-violet-600" : "bg-slate-900"} ${disabled ? "opacity-70" : ""}`}
+      } ${checked ? "bg-blue-600" : "bg-slate-900"} ${disabled ? "opacity-70" : ""}`}
     >
       <span
         className={`absolute top-0.5 size-5 rounded-full bg-white flex items-center justify-center transition-transform ${
@@ -81,7 +81,7 @@ function Toggle({
         }`}
       >
         {checked ? (
-          <Check className="size-3 text-violet-600" strokeWidth={3} />
+          <Check className="size-3 text-blue-600" strokeWidth={3} />
         ) : (
           <X className="size-3 text-slate-900" strokeWidth={3} />
         )}
@@ -129,7 +129,7 @@ export function CookieConsentBanner() {
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: 40, opacity: 0 }}
           transition={{ duration: 0.4, ease: "easeOut" }}
-          className="fixed bottom-6 left-1/2 -translate-x-1/2 z-[60] w-[calc(100%-2rem)] max-w-sm"
+          className="fixed bottom-4 left-4 right-4 sm:right-auto sm:max-w-sm z-[60]"
           role="dialog"
           aria-label="Cookie preferences"
         >
@@ -144,7 +144,7 @@ export function CookieConsentBanner() {
                   <button
                     type="button"
                     onClick={() => choose({ analytics: true, marketing: true })}
-                    className="flex items-center gap-1.5 px-6 py-2.5 rounded-full bg-violet-600 hover:bg-violet-700 text-white text-sm font-semibold transition-colors"
+                    className="flex items-center gap-1.5 px-6 py-2.5 rounded-full bg-blue-600 hover:bg-blue-500 text-white text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
                   >
                     Yes
                     <Check className="size-4" strokeWidth={3} />
@@ -152,7 +152,7 @@ export function CookieConsentBanner() {
                   <button
                     type="button"
                     onClick={() => choose({ analytics: false, marketing: false })}
-                    className="flex items-center gap-1.5 px-6 py-2.5 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-sm font-semibold transition-colors"
+                    className="flex items-center gap-1.5 px-6 py-2.5 rounded-full bg-slate-900 hover:bg-slate-800 text-white text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
                   >
                     No
                     <X className="size-4" strokeWidth={3} />
@@ -161,7 +161,7 @@ export function CookieConsentBanner() {
                 <button
                   type="button"
                   onClick={() => setExpanded(true)}
-                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-violet-600 hover:text-violet-700 transition-colors"
+                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-blue-600 hover:text-blue-700 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 rounded"
                 >
                   Customise
                   <ArrowRight className="size-3.5" />
@@ -238,7 +238,7 @@ export function CookieConsentBanner() {
                 <button
                   type="button"
                   onClick={() => choose(draft)}
-                  className="w-full flex items-center justify-center gap-1.5 px-6 py-2.5 rounded-full bg-violet-600 hover:bg-violet-700 text-white text-sm font-semibold transition-colors mb-4"
+                  className="w-full flex items-center justify-center gap-1.5 px-6 py-2.5 rounded-full bg-blue-600 hover:bg-blue-500 text-white text-sm font-semibold transition-colors mb-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
                 >
                   Save preferences
                   <Check className="size-4" strokeWidth={3} />
@@ -247,7 +247,7 @@ export function CookieConsentBanner() {
                 <button
                   type="button"
                   onClick={() => setDetailsOpen((d) => !d)}
-                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-violet-600 hover:text-violet-700 transition-colors"
+                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-blue-600 hover:text-blue-700 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 rounded"
                 >
                   {detailsOpen ? "Hide details" : "Expand details"}
                   {detailsOpen ? <ChevronUp className="size-3.5" /> : <ChevronDown className="size-3.5" />}
