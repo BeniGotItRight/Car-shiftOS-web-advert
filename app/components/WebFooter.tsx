@@ -94,6 +94,7 @@ export function WebFooter() {
               <h3 className="text-white font-medium uppercase tracking-wider text-xs sm:text-sm mb-1 sm:mb-2">Company</h3>
               <Link href="/about" className="text-slate-400 hover:text-white transition-colors text-sm sm:text-base">About Us</Link>
               <Link href="/services" className="text-slate-400 hover:text-white transition-colors text-sm sm:text-base">Our Services</Link>
+              <Link href="/insights" className="text-slate-400 hover:text-white transition-colors text-sm sm:text-base">Insights</Link>
               <Link href="/contact" className="text-slate-400 hover:text-white transition-colors text-sm sm:text-base">Contact</Link>
             </div>
             
