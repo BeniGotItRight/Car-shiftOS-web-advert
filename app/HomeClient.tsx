@@ -19,8 +19,11 @@ import {
   Rocket,
   Link2,
   TrendingUp,
-  Tag,
-  Search,
+  Car,
+  Users,
+  Wrench,
+  Inbox,
+  type LucideIcon,
 } from "lucide-react";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { TypewriterHeading } from "@/components/TypewriterHeading";
@@ -44,6 +47,215 @@ const FEATURE_TILES = [
   { icon: Layers, title: "Legal Automation", desc: "Instant generation of professional documents." },
   { icon: Database, title: "Lifecycle Tracking", desc: "End-to-end tracking from import to sale." },
 ];
+
+type DealershipFeature = {
+  title: string;
+  description: string;
+  services: string[];
+  icon: LucideIcon;
+  image: string;
+  imageAlt: string;
+};
+
+const DEALERSHIP_FEATURES: DealershipFeature[] = [
+  {
+    title: "Vehicle Inventory Management",
+    description:
+      "Manage your entire vehicle stock from one screen. Add vehicles with full details, images and specifications, track every unit from available to reserved to sold, and keep pricing and purchase information organised.",
+    services: [
+      "Centralised Stock Management",
+      "Vehicle Images & Specifications",
+      "Available, Reserved & Sold Tracking",
+      "Pricing & Purchase Records",
+    ],
+    icon: Car,
+    image: "/assets/features/feature-inventory.png",
+    imageAlt: "CarShiftOS vehicle inventory dashboard listing stock, pricing and status",
+  },
+  {
+    title: "Sales & Customer Management",
+    description:
+      "Keep every customer and sale moving forward. Track prospective buyers, monitor sales opportunities, follow up on enquiries, and watch every vehicle sale progress from first contact to close.",
+    services: [
+      "Customer Information Hub",
+      "Prospective Buyer Tracking",
+      "Sales Opportunity Monitoring",
+      "Salesperson Activity Overview",
+    ],
+    icon: Users,
+    image: "/assets/features/feature-sales-customers.png",
+    imageAlt: "CarShiftOS sales and customer management view with leads and customer records",
+  },
+  {
+    title: "Workshop Management",
+    description:
+      "Run your workshop without the paper trail. Manage service jobs, track repair and maintenance work, organise workshop activity, and monitor job progress from a mobile-ready interface built for the floor.",
+    services: [
+      "Service Job Management",
+      "Repair & Maintenance Tracking",
+      "Workshop Activity Overview",
+      "Digital Service Records",
+    ],
+    icon: Wrench,
+    image: "/assets/features/feature-workshop.png",
+    imageAlt: "CarShiftOS Workshop mobile app showing today's jobs and job actions",
+  },
+  {
+    title: "Business Reports & Insights",
+    description:
+      "See exactly how the dealership is performing. Get vehicle stock reports, sales performance, salesperson performance, and a connected view of revenue, cash received, receivables and commission.",
+    services: [
+      "Vehicle Stock Reports",
+      "Sales & Salesperson Performance",
+      "Business Activity Monitoring",
+      "Operational Insights Dashboard",
+    ],
+    icon: BarChart3,
+    image: "/assets/features/feature-reports.png",
+    imageAlt: "CarShiftOS finance and performance dashboard with revenue and deal metrics",
+  },
+  {
+    title: "Lead & Enquiry Management",
+    description:
+      "Never let an enquiry go cold. Capture every customer enquiry the moment it comes in, organise prospective buyers, track enquiry status, and assign leads to the right salesperson for faster follow-up.",
+    services: [
+      "Capture Every Enquiry",
+      "Organise Prospective Buyers",
+      "Enquiry Status Tracking",
+      "Lead Assignment to Salespeople",
+    ],
+    icon: Inbox,
+    image: "/assets/features/feature-leads.png",
+    imageAlt: "CarShiftOS leads dashboard showing captured enquiries and assignment status",
+  },
+  {
+    title: "Centralised Dealership Operations",
+    description:
+      "Run the whole dealership from one platform. Vehicle, sales, workshop and customer information live together, your team stays coordinated, and you finally leave scattered spreadsheets and manual records behind.",
+    services: [
+      "One Platform, Every Department",
+      "Organised Vehicle & Customer Data",
+      "Improved Team Coordination",
+      "No More Scattered Spreadsheets",
+    ],
+    icon: Layers,
+    image: "/assets/features/feature-centralised-v2.png",
+    imageAlt: "CarShiftOS connected dashboard view spanning inventory, leads and operations",
+  },
+];
+
+const STACK_RECEDE_SCALE = 0.94;
+const STACK_RECEDE_DIM = 0.35;
+const STACK_RECEDE_RADIUS = 20;
+
+function StickyFeatureStack({ features }: { features: DealershipFeature[] }) {
+  const stackRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const root = stackRef.current;
+    if (!root) return;
+
+    const cards = Array.from(root.querySelectorAll<HTMLDivElement>("[data-stack-card]"));
+    const overlays = Array.from(root.querySelectorAll<HTMLDivElement>("[data-stack-overlay]"));
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduceMotion || cards.length < 2) return;
+
+    let ticking = false;
+
+    const applyDepth = () => {
+      ticking = false;
+      const vh = window.innerHeight;
+
+      for (let i = 0; i < cards.length - 1; i++) {
+        const nextTop = cards[i + 1].getBoundingClientRect().top;
+        const progress = Math.min(Math.max(1 - nextTop / vh, 0), 1);
+
+        const scale = 1 - progress * (1 - STACK_RECEDE_SCALE);
+        const radius = progress * STACK_RECEDE_RADIUS;
+
+        cards[i].style.transform = `scale3d(${scale}, ${scale}, 1)`;
+        cards[i].style.borderRadius = `${radius}px`;
+
+        const overlay = overlays[i];
+        if (overlay) {
+          overlay.style.opacity = String(progress * STACK_RECEDE_DIM);
+        }
+      }
+    };
+
+    const onScroll = () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(applyDepth);
+      }
+    };
+
+    applyDepth();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
+  }, []);
+
+  return (
+    <div ref={stackRef} className="relative bg-[#0a0a0a]">
+      {features.map((feature, index) => {
+        const Icon = feature.icon;
+        return (
+          <div
+            key={feature.title}
+            data-stack-card
+            className="sticky top-0 min-h-[100svh] w-full origin-top overflow-hidden rounded-t-[16px] border-t border-white/10 bg-gradient-to-br from-slate-900 to-slate-950 shadow-[0_-20px_50px_rgba(0,0,0,0.25)] will-change-transform md:rounded-t-[24px]"
+            style={{ zIndex: 10 + index }}
+          >
+            <div className="mx-auto grid min-h-[100svh] w-full max-w-[1600px] grid-cols-1 items-center gap-12 px-6 py-24 md:grid-cols-2 md:gap-16 md:px-12 md:py-16 lg:px-20">
+              <div className="flex flex-col justify-center gap-6">
+                <div className="inline-flex w-fit items-center gap-2 rounded-full border border-blue-500/20 bg-blue-500/5 px-4 py-1.5">
+                  <Icon className="size-4 text-blue-400" />
+                  <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-blue-400">
+                    Core Feature {String(index + 1).padStart(2, "0")}
+                  </span>
+                </div>
+                <h3 className="text-3xl font-black leading-tight tracking-tight text-white sm:text-4xl md:text-5xl">
+                  {feature.title}
+                </h3>
+                <p className="text-lg font-light leading-relaxed text-slate-400">
+                  {feature.description}
+                </p>
+                <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+                  {feature.services.map((sub) => (
+                    <li
+                      key={sub}
+                      className="flex items-center gap-3 rounded-xl border border-white/5 bg-white/5 p-3 text-sm font-medium text-slate-300"
+                    >
+                      <div className="size-2 shrink-0 rounded-full bg-blue-500" />
+                      {sub}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[2rem] border border-white/10 bg-slate-900/60 md:aspect-auto md:h-[65vh] md:max-h-[640px]">
+                <Image
+                  src={feature.image}
+                  alt={feature.imageAlt}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 700px"
+                  className="object-contain p-4"
+                />
+              </div>
+            </div>
+            <div
+              data-stack-overlay
+              className="pointer-events-none absolute inset-0 bg-black opacity-0"
+            />
+          </div>
+        );
+      })}
+    </div>
+  );
+}
 
 export default function CentralLanding() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -89,7 +301,7 @@ export default function CentralLanding() {
   return (
     <div
       ref={containerRef}
-      className="relative bg-slate-950 text-white selection:bg-blue-500/30 overflow-x-hidden"
+      className="relative bg-slate-950 text-white selection:bg-blue-500/30 overflow-x-clip"
     >
       {/* Dynamic Background */}
       <div className="fixed inset-0 z-0 pointer-events-none">
@@ -285,221 +497,23 @@ export default function CentralLanding() {
         </div>
       </section>
 
-      {/* About Us Section - The Vision */}
-      <section className="relative py-32 px-6 z-10 bg-slate-950/50 border-t border-white/5">
-        <div className="max-w-[1600px] mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div className="space-y-8">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
-                viewport={{ once: true }}
-              >
-                <span className="text-blue-500 font-bold uppercase tracking-widest text-sm mb-4 block">Our Origin & Vision</span>
-                <h2 className="text-5xl md:text-7xl font-black tracking-tighter leading-[0.9] mb-8">
-                  <TypewriterHeading
-                    segments={[
-                      { text: "Engineering " },
-                      { break: true },
-                      { text: "Trust", accent: true },
-                      { text: "." },
-                    ]}
-                  />
-                </h2>
-                <p className="text-xl text-slate-400 font-light leading-relaxed mb-6">
-                  Everything your dealership does, in one place. ShiftOS is the first system built specifically for the Kenyan car yard: inventory, customer records, payments, and your online showroom, together.
-                </p>
-                <p className="text-lg text-slate-500 font-light leading-relaxed mb-12">
-                  Most car yards in Kenya still run on WhatsApp and a notebook. ShiftOS gives independent dealers the same tools the biggest dealerships use, built for how Kenyan yards actually work.
-                </p>
-              </motion.div>
-            </div>
-            
-            <div className="relative">
-              <div className="aspect-video lg:aspect-square rounded-[2.5rem] md:rounded-[4rem] border border-white/10 bg-slate-900/40 relative overflow-hidden group">
-                 <Image
-                   src="/assets/trust-photo.jpg"
-                   alt="A Kenyan car yard packed with stock"
-                   fill
-                   sizes="(max-width: 1024px) 100vw, 50vw"
-                   className="object-cover grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-1000"
-                 />
-                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent" />
-                 <div className="absolute bottom-12 left-12 right-12">
-                    <div className="flex justify-between items-end">
-                      <div>
-                        <span className="text-4xl font-black italic text-blue-500">2026</span>
-                        <p className="text-sm font-bold uppercase tracking-widest text-white/60">Built in Nairobi, Kenya</p>
-                      </div>
-                      <div className="size-16 rounded-3xl bg-blue-500/10 border border-blue-500/20 backdrop-blur-xl flex items-center justify-center">
-                        <Shield className="size-8 text-blue-500" />
-                      </div>
-                    </div>
-                 </div>
-              </div>
-            </div>
-          </div>
+      {/* Service Spectrum - Deep Dive into "What we do" (sticky stacking cards) */}
+      <section className="relative z-10 border-t border-white/5 bg-slate-950">
+        <div className="px-6 pb-16 pt-32 text-center">
+          <h2 className="text-4xl md:text-6xl font-black mb-6 tracking-tight leading-none">
+            <TypewriterHeading
+              segments={[
+                { text: "Everything Your Dealership " },
+                { text: "Needs", accent: true },
+              ]}
+            />
+          </h2>
+          <p className="max-w-3xl mx-auto text-slate-400 font-light text-xl">
+            One platform for the whole dealership, from the yard, to the workshop, to the books.
+          </p>
         </div>
-      </section>
 
-      {/* Service Spectrum - Deep Dive into "What we do" */}
-      <section className="relative py-32 px-6 z-10 border-t border-white/5 bg-slate-950">
-        <div className="max-w-[1600px] mx-auto">
-          <div className="text-center mb-24">
-            <h2 className="text-4xl md:text-6xl font-black mb-6 tracking-tight leading-none">
-              <TypewriterHeading
-                segments={[
-                  { text: "Everything Your Dealership " },
-                  { text: "Needs", accent: true },
-                ]}
-              />
-            </h2>
-            <p className="max-w-3xl mx-auto text-slate-400 font-light text-xl">
-              Turn your physical car yard into a dealership customers can discover, browse and enquire from online.
-            </p>
-          </div>
-
-          <div className="space-y-40">
-            {[
-              {
-                title: "Live Digital Showroom",
-                services: [
-                  "Instant Inventory Sync",
-                  "Automated Marketing SEO",
-                  "Real-Time 'Sold' Status",
-                  "Mobile-First Design",
-                ],
-                description:
-                  "Your showroom, online 24/7. When a car is sold at your yard, your website updates instantly. No more manual uploads or outdated listings. Just a seamless reflection of your actual inventory.",
-                icon: Globe,
-                color: "blue",
-                image: "/assets/website-mockup.png"
-              },
-              {
-                title: "Smart Comparison Engine",
-                services: [
-                  "3-Car Side-by-Side View",
-                  "Technical Spec Auditing",
-                  "Full Vehicle Photo Galleries",
-                  "Buyer Confidence Tools",
-                ],
-                description:
-                  "Help your clients decide faster. Let them compare up to 3 cars side-by-side with full technical specs and high-resolution galleries, making the buying decision easier and more professional than ever.",
-                icon: Layout,
-                color: "blue",
-                image: "/assets/compare-dashboard.png"
-              },
-              {
-                title: "Sales & Deal Command Center",
-                services: [
-                  "Lead Tracking & Scoring",
-                  "Deal Management Suite",
-                  "User Activity Auditing",
-                  "Global Yard Visibility",
-                ],
-                description:
-                  "Manage your entire inventory, track every lead from query to keys, and handle every deal from one central dashboard built for speed.",
-                icon: Monitor,
-                color: "blue",
-                image: "/assets/interior-digital.png"
-              },
-              {
-                title: "Every deal. Every shilling. Every document. Automated.",
-                services: [
-                  "Payment Records & Tracking",
-                  "Automated Sale Contracts",
-                  "Commission Ledger Tracking",
-                  "Digital Invoice Vault",
-                ],
-                description:
-                  "Track every deal from deposit to final payment. Keep payment records, invoices, sale agreements, commissions and outstanding balances organized in one place.",
-                icon: BarChart3,
-                color: "blue",
-                image: "/assets/contract-signing.png"
-              },
-            ].map((service, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1, ease: "easeOut" }}
-                viewport={{ once: true, margin: "-100px" }}
-                className={`flex flex-col ${i % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"} items-center gap-16 md:gap-32`}
-              >
-                <div className="flex-1 space-y-8">
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.2 }}
-                    className={`inline-flex items-center gap-2 rounded-full border border-${service.color}-500/20 bg-${service.color}-500/5 px-4 py-1.5`}
-                  >
-                    <service.icon
-                      className={`size-4 text-${service.color}-400`}
-                    />
-                    <span
-                      className={`text-[10px] font-bold uppercase tracking-[0.2em] text-${service.color}-400`}
-                    >
-                      Strategic Service
-                    </span>
-                  </motion.div>
-                  <h3 className="text-5xl md:text-6xl font-black tracking-tight text-white leading-none">
-                    {service.title}
-                  </h3>
-                  <p className="text-xl text-slate-400 font-light leading-relaxed">
-                    {service.description}
-                  </p>
-                  <motion.ul 
-                    initial="hidden"
-                    whileInView="show"
-                    viewport={{ once: true }}
-                    variants={{
-                      hidden: { opacity: 0 },
-                      show: {
-                        opacity: 1,
-                        transition: { staggerChildren: 0.1 }
-                      }
-                    }}
-                    className="grid grid-cols-1 sm:grid-cols-2 gap-4"
-                  >
-                    {service.services.map((sub, j) => (
-                      <motion.li
-                        key={j}
-                        variants={{
-                          hidden: { opacity: 0, x: -10 },
-                          show: { opacity: 1, x: 0 }
-                        }}
-                        className="flex items-center gap-3 text-slate-300 font-medium bg-white/5 p-3 rounded-xl border border-white/5"
-                      >
-                        <div
-                          className={`size-2 rounded-full bg-${service.color}-500`}
-                        />
-                        {sub}
-                      </motion.li>
-                    ))}
-                  </motion.ul>
-                </div>
-                <div className="flex-1 relative aspect-video md:aspect-[4/5] w-full max-w-lg">
-                  <div className="group relative h-full w-full rounded-[2.5rem] md:rounded-[4rem] border border-white/10 bg-slate-900/40 backdrop-blur-xl flex items-center justify-center overflow-hidden">
-                    {service.image ? (
-                      <Image
-                        src={service.image}
-                        alt={service.title}
-                        fill
-                        sizes="(max-width: 768px) 100vw, 512px"
-                        className="object-cover p-4 rounded-[4.5rem] transition-transform duration-600 group-hover:scale-105"
-                      />
-                    ) : (
-                      <service.icon
-                        className={`size-48 text-${service.color}-500/20 relative z-10 group-hover:text-${service.color}-500 transition-colors duration-500`}
-                      />
-                    )}
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
+        <StickyFeatureStack features={DEALERSHIP_FEATURES} />
       </section>
 
       {/* Horizontal Feature Showcase */}
@@ -698,8 +712,15 @@ export default function CentralLanding() {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             <ScrollReveal direction="up">
-              <div className="group relative h-full p-10 rounded-[2.5rem] md:rounded-[3rem] border border-white/10 bg-slate-900/40 backdrop-blur-xl overflow-hidden hover:border-blue-500/30 transition-colors">
-                <Tag className="absolute -right-6 -bottom-6 size-48 text-blue-500/10 group-hover:text-blue-500/20 transition-colors" />
+              <div className="group relative h-full overflow-hidden rounded-[2.5rem] border border-white/10 p-10 transition-colors hover:border-blue-500/30 md:rounded-[3rem]">
+                <Image
+                  src="/assets/features/feature-listings.png"
+                  alt="Car ShiftOS Showcase free listing page for independent sellers and small yards"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 800px"
+                  className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/85 to-slate-950/30" />
                 <div className="relative z-10 space-y-6">
                   <span className="inline-flex items-center rounded-full border border-blue-500/20 bg-blue-500/5 px-4 py-1.5 text-[10px] font-bold uppercase tracking-[0.2em] text-blue-400">
                     Free, no system required
@@ -737,8 +758,15 @@ export default function CentralLanding() {
             </ScrollReveal>
 
             <ScrollReveal direction="up" delay={150}>
-              <div className="group relative h-full p-10 rounded-[2.5rem] md:rounded-[3rem] border border-white/10 bg-slate-900/40 backdrop-blur-xl overflow-hidden hover:border-blue-500/30 transition-colors">
-                <Search className="absolute -right-6 -bottom-6 size-48 text-blue-500/10 group-hover:text-blue-500/20 transition-colors" />
+              <div className="group relative h-full overflow-hidden rounded-[2.5rem] border border-white/10 p-10 transition-colors hover:border-blue-500/30 md:rounded-[3rem]">
+                <Image
+                  src="/assets/features/feature-marketplace.png"
+                  alt="Car ShiftOS Marketplace listing page showing verified dealership vehicles"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 800px"
+                  className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/85 to-slate-950/30" />
                 <div className="relative z-10 space-y-6">
                   <span className="inline-flex items-center rounded-full border border-blue-500/20 bg-blue-500/5 px-4 py-1.5 text-[10px] font-bold uppercase tracking-[0.2em] text-blue-400">
                     Launching 2 November 2026
