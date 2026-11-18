@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { articles, type Article } from "./articles";
+import { getArticlesByDateDesc, type Article } from "./articles";
 
 function AuthorAvatar({ name, className }: { name: string; className?: string }) {
   const initial = name.trim().charAt(0).toUpperCase();
@@ -23,9 +23,11 @@ function formatDate(iso: string) {
   });
 }
 
-// Repeating bento pattern so tiles interlock irregularly instead of a flat
-// uniform grid, however many articles exist. Index 0 of every 5-tile cycle
-// is the "hero" tile for that row group.
+// Bento tile sizes. Which size an article gets is picked from a stable hash
+// of its slug (below), not its position in the list - so tiles interlock
+// irregularly rather than following a visible repeating formula, while
+// still being deterministic (same article always gets the same size, no
+// server/client mismatch and no reshuffling on every visit).
 const TILE_SPANS = [
   "sm:col-span-2 lg:col-span-2 lg:row-span-2", // big tile
   "lg:col-span-1 lg:row-span-1",
@@ -33,6 +35,14 @@ const TILE_SPANS = [
   "lg:col-span-1 lg:row-span-2", // tall tile
   "sm:col-span-2 lg:col-span-1 lg:row-span-1",
 ];
+
+function tileIndexForSlug(slug: string): number {
+  let hash = 0;
+  for (let i = 0; i < slug.length; i++) {
+    hash = (hash * 31 + slug.charCodeAt(i)) >>> 0;
+  }
+  return hash % TILE_SPANS.length;
+}
 
 function ArticleTile({ article, large }: { article: Article; large: boolean }) {
   return (
@@ -91,9 +101,12 @@ export default function InsightsPageClient() {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 lg:auto-rows-[260px] gap-6">
-          {articles.map((article, i) => {
-            const span = TILE_SPANS[i % TILE_SPANS.length];
-            const large = i % TILE_SPANS.length === 0;
+          {getArticlesByDateDesc().map((article, i) => {
+            // The newest article always anchors the page as the hero tile;
+            // everything else gets an irregular size from its slug hash.
+            const tileIndex = i === 0 ? 0 : Math.max(1, tileIndexForSlug(article.slug));
+            const span = TILE_SPANS[tileIndex];
+            const large = tileIndex === 0;
             return (
               <div key={article.slug} className={span}>
                 <ArticleTile article={article} large={large} />

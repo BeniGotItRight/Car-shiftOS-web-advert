@@ -80,6 +80,13 @@ export default function ArticlePageClient({ article }: { article: Article }) {
                     </h2>
                   );
                 }
+                if (block.type === "subheading") {
+                  return (
+                    <h3 key={i} className="text-xl font-bold text-white pt-2">
+                      {block.text}
+                    </h3>
+                  );
+                }
                 if (block.type === "list") {
                   const ListTag = block.ordered ? "ol" : "ul";
                   return (
@@ -93,6 +100,57 @@ export default function ArticlePageClient({ article }: { article: Article }) {
                         </li>
                       ))}
                     </ListTag>
+                  );
+                }
+                if (block.type === "definitionList") {
+                  const ListTag = block.ordered ? "ol" : "ul";
+                  return (
+                    <ListTag key={i} className="space-y-3 pl-1">
+                      {block.items.map((item, ii) => (
+                        <li key={ii} className="flex gap-3 text-lg text-slate-300 font-light leading-relaxed">
+                          <span className="text-blue-500 font-bold shrink-0">
+                            {block.ordered ? `${ii + 1}.` : "•"}
+                          </span>
+                          <span>
+                            <strong className="text-white font-semibold">{item.term}:</strong> {item.description}
+                          </span>
+                        </li>
+                      ))}
+                    </ListTag>
+                  );
+                }
+                if (block.type === "table") {
+                  return (
+                    <div key={i} className="overflow-x-auto rounded-2xl border border-white/10">
+                      <table className="w-full text-left border-collapse">
+                        <thead>
+                          <tr className="bg-slate-900/60">
+                            {block.headers.map((h, hi) => (
+                              <th
+                                key={hi}
+                                className="px-4 py-3 text-xs font-bold uppercase tracking-wider text-slate-400 border-b border-white/10 whitespace-nowrap"
+                              >
+                                {h}
+                              </th>
+                            ))}
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {block.rows.map((row, ri) => (
+                            <tr key={ri} className="odd:bg-slate-900/20">
+                              {row.map((cell, ci) => (
+                                <td
+                                  key={ci}
+                                  className="px-4 py-3 text-sm text-slate-300 font-light border-b border-white/5 align-top"
+                                >
+                                  {cell}
+                                </td>
+                              ))}
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
                   );
                 }
                 if (block.type === "cta") {
