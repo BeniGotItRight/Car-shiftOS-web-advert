@@ -155,7 +155,15 @@ function StickyFeatureStack({ features }: { features: DealershipFeature[] }) {
     const root = stackRef.current;
     if (!root) return;
 
+    // Measured on the sticky outer cards (read-only — never mutated, so
+    // Safari/iOS never has to re-composite a position:sticky element).
     const cards = Array.from(root.querySelectorAll<HTMLDivElement>("[data-stack-card]"));
+    // Transform/border-radius are written to this plain, non-sticky inner
+    // wrapper instead. Mutating `transform` directly on a `position: sticky`
+    // element is a known WebKit bug that causes the sticky element (and its
+    // images) to stop repainting correctly, especially when scrolling back
+    // up — so the two roles are kept on separate elements.
+    const inners = Array.from(root.querySelectorAll<HTMLDivElement>("[data-stack-inner]"));
     const overlays = Array.from(root.querySelectorAll<HTMLDivElement>("[data-stack-overlay]"));
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reduceMotion || cards.length < 2) return;
@@ -173,8 +181,8 @@ function StickyFeatureStack({ features }: { features: DealershipFeature[] }) {
         const scale = 1 - progress * (1 - STACK_RECEDE_SCALE);
         const radius = progress * STACK_RECEDE_RADIUS;
 
-        cards[i].style.transform = `scale3d(${scale}, ${scale}, 1)`;
-        cards[i].style.borderRadius = `${radius}px`;
+        inners[i].style.transform = `scale3d(${scale}, ${scale}, 1)`;
+        inners[i].style.borderRadius = `${radius}px`;
 
         const overlay = overlays[i];
         if (overlay) {
@@ -207,49 +215,54 @@ function StickyFeatureStack({ features }: { features: DealershipFeature[] }) {
           <div
             key={feature.title}
             data-stack-card
-            className="sticky top-0 min-h-[100svh] w-full origin-top overflow-hidden rounded-t-[16px] border-t border-white/10 bg-gradient-to-br from-slate-900 to-slate-950 shadow-[0_-20px_50px_rgba(0,0,0,0.25)] will-change-transform md:rounded-t-[24px]"
+            className="sticky top-0 min-h-[100svh] w-full"
             style={{ zIndex: 10 + index }}
           >
-            <div className="mx-auto grid min-h-[100svh] w-full max-w-[1600px] grid-cols-1 items-center gap-12 px-6 py-24 md:grid-cols-2 md:gap-16 md:px-12 md:py-16 lg:px-20">
-              <div className="flex flex-col justify-center gap-6">
-                <div className="inline-flex w-fit items-center gap-2 rounded-full border border-blue-500/20 bg-blue-500/5 px-4 py-1.5">
-                  <Icon className="size-4 text-blue-400" />
-                  <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-blue-400">
-                    Core Feature {String(index + 1).padStart(2, "0")}
-                  </span>
-                </div>
-                <h3 className="text-3xl font-black leading-tight tracking-tight text-white sm:text-4xl md:text-5xl">
-                  {feature.title}
-                </h3>
-                <p className="text-lg font-light leading-relaxed text-slate-400">
-                  {feature.description}
-                </p>
-                <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-                  {feature.services.map((sub) => (
-                    <li
-                      key={sub}
-                      className="flex items-center gap-3 rounded-xl border border-white/5 bg-white/5 p-3 text-sm font-medium text-slate-300"
-                    >
-                      <div className="size-2 shrink-0 rounded-full bg-blue-500" />
-                      {sub}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[2rem] border border-white/10 bg-slate-900/60 md:aspect-auto md:h-[65vh] md:max-h-[640px]">
-                <Image
-                  src={feature.image}
-                  alt={feature.imageAlt}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 700px"
-                  className="object-contain p-4"
-                />
-              </div>
-            </div>
             <div
-              data-stack-overlay
-              className="pointer-events-none absolute inset-0 bg-black opacity-0"
-            />
+              data-stack-inner
+              className="relative min-h-[100svh] w-full origin-top overflow-hidden rounded-t-[16px] border-t border-white/10 bg-gradient-to-br from-slate-900 to-slate-950 shadow-[0_-20px_50px_rgba(0,0,0,0.25)] will-change-transform md:rounded-t-[24px]"
+            >
+              <div className="mx-auto grid min-h-[100svh] w-full max-w-[1600px] grid-cols-1 items-center gap-12 px-6 py-24 md:grid-cols-2 md:gap-16 md:px-12 md:py-16 lg:px-20">
+                <div className="flex flex-col justify-center gap-6">
+                  <div className="inline-flex w-fit items-center gap-2 rounded-full border border-blue-500/20 bg-blue-500/5 px-4 py-1.5">
+                    <Icon className="size-4 text-blue-400" />
+                    <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-blue-400">
+                      Core Feature {String(index + 1).padStart(2, "0")}
+                    </span>
+                  </div>
+                  <h3 className="text-3xl font-black leading-tight tracking-tight text-white sm:text-4xl md:text-5xl">
+                    {feature.title}
+                  </h3>
+                  <p className="text-lg font-light leading-relaxed text-slate-400">
+                    {feature.description}
+                  </p>
+                  <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+                    {feature.services.map((sub) => (
+                      <li
+                        key={sub}
+                        className="flex items-center gap-3 rounded-xl border border-white/5 bg-white/5 p-3 text-sm font-medium text-slate-300"
+                      >
+                        <div className="size-2 shrink-0 rounded-full bg-blue-500" />
+                        {sub}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[2rem] border border-white/10 bg-slate-900/60 md:aspect-auto md:h-[65vh] md:max-h-[640px]">
+                  <Image
+                    src={feature.image}
+                    alt={feature.imageAlt}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 700px"
+                    className="object-contain p-4"
+                  />
+                </div>
+              </div>
+              <div
+                data-stack-overlay
+                className="pointer-events-none absolute inset-0 bg-black opacity-0"
+              />
+            </div>
           </div>
         );
       })}
