@@ -25,17 +25,16 @@ export default function InsightsPageClient() {
   return (
     <div className="min-h-screen bg-slate-950 text-white pt-24 md:pt-32 pb-16 px-6">
       <div className="max-w-[1600px] mx-auto">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {/* Intro tile */}
-          <div className="flex flex-col justify-center rounded-3xl border border-blue-500/20 bg-gradient-to-br from-blue-600/20 to-slate-900/40 backdrop-blur-xl p-8">
-            <h1 className="text-3xl font-black tracking-tight mb-3">
-              Insight<span className="text-blue-400">s.</span>
-            </h1>
-            <p className="text-slate-400 font-light leading-relaxed text-sm">
-              Practical guidance for running a car dealership in Kenya: inventory, sales, workshop operations and growing your yard.
-            </p>
-          </div>
+        <div className="text-center max-w-2xl mx-auto mb-12 md:mb-16">
+          <h1 className="text-5xl sm:text-6xl md:text-7xl font-black tracking-tighter mb-6">
+            Insight<span className="text-blue-500">s.</span>
+          </h1>
+          <p className="text-lg sm:text-xl text-slate-400 font-light leading-relaxed">
+            Practical guidance for running a car dealership in Kenya: inventory, sales, workshop operations and growing your yard.
+          </p>
+        </div>
 
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {articles.map((article) => (
             <Link
               key={article.slug}
