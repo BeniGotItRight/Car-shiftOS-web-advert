@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import { Mail, Phone, Send, Globe, Check } from "lucide-react";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { TypewriterHeading } from "@/components/TypewriterHeading";
@@ -80,6 +81,17 @@ export default function ContactPage() {
           </h1>
           <p className="text-lg sm:text-xl text-slate-400 font-light leading-relaxed">
             Talk to the ShiftOS team: book a demo, ask a question, or see what it looks like on your own inventory.
+          </p>
+          <p className="text-base text-slate-500 font-light mt-4">
+            Quick question first? Check the{" "}
+            <Link href="/faq" className="text-blue-400 hover:text-blue-300 underline underline-offset-4">
+              FAQ
+            </Link>{" "}
+            or see{" "}
+            <Link href="/services" className="text-blue-400 hover:text-blue-300 underline underline-offset-4">
+              everything ShiftOS does
+            </Link>
+            .
           </p>
         </div>
 

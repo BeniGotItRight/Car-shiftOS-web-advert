@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 
 type Section = {
@@ -205,10 +206,22 @@ export default function PrivacyPage() {
           ))}
         </div>
 
+        <p className="mt-10 text-slate-500 font-light">
+          See also our{" "}
+          <Link href="/terms" className="text-blue-400 hover:text-blue-300 underline underline-offset-4">
+            Terms of Service
+          </Link>
+          , or{" "}
+          <Link href="/contact" className="text-blue-400 hover:text-blue-300 underline underline-offset-4">
+            contact us
+          </Link>{" "}
+          with any data questions.
+        </p>
+
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          className="mt-16 pt-8 border-t border-white/10 text-slate-400 text-sm"
+          className="mt-8 pt-8 border-t border-white/10 text-slate-400 text-sm"
         >
           Last Updated: {new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
         </motion.div>

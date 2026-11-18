@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 
 export default function TermsPage() {
@@ -56,10 +57,22 @@ export default function TermsPage() {
           ))}
         </div>
 
-        <motion.div 
+        <p className="mt-10 text-slate-500 font-light">
+          See also our{" "}
+          <Link href="/privacy" className="text-blue-400 hover:text-blue-300 underline underline-offset-4">
+            Privacy Policy
+          </Link>
+          , or{" "}
+          <Link href="/contact" className="text-blue-400 hover:text-blue-300 underline underline-offset-4">
+            contact us
+          </Link>{" "}
+          with any questions.
+        </p>
+
+        <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          className="mt-16 pt-8 border-t border-white/10 text-slate-500 text-sm"
+          className="mt-8 pt-8 border-t border-white/10 text-slate-500 text-sm"
         >
           Last Updated: {new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
         </motion.div>
