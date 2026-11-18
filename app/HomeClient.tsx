@@ -236,7 +236,7 @@ function StickyFeatureStack({ features }: { features: DealershipFeature[] }) {
                   <p className="text-lg font-light leading-relaxed text-slate-400">
                     {feature.description}
                   </p>
-                  <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+                  <ul className="hidden gap-3 sm:grid-cols-2 md:grid">
                     {feature.services.map((sub) => (
                       <li
                         key={sub}
