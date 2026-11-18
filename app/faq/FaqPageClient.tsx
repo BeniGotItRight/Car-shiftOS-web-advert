@@ -134,6 +134,14 @@ export default function FaqPageClient() {
           >
             Book a Free Demo
           </Link>
+          <div className="mt-4">
+            <Link
+              href="/services"
+              className="text-sm font-medium text-slate-500 hover:text-slate-300 transition-colors"
+            >
+              Or see everything ShiftOS does
+            </Link>
+          </div>
         </motion.div>
       </div>
     </div>

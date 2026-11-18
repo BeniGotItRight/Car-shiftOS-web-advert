@@ -39,6 +39,9 @@ export default function AboutPage() {
                 ]}
               />
             </h1>
+            <h2 className="text-2xl sm:text-3xl font-black tracking-tight mb-4 text-white">
+              The Problem We Saw
+            </h2>
             <p className="text-xl sm:text-2xl text-slate-400 font-light leading-relaxed mb-6 md:mb-8">
               I kept seeing the same thing: car yards moving KES 5-10 million in stock, run entirely on WhatsApp threads and a notebook.
             </p>
@@ -49,9 +52,22 @@ export default function AboutPage() {
               <p>
                 ShiftOS is built by a small, focused team, not a faceless enterprise vendor. Every feature exists because a real yard needed it, not because it looked good on a features page.
               </p>
+              <p>
+                See{" "}
+                <Link href="/services" className="text-blue-400 hover:text-blue-300 underline underline-offset-4">
+                  everything ShiftOS does
+                </Link>
+                , or{" "}
+                <Link href="/contact" className="text-blue-400 hover:text-blue-300 underline underline-offset-4">
+                  book a demo
+                </Link>{" "}
+                to see it on your own inventory.
+              </p>
             </div>
 
-            {/* Founder Profile Link */}
+            <h2 className="text-2xl sm:text-3xl font-black tracking-tight mb-4 text-white">
+              Meet the Founder
+            </h2>
             <Link
               href="/about/benson"
               className="group relative inline-flex items-center gap-4 px-8 py-4 bg-white/5 border border-white/10 rounded-2xl font-bold hover:bg-white/10 transition-all active:scale-95"
