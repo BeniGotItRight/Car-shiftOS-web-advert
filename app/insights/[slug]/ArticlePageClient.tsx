@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
-import type { Article } from "../articles";
+import { getArticleBySlug, type Article } from "../articles";
 
 function AuthorAvatar({ name, className }: { name: string; className?: string }) {
   const initial = name.trim().charAt(0).toUpperCase();
@@ -153,6 +153,23 @@ export default function ArticlePageClient({ article }: { article: Article }) {
                     </div>
                   );
                 }
+                if (block.type === "faq") {
+                  return (
+                    <div key={i} className="pt-6">
+                      <h2 className="text-2xl sm:text-3xl font-black tracking-tight text-white mb-6">
+                        Frequently asked questions
+                      </h2>
+                      <div className="space-y-6">
+                        {block.items.map((item, qi) => (
+                          <div key={qi}>
+                            <h3 className="text-lg font-bold text-white mb-2">{item.question}</h3>
+                            <p className="text-lg text-slate-300 font-light leading-relaxed">{item.answer}</p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  );
+                }
                 if (block.type === "cta") {
                   return (
                     <div
@@ -207,6 +224,36 @@ export default function ArticlePageClient({ article }: { article: Article }) {
             </div>
           </aside>
         </div>
+
+        {article.relatedSlugs.length > 0 && (
+          <div className="mt-16 pt-12 border-t border-white/10">
+            <h2 className="text-2xl sm:text-3xl font-black tracking-tight mb-8">Related reading</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-4xl">
+              {article.relatedSlugs.map((slug) => {
+                const related = getArticleBySlug(slug);
+                if (!related) return null;
+                return (
+                  <Link
+                    key={slug}
+                    href={`/insights/${related.slug}`}
+                    className="group flex flex-col h-full p-6 rounded-3xl border border-white/10 bg-slate-900/40 backdrop-blur-xl hover:border-blue-500/30 transition-colors"
+                  >
+                    <span className="text-[10px] font-bold uppercase tracking-widest text-blue-400 mb-3">
+                      {related.category}
+                    </span>
+                    <h3 className="text-lg font-bold leading-snug mb-3 group-hover:text-blue-400 transition-colors">
+                      {related.title}
+                    </h3>
+                    <p className="text-sm text-slate-400 font-light leading-relaxed mb-4">{related.excerpt}</p>
+                    <span className="mt-auto inline-flex items-center gap-1.5 text-sm font-bold text-blue-400">
+                      Read <ArrowRight className="size-3.5" />
+                    </span>
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

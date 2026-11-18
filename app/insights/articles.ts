@@ -5,6 +5,7 @@ export type ContentBlock =
   | { type: "list"; ordered?: boolean; items: string[] }
   | { type: "definitionList"; ordered?: boolean; items: { term: string; description: string }[] }
   | { type: "table"; headers: string[]; rows: string[][] }
+  | { type: "faq"; items: { question: string; answer: string }[] }
   | { type: "cta"; lead: string; linkText: string; href: string };
 
 export type Article = {
@@ -18,8 +19,14 @@ export type Article = {
   publishedAt: string; // ISO date
   author: { name: string; href: string };
   image: { src: string; alt: string };
+  relatedSlugs: string[];
   content: ContentBlock[];
 };
+
+export function getArticleFaqs(article: Article): { question: string; answer: string }[] {
+  const block = article.content.find((b): b is Extract<ContentBlock, { type: "faq" }> => b.type === "faq");
+  return block?.items ?? [];
+}
 
 export const articles: Article[] = [
   {
@@ -34,6 +41,7 @@ export const articles: Article[] = [
     readTime: "6 min read",
     publishedAt: "2026-11-04",
     author: { name: "Car ShiftOS", href: "/about" },
+    relatedSlugs: ["car-dealership-management-software", "spreadsheets-vs-dealership-software"],
     image: {
       src: "/assets/hero-dealership-lot.jpg",
       alt: "Cars displayed in a dealership yard",
@@ -197,6 +205,26 @@ export const articles: Article[] = [
         text: "Start by improving the way your dealership records vehicles and manages enquiries. As operations become more demanding, consider using software that helps your team manage inventory, sales and workshop activities more systematically.",
       },
       {
+        type: "faq",
+        items: [
+          {
+            question: "What is the most important part of managing a car yard?",
+            answer:
+              "Keeping an accurate, up-to-date record of every vehicle, so the status and details of your stock are always clear without searching through notebooks or asking different employees.",
+          },
+          {
+            question: "How do I stop losing customer enquiries?",
+            answer:
+              "Record every enquiry with the customer's details, the vehicle they're interested in, and the next action needed, then assign responsibility for following up so enquiries don't fall through the cracks.",
+          },
+          {
+            question: "When should a car yard start using management software?",
+            answer:
+              "Once spreadsheets and notebooks make it hard to maintain information across employees and activities as the dealership grows, dedicated dealership management software becomes worth considering.",
+          },
+        ],
+      },
+      {
         type: "cta",
         lead: "Want to organise your dealership operations?",
         linkText: "See everything Car ShiftOS does",
@@ -216,6 +244,7 @@ export const articles: Article[] = [
     readTime: "7 min read",
     publishedAt: "2026-11-11",
     author: { name: "Car ShiftOS", href: "/about" },
+    relatedSlugs: ["manage-a-car-yard-in-kenya", "spreadsheets-vs-dealership-software"],
     image: {
       src: "/assets/premium-experience.png",
       alt: "Car dealership employee assisting a customer",
@@ -388,6 +417,26 @@ export const articles: Article[] = [
         text: "The right platform should make everyday work clearer, more consistent and easier to manage.",
       },
       {
+        type: "faq",
+        items: [
+          {
+            question: "What is car dealership management software?",
+            answer:
+              "A digital platform that helps a vehicle dealership manage important parts of its daily operations, such as vehicle inventory, customer and sales management, workshop operations and reporting.",
+          },
+          {
+            question: "What should I look for when choosing dealership management software?",
+            answer:
+              "Confirm it covers inventory management, sales management and, if relevant, workshop operations, is easy for your team to use, fits your business size, and offers support during onboarding.",
+          },
+          {
+            question: "Does dealership management software replace spreadsheets completely?",
+            answer:
+              "For a small dealership with limited stock, spreadsheets may still be enough. Dedicated software becomes more valuable as the amount of information and number of employees grows.",
+          },
+        ],
+      },
+      {
         type: "cta",
         lead: "Want to see how Car ShiftOS brings these processes together?",
         linkText: "See everything Car ShiftOS does",
@@ -407,6 +456,7 @@ export const articles: Article[] = [
     readTime: "8 min read",
     publishedAt: "2026-11-18",
     author: { name: "Car ShiftOS", href: "/about" },
+    relatedSlugs: ["car-dealership-management-software", "manage-a-car-yard-in-kenya"],
     image: {
       src: "/assets/compare-dashboard.png",
       alt: "Business records and data being reviewed on a laptop",
@@ -586,6 +636,26 @@ export const articles: Article[] = [
       {
         type: "paragraph",
         text: "The right system should fit your business, support your actual processes and make everyday dealership operations easier to manage.",
+      },
+      {
+        type: "faq",
+        items: [
+          {
+            question: "Are spreadsheets good enough for a small car dealership?",
+            answer:
+              "Yes, spreadsheets can be a sensible starting point for a small dealership with limited stock. The challenges tend to appear as the business and its information grow.",
+          },
+          {
+            question: "What are the signs a dealership should move beyond spreadsheets?",
+            answer:
+              "Frequent requests for the latest stock list, duplicated or incomplete vehicle records, enquiries not being followed up consistently, and reports taking too much manual work to prepare.",
+          },
+          {
+            question: "What's the main advantage of dealership management software over spreadsheets?",
+            answer:
+              "It brings connected activities, like inventory, sales and workshop operations, together in one structured system instead of scattered across separate files that need manual version control.",
+          },
+        ],
       },
       {
         type: "cta",

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { articles, getArticleBySlug } from "../articles";
+import { articles, getArticleBySlug, getArticleFaqs } from "../articles";
 import ArticlePageClient from "./ArticlePageClient";
 
 export function generateStaticParams() {
@@ -87,12 +87,49 @@ export default async function Page({
     },
   };
 
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://carshiftos.co.ke" },
+      { "@type": "ListItem", position: 2, name: "Insights", item: "https://carshiftos.co.ke/insights" },
+      { "@type": "ListItem", position: 3, name: article.title, item: url },
+    ],
+  };
+
+  const faqs = getArticleFaqs(article);
+  const faqJsonLd =
+    faqs.length > 0
+      ? {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: faqs.map((faq) => ({
+            "@type": "Question",
+            name: faq.question,
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: faq.answer,
+            },
+          })),
+        }
+      : null;
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      {faqJsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        />
+      )}
       <ArticlePageClient article={article} />
     </>
   );
