@@ -215,14 +215,14 @@ function StickyFeatureStack({ features }: { features: DealershipFeature[] }) {
           <div
             key={feature.title}
             data-stack-card
-            className="sticky top-0 min-h-[100svh] w-full"
+            className="sticky top-0 min-h-[100dvh] w-full"
             style={{ zIndex: 10 + index }}
           >
             <div
               data-stack-inner
-              className="relative min-h-[100svh] w-full origin-top overflow-hidden rounded-t-[16px] border-t border-white/10 bg-gradient-to-br from-slate-900 to-slate-950 shadow-[0_-20px_50px_rgba(0,0,0,0.25)] will-change-transform md:rounded-t-[24px]"
+              className="relative min-h-[100dvh] w-full origin-top overflow-hidden rounded-t-[16px] border-t border-white/10 bg-gradient-to-br from-slate-900 to-slate-950 shadow-[0_-20px_50px_rgba(0,0,0,0.25)] will-change-transform md:rounded-t-[24px]"
             >
-              <div className="mx-auto grid min-h-[100svh] w-full max-w-[1600px] grid-cols-1 items-center gap-12 px-6 py-24 md:grid-cols-2 md:gap-16 md:px-12 md:py-16 lg:px-20">
+              <div className="mx-auto grid min-h-[100dvh] w-full max-w-[1600px] grid-cols-1 items-center gap-12 px-6 py-24 md:grid-cols-2 md:gap-16 md:px-12 md:py-16 lg:px-20">
                 <div className="flex flex-col justify-center gap-6">
                   <div className="inline-flex w-fit items-center gap-2 rounded-full border border-blue-500/20 bg-blue-500/5 px-4 py-1.5">
                     <Icon className="size-4 text-blue-400" />
