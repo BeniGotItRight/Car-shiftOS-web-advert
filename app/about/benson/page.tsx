@@ -10,8 +10,8 @@ export const metadata: Metadata = {
   title,
   description,
   robots: {
-    index: false,
-    follow: false,
+    index: true,
+    follow: true,
   },
   alternates: {
     canonical: url,
