@@ -778,7 +778,7 @@ export default function CentralLanding() {
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/85 to-slate-950/30" />
                 <div className="relative z-10 space-y-6">
                   <span className="inline-flex items-center rounded-full border border-blue-500/20 bg-blue-500/5 px-4 py-1.5 text-[10px] font-bold uppercase tracking-[0.2em] text-blue-400">
-                    Launching 2 November 2026
+                    Live Now
                   </span>
                   <h3 className="text-3xl font-bold tracking-tight">
                     Every buyer, searching in one place.

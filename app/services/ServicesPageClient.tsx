@@ -94,7 +94,7 @@ const AREAS = [
     capabilities: [
       "Your own online showroom",
       "Cars listed online",
-      "A shared marketplace, launching 2 November 2026",
+      "A shared marketplace, live now",
       "Your dealership's public profile",
       "Buyers finding your cars",
       "Reviews from real buyers",
@@ -262,7 +262,7 @@ export default function ServicesPage() {
                     Take your vehicles beyond the yard.
                   </h3>
                   <span className="text-[10px] font-bold uppercase tracking-widest text-amber-400 bg-amber-400/10 border border-amber-400/20 rounded-full px-3 py-1 shrink-0">
-                    Launching 2 Nov 2026
+                    Live Now
                   </span>
                 </div>
                 <p className="text-slate-400 font-light leading-relaxed">
