@@ -29,6 +29,8 @@ import { ScrollReveal } from "@/components/ScrollReveal";
 import { TypewriterHeading } from "@/components/TypewriterHeading";
 import { TiltCard } from "@/components/TiltCard";
 import { DemoVideo } from "@/components/DemoVideo";
+import { HeroCTAButtons } from "@/components/HeroCTAButtons";
+import { StackedStepCards, type StepItem } from "@/components/StackedStepCards";
 
 const HERO_SLIDES = [
   { src: "/assets/hero-dealership-lot.jpg", caption: "Premium Digital Showrooms", kb: "kenburns-1" },
@@ -56,6 +58,27 @@ type DealershipFeature = {
   image: string;
   imageAlt: string;
 };
+
+const ONBOARDING_STEPS: StepItem[] = [
+  {
+    num: "01",
+    icon: Rocket,
+    title: "Deploy Your Portal",
+    desc: "We spin up your private portal in under 24 hours. Custom subdomain, brand colours, and your inventory structure, configured to your yard.",
+  },
+  {
+    num: "02",
+    icon: Link2,
+    title: "Connect Your Inventory",
+    desc: "Upload your stock manually or sync from your existing records. Every vehicle gets a full profile: specs, photos, pricing, duty status, and organised payment records.",
+  },
+  {
+    num: "03",
+    icon: TrendingUp,
+    title: "Go Live & Scale",
+    desc: "Your public showroom goes live instantly. Customers compare, enquire, and transact. You track every lead and close every deal from the Command Portal.",
+  },
+];
 
 const DEALERSHIP_FEATURES: DealershipFeature[] = [
   {
@@ -350,22 +373,7 @@ export default function CentralLanding() {
             Car ShiftOS brings your vehicles, customers, sales, documents and online showroom together, built for Kenyan car dealerships.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Link
-              href="/contact"
-              className="group relative flex items-center gap-2 px-10 py-5 bg-blue-600 rounded-2xl font-bold text-lg hover:bg-blue-500 transition-all overflow-hidden shadow-2xl shadow-blue-600/20 active:scale-95"
-            >
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
-              Get Started{" "}
-              <ArrowRight className="size-5 group-hover:translate-x-1 transition-transform" />
-            </Link>
-            <Link
-              href="/contact"
-              className="px-10 py-5 border border-white/10 bg-white/5 backdrop-blur-md rounded-2xl font-bold text-lg hover:bg-white/10 transition-all active:scale-95 flex items-center justify-center"
-            >
-              Request Demo
-            </Link>
-          </div>
+          <HeroCTAButtons />
         </motion.div>
 
         {/* Hero Slider — Ken Burns crossfade */}
@@ -468,29 +476,17 @@ export default function CentralLanding() {
             </div>
           </ScrollReveal>
 
-          <div className="relative grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6">
+          {/* Mobile: tapered tap-to-front stack (same interaction model as
+              the About page's founder/Marian cards), tall peek so every
+              step title stays readable — not fully stacked away. */}
+          <div className="md:hidden">
+            <StackedStepCards items={ONBOARDING_STEPS} />
+          </div>
+
+          <div className="relative hidden md:grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6">
             <div className="hidden md:block absolute top-[52px] left-[16.5%] right-[16.5%] h-px bg-gradient-to-r from-blue-500/0 via-blue-500/40 to-blue-500/0" />
 
-            {[
-              {
-                num: "01",
-                icon: Rocket,
-                title: "Deploy Your Portal",
-                desc: "We spin up your private portal in under 24 hours. Custom subdomain, brand colours, and your inventory structure, configured to your yard.",
-              },
-              {
-                num: "02",
-                icon: Link2,
-                title: "Connect Your Inventory",
-                desc: "Upload your stock manually or sync from your existing records. Every vehicle gets a full profile: specs, photos, pricing, duty status, and organised payment records.",
-              },
-              {
-                num: "03",
-                icon: TrendingUp,
-                title: "Go Live & Scale",
-                desc: "Your public showroom goes live instantly. Customers compare, enquire, and transact. You track every lead and close every deal from the Command Portal.",
-              },
-            ].map((step, i) => (
+            {ONBOARDING_STEPS.map((step, i) => (
               <ScrollReveal key={step.num} direction="up" delay={i * 150}>
                 <div className="relative p-8 rounded-3xl bg-[#0a0f1e] border border-blue-900/60 h-full">
                   <span className="text-xs font-black uppercase tracking-[0.3em] text-blue-500 block mb-6">
