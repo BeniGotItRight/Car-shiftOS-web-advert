@@ -55,8 +55,14 @@ export const faqs = [
   {
     question: "Is there a public marketplace where buyers can find my cars?",
     answer:
-      "Yes. cars.carshiftos.co.ke is a marketplace where buyers across Kenya can search inventory from ShiftOS-powered dealerships. It's opening soon, join the waitlist on that site to be notified when it launches.",
+      "Yes. cars.carshiftos.co.ke is a live marketplace where buyers across Kenya can search inventory from ShiftOS-powered dealerships.",
     relatedLink: { label: "Visit the marketplace", href: "https://cars.carshiftos.co.ke" },
+  },
+  {
+    question: "Can Car ShiftOS pull in leads from my existing website and social media pages?",
+    answer:
+      "That's on our roadmap: connecting your dealership's existing website and social pages (Facebook, Instagram, TikTok) so enquiries from all of them land directly in Car ShiftOS alongside your other leads, instead of being tracked separately on each platform. If this would help your dealership, mention it when you book a demo, it helps us prioritise what we build next.",
+    relatedLink: { label: "Book a free demo", href: "/contact" },
   },
   {
     question: "How much does car dealership software cost in Kenya?",
