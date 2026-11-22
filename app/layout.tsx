@@ -28,7 +28,7 @@ export async function generateMetadata(): Promise<Metadata> {
   // But we can detect from headers in a real production env, or keep it generic
   return {
     title: {
-      default: "Car ShiftOS | Best Car Yard & Dealer Management System Kenya",
+      default: "Car ShiftOS | Car Yard & Dealer Management System Kenya",
       template: "Car ShiftOS | %s"
     },
     description: "Kenya's leading dealer management system for car yards: inventory, CRM, import tracking, workshop and payments in one place.",

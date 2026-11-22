@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import CentralLanding from "./HomeClient";
 
 export const metadata: Metadata = {
-  title: "Car ShiftOS | Best Car Yard & Dealer Management System Kenya",
+  title: "Car ShiftOS | Car Yard & Dealer Management System Kenya",
   description:
     "Car ShiftOS is the best car yard management software in Kenya: inventory, CRM, import tracking, workshop and payments in one place.",
   alternates: {
